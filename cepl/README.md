@@ -4,12 +4,12 @@ CEPL is very cool project by baggers.
 
 https://github.com/cbaggers/cepl
 
-I was having trouble getting the example to run.
+But I was having trouble getting the examples to run.
 
 https://github.com/cbaggers/cepl.examples
 
 
-I'm not sure if I just don't understand packages enough but I had to edit an example, adding package some qualifications, to get it to work.
+I'm not sure if I just don't understand packages enough but I had to edit an example, adding some package qualifications, to get it to work.
 So I thought i'd share what I used to get CEPL running in case someone else wants to try CEPL but is having trouble.
 
 Baggers uses emacs so if you are an emacs user maybe it will be clear to you how to use CEPL by watching him use it:
@@ -32,6 +32,8 @@ I'd say the following is mostly for vim users
 
 
 [![asciicast](https://asciinema.org/a/271453.svg)](https://asciinema.org/a/271453)
+
+
 
 ![](render.png)
 
