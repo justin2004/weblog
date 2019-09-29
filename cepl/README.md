@@ -30,3 +30,8 @@ I'd say the following is mostly for vim users
 
 0) follow the instructions in a.lisp
 
+
+[![asciicast](https://asciinema.org/a/271453.svg)](https://asciinema.org/a/271453)
+
+![](render.png)
+
