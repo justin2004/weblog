@@ -53,7 +53,7 @@ Class not found: com.khoubyari.example.Application
 
 
 The default classloader won't load them.
-I briefly tried to instantiate and use an "org.springframework.boot.loader.LaunchedURLClassLoader" (like Spring does) but that didn't work for me.
+I briefly tried to instantiate and use an "org.springframework.boot.loader.LaunchedURLClassLoader" (like Spring does) but I didn't get it to work (although in principle it should be possible, I think).
 
 The way I got around this problem was to make a pom.xml with all the dependencies I want to be able to use from Lisp and from Java and then I put that resultant jar file on the classpath.
 
@@ -77,3 +77,7 @@ If you have [docker](https://docs.docker.com/install/) and [docker-compose](http
 0) clone my fork
 0) `docker-compose up`
 0) use a slime client to connect to the swank server running on the JVM in the docker container
+
+
+
+TODO demonstrate using the application and slime
