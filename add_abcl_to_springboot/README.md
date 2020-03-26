@@ -1,10 +1,11 @@
-## adding a lisp interpreter to a spring boot application
+## Adding a Lisp Interpreter To a Spring Boot Application
 
-ABCL ([Armed Bear Common Lisp](https://common-lisp.net/project/armedbear/)) is an implementation of Common Lisp that runs on the JVM. I really like the REPL style development so I wanted to bring that to the Java application (using Spring Boot) I am working on.
+ABCL ([Armed Bear Common Lisp](https://common-lisp.net/project/armedbear/)) is an implementation of Common Lisp that runs on the JVM. I really like the [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) style development so I wanted to bring that to the Java application (using Spring Boot) I am working on.
 
---- 
+This is nice because it allows one to explore a Java library without waiting on compilation and JVM startup.
 
-The first problem I encountered: the classloader
+
+### The first problem I encountered: the classloader
 
 "The Spring Boot Maven and Gradle plugins both package our application as executable JARs – such a file can't be used in another project since class files are put into BOOT-INF/classes. This is not a bug, but a feature." [0](https://www.baeldung.com/spring-boot-dependency)
 
@@ -74,10 +75,38 @@ To demonstrate this I started with an existing Spring Boot application and on my
 
 If you have [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) installed you can: 
 
-0) clone my fork
-0) `docker-compose up`
-0) use a slime client to connect to the swank server running on the JVM in the docker container
+
+First, clone my [fork](https://github.com/justin2004/spring-boot-rest-example)
+
+
+Next, run `docker-compose up`
+
+Maven will build the jars then the JVM will be started:
+
+![jvm_starting](./media/jvm_starting.png)
+
+In the main method a Lisp interpreter is created and it will read in a .lisp source file and start swank (the server side of [slime](https://common-lisp.net/project/slime/)):
+
+![swank_started](./media/swank_started.png)
+
+
+Finally, use a slime client (here I use [slimv](https://github.com/kovisoft/slimv) also running in a docker [container](https://github.com/justin2004/slimv_box) to connect to the swank server running on the JVM in the docker container. (I won't describe how to connect a slime client here as I am using the abcl branch of my slimv_box repository which still requires some manual steps when building the docker image.)
+
+Now you can type Lisp expressions in vim and they will be evaulated by the ABCL interpreter running in the remote JVM:
+
+![slimv](./media/now_to_slimv.png)
+
+Above I got the reference to an ArrayList (a static field in the Interloper class), checked its size, added a string to it, then checked its size again. 
+
+![back_to_jvm](./media/back_to_stdout_on_jvm.png)
+
+The Java code was able to see the change made by the Lisp interpreter.
 
 
 
-TODO demonstrate using the application and slime
+### The next few problems I encountered include:
+- The need to call methods on "java.lang.reflect.Field"
+- Inner classes
+
+I'll write about those in another installment.
+Also I am keeping helper functions [here](https://github.com/justin2004/abcl_repl_helpers) as I write them.
