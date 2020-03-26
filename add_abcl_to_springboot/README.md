@@ -70,7 +70,7 @@ java -cp "$CLASSPATH" \
     org.springframework.boot.loader.PropertiesLauncher
 ```
 
-To demonstrate this I started with an existing Spring Boot application and on my [fork](https://github.com/justin2004/spring-boot-rest-example) (see the last few commits) I added a Lisp interpreter and loaded swank so I could explore and make changes to the live application.
+To demonstrate this I started with an existing Spring Boot application and on my [fork](https://github.com/justin2004/spring-boot-rest-example) (see the last few commits) I added a Lisp interpreter and loaded swank so I could explore and make changes to the live application from vim.
 
 
 If you have [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) installed you can: 
