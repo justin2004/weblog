@@ -1,0 +1,25 @@
+# scratch pad for thinking about the functions of the program "youtube-dl"
+
+ytdl a software_script; 
+     has_part ytdl-as ;
+     has_part ytdl-os ;
+
+
+# action spec
+ytdl-as a action_specification  ;
+        is_about [ a action_specification ;
+                   a realizeable_entity ;
+                   a speficically_dep_continuant ;
+                   rdfs:comment "downloading remote content" ] .
+
+ytdl-os a objective_speficiation ;
+        is_about [ a realizeable_entity ;
+                   rdfs:comment "downloading remote content?" ] .
+
+
+# pretending downloading is a transformation
+ytdl-run a data_transformation ;
+         a planned_process    ;
+
+ytdl-run has_specified_output [ a swo:data_format_specification ;
+                                rdfs:comment "m4a or webm av container" ] .
