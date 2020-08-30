@@ -1,4 +1,4 @@
-## thinking about representing software usage as a sequence of processes in RDF
+# thinking about representing software usage as a sequence of processes in RDF
 
 
 My family took a car trip recently and we wanted our son to be able to watch some episodes of a show he likes along the way.
@@ -38,7 +38,8 @@ is shorthand for something like a chain a processes:
 etc.
 
 
-I started to make an ontology that could represent the steps involved here:
+
+I started to make an ontology that could represent the steps involved.
 - using software to:
     - download files from the web
     - convert between video container files and transcode
@@ -73,10 +74,11 @@ If each transformation function that software could perform (swo:is_executed_in)
 ### program generation
 And if the Software Ontology had Classes for command line arguments we would be getting closer to SPARQL queries that could output shell scripts.
 
-
+---
 
 
 Note that I've taken some shortcuts for readability.
+
 e.g.  ro:located_in is really <http://purl.obolibrary.org/obo/RO_0001025>
 
 
