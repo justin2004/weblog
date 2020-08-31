@@ -59,12 +59,16 @@ All of which can be found at http://www.obofoundry.org/
 
 
 
-### possiblity
+### possibility
 If we were to encode all program (software) capabilities into RDF then SPARQL queries could tell you if something you want to do with software is possible.
 
 
 ### program selection
 If you modified the query to output all the processes along the way then you could see the sequence of programs you would need to carry out your desired task. I don't think SPARQL has paths as a first class thing yet but Stardog has an extension for that.
+
+Perhaps my SPARQL query would have returned something like:
+
+`youtube-dl, ffmpeg, python -m http.server, FileBrowser (Apple App Store)`
 
 
 ### program configuration
