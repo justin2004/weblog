@@ -67,7 +67,7 @@ This example does not use `@id` but that just means "this is a URI" as opposed t
 ### efficiency
 
 If you use terms from many vocabularies/ontologies then you might not want to keep transmitting a long list of `@context` values.
-In that case it (looks)[https://niem.github.io/json/reference/json-ld/context/] like you can refer to some resource that contains your context.
+In that case it [looks](https://niem.github.io/json/reference/json-ld/context/) like you can refer to some resource that contains your context.
 
 `A key "@context" may have, as a value, a URI, which is a name for a JSON-LD context object.`
 
