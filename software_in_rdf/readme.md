@@ -22,6 +22,8 @@ select ?consumer where {
 }
 ```
 
+Which is a [SPARQL](https://en.wikipedia.org/wiki/SPARQL) query.
+
 
 `(iao:is_specified_input_of/iao:has_specified_output_of)+`
 
