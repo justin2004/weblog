@@ -1,6 +1,6 @@
 # json-ld
 
-I had time understanding json-ld until I used turtle files a lot. 
+I had a hard time understanding json-ld until I used turtle files a lot. 
 Now as I look at json-ld it makes sense. 
 When using triples (subject predicate object) the main thing to remember is that you must fully qualify. 
 That is what all this `@context` and `@id` is about in json-ld.
