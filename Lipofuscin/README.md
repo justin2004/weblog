@@ -130,8 +130,9 @@ There are people doing experiments and recording results with equipment I don't 
 
 ## What is the next step for me?
 
-I've already spent a couple hours getting familar with Wikidata's [data model](https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format#Data_model) and vocabulary prefixes.
+I've already spent a couple hours getting familar with Wikidata's [data model](https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format#Data_model) and vocabulary prefixes and searching for terms related to lipofuscin.
 I'd like to figure out where and in what format I could make the machine-readable statements connecting A2E, lipofuscin, NLT, Lewy Bodies (perhaps with a few intermediate nodes) if they don't already exist somewhere...
+As it would be nice to contribute to the global KG rather than just the global WWW (actually I think it is fair to say this information is already in the global WWW but only in a human-readable format). 
 
 
 
@@ -142,6 +143,7 @@ Neo's search program, which continues while he is asleep, looks like it might ha
 ![global search](media/global_search.png)
 
 But a SPARQL (RDF) search would have been much more interesting. Jumping from service to service, traversing named graphs, finding ontologies, aligning them heursitically, and applying inference...
+Maybe it would be nice to make SPARQL endpoints of curated SPARQL endpoints and named graphs? We could even apply SHACL over the graphs and score them according to the validation results.
 
 
 
