@@ -141,7 +141,7 @@ Neo's search program, which continues while he is asleep, looks like it might ha
 
 ![global search](media/global_search.png)
 
-But a SPARQL (RDF) search would have been much more interesting. Jumping from service to service, traversing named graphs, finding ontologies, aligning them heursitically, and appling inference...
+But a SPARQL (RDF) search would have been much more interesting. Jumping from service to service, traversing named graphs, finding ontologies, aligning them heursitically, and applying inference...
 
 
 
