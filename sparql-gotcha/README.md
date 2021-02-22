@@ -1,7 +1,7 @@
 ## SPARQL Gotcha
 
 
-Using Wikidata let's look for a connection between President Obama (Q76) and Paul Simon (Q4028).
+Using [Wikidata](https://www.wikidata.org) let's look for a connection between President Obama (Q76) and Paul Simon (Q4028).
 
 
 Are they directly connected?
@@ -170,7 +170,14 @@ We can see that Paul Simon and President Obama share some common attributes:
 
 
 
-Because SPARQL that makes this `((<>|!<>)|^(<>|!<>))` necessary is t
+Since SPARQL does not have first class support for paths you do have to put more effort into the query as opposed to [Cypher](https://neo4j.com/developer/cypher/). Cypher does support paths as a first class thing.
+
+Also Because SPARQL doesn't let you bind variables on a "backwards edge" like Cypher does, in SPARQL you have to resort to using a property path like: `((<>|!<>)|^(<>|!<>))`. And that property path doesn't let you bind the matching edge (forward backwards) so it is only good to find *if* there is a connection -- not for finding *what* the connection is.
+
+I do know that [Stardog](https://www.stardog.com/blog/a-path-of-our-own/) does have an extension to SPARQL that treats paths as first class but I haven't tried it yet.
+
+
+I still prefer the simplicity of the RDF model and its powerful query langauge (SPARQL) over LPG models (like Neo4j). SPARQL's inability to bind a variable to a "backwards edge" and no first class support for paths only make it harder to use for exploratory querying. If you embed SPARQL in some application code you will already know what your needs are and you'll have time to make the appropriate triple and graph patterns. If you need to find paths you can do some [iterative deepening](https://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search).
 
 
 
