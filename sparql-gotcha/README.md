@@ -1,4 +1,4 @@
-## sparql gotcha
+## SPARQL Gotcha
 
 
 Using Wikidata let's look for a connection between President Obama (Q76) and Paul Simon (Q4028).
@@ -46,7 +46,6 @@ filter(?o1=wd:Q4028).
 ```
 
 No results -- but notice that the query only looks for two triples:
-
 ```
 + - - - - - - - - +     + - - - - - - - -+     + - - - - - - +     + - - - - - - - -+     + - - - - - -+
 ' President Obama ' --> ' some predicate ' --> ' some object ' --> ' some predicate ' --> ' Paul Simon '
@@ -61,7 +60,7 @@ That query will not find these two triples:
 + - - - - - -+     + - - - - - - - -+     + - - - - - - +     + - - - - - - - -+     + - - - - - - - - +
 ```
 
-We could update the filter to allow ?s and ?o1 to be Q76 or Q4028 but not the same but we'd still be missing a possible connection.
+We could update the filter to allow ?s and ?o1 to be Q76 or Q4028 (but not the same) but we'd still be missing a possible connection.
 
 That possible connection we wouldn't find is this:
 ```
@@ -75,14 +74,16 @@ That possible connection we wouldn't find is this:
 '   Paul Simon    ' --> ' some predicate ' ------+
 + - - - - - - - - +     + - - - - - - - -+
 ```
+[2]
+
 
 And it is that very connection that is in the graph.
-Next let's see how we could find the connection, in general, without worry about the specific sequence of directed edges.
+Next let's see how we could find a connection, in general, without worry about the specific sequence of directed edges.
 
 
 
 
-Do they have one node between them (trying all possible orders)?
+Do President Obama and Paul Simon have one node between them (trying all possible orders)?
 ```
 select * {
 ?s ((<>|!<>)|^(<>|!<>))/((<>|!<>)|^(<>|!<>)) ?o .
@@ -106,10 +107,10 @@ http://www.wikidata.org/entity/Q76 | http://www.wikidata.org/entity/Q4028 ‖
 ```
 There are 9 paths between them.
 That query makes use of [property paths](https://www.w3.org/TR/sparql11-property-paths/#path-language).
-But it does not what what the paths are.
+But it does not show what the paths are.
 
 
-This query will show you what the node in the middle is:
+This query will at least show you what the node in the middle is:
 ```
 select * {
 ?s ((<>|!<>)|^(<>|!<>)) ?node .
@@ -155,7 +156,7 @@ SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } .
 
 We can see that Paul Simon and President Obama share some common attributes:
 ```
-||sLabel       ||pEntityLabel                        ||oLabel                                ||p1EntityLabel                       ||s1Label     |
+||sLabel       ||pEntityLabel                        ||oLabel                                ||p1EntityLabel                       ||s1Label    |
 |Barack Obama  |member of                            |American Academy of Arts and Sciences  |member of                            |Paul Simon  |
 |Barack Obama  |described by source                  |Obalky knih.cz                         |described by source                  |Paul Simon  |
 |Barack Obama  |languages spoken, written or signed  |English                                |languages spoken, written or signed  |Paul Simon  |
@@ -167,6 +168,9 @@ We can see that Paul Simon and President Obama share some common attributes:
 |Barack Obama  |country of citizenship               |United States of America               |country of citizenship               |Paul Simon  |
 ```
 
+
+
+Because SPARQL that makes this `((<>|!<>)|^(<>|!<>))` necessary is t
 
 
 
@@ -196,3 +200,7 @@ filter(?o=wd:Q4028).
 } 
 limit 300'
 ```
+
+
+[2]   If you want to make ASCII graphs like this you can use [graph-easy-box](https://github.com/justin2004/graph-easy-box).
+See `some.dg` in this directory.

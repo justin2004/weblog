@@ -1,0 +1,59 @@
+digraph F {
+ rankdir=LR;
+b->p->s ;
+ss->pp->bb;
+b [label="President Obama";style=dashed];
+bb [label="President Obama";style=dashed];
+s [label="Paul Simon";style=dashed];
+ss [label="Paul Simon";style=dashed];
+p [label="some predicate";style=dashed];
+pp [label="some predicate";style=dashed];
+}
+
+/* digraph G { */
+/*  rankdir=LR; */
+/* b->p->ss ; */
+/* s->pp->bb; */
+/* b [label="President Obama";style=dashed]; */
+/* bb [label="President Obama";style=dashed]; */
+/* s [label="Paul Simon";style=dashed]; */
+/* ss [label="Paul Simon";style=dashed]; */
+/* p [label="some predicate";style=dashed]; */
+/* pp [label="some predicate";style=dashed]; */
+/* } */
+
+
+
+/* digraph H { */
+/*  rankdir=LR; */
+/* b->p->o ; */
+/* o->pp->s; */
+/* b [label="President Obama";style=dashed]; */
+/* s [label="Paul Simon";style=dashed]; */
+/* o [label="some object";style=dashed]; */
+/* p [label="some predicate";style=dashed]; */
+/* pp [label="some predicate";style=dashed]; */
+/* } */
+
+/* digraph H1 { */
+/*  rankdir=LR; */
+/* s->p->o ; */
+/* o->pp->b; */
+/* b [label="President Obama";style=dashed]; */
+/* s [label="Paul Simon";style=dashed]; */
+/* o [label="some object";style=dashed]; */
+/* p [label="some predicate";style=dashed]; */
+/* pp [label="some predicate";style=dashed]; */
+/* } */
+
+
+/* digraph I { */
+/*  rankdir=LR; */
+/* b->p->o ; */
+/* s->pp->o; */
+/* b [label="President Obama";style=dashed]; */
+/* s [label="Paul Simon";style=dashed]; */
+/* o [label="some object";style=dashed]; */
+/* p [label="some predicate";style=dashed]; */
+/* pp [label="some predicate";style=dashed]; */
+/* } */
