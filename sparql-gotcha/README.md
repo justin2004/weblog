@@ -1,11 +1,27 @@
-## SPARQL Gotcha
+# SPARQL Gotcha
 
 
 Using [Wikidata](https://www.wikidata.org) let's look for a connection between President Obama (Q76) and Paul Simon (Q4028).
 
 
-Are they directly connected?
+## Are they directly connected?
 
+It would be ideal, for an exploratory query session, if we could just run this query:
+
+```
+select * {
+?s ?p ?o .
+filter(?s=wd:Q76 ).
+filter(?o=wd:Q4028).
+} 
+```
+[1]
+
+But in RDF edges are directed so that query only looks triples whose subject is President Obama and whose object is Paul Simon.
+It would not find triples who subject is Paul Simon and whose object is President Obama.
+(There is a way to make this ideal query do what we'd like it to do but I'll describe that at the end on this post.)
+
+In order to not care about the direction of the edge we'd need to run this:
 ```
 select * {
 {?s ?p ?o .}
@@ -15,7 +31,7 @@ filter(?s=wd:Q76 ).
 filter(?o=wd:Q4028).
 } 
 ```
-[1]
+[2]
 
 
 That query looks for these 2 triple patterns:
@@ -34,7 +50,8 @@ There are no results found.
 
 
 
-Do they have one node between them?
+## Are they indirectly connected? 
+### Do they have one node between them?
 
 ```
 select *     {
@@ -74,7 +91,7 @@ That possible connection we wouldn't find is this:
 '   Paul Simon    ' --> ' some predicate ' ------+
 + - - - - - - - - +     + - - - - - - - -+
 ```
-[2]
+[3]
 
 
 And it is that very connection that is in the graph.
@@ -108,6 +125,9 @@ http://www.wikidata.org/entity/Q76 | http://www.wikidata.org/entity/Q4028 ‖
 There are 9 paths between them.
 That query makes use of [property paths](https://www.w3.org/TR/sparql11-property-paths/#path-language).
 But it does not show what the paths are.
+
+
+## What are the paths between them?
 
 
 This query will at least show you what the node in the middle is:
@@ -169,6 +189,7 @@ We can see that Paul Simon and President Obama share some common attributes:
 ```
 
 
+## Closing thoughts
 
 Since SPARQL does not have first class support for paths you do have to put more effort into the query as opposed to [Cypher](https://neo4j.com/developer/cypher/). Cypher does support paths as a first class thing.
 
@@ -180,11 +201,46 @@ I do know that [Stardog](https://www.stardog.com/blog/a-path-of-our-own/) does h
 I still prefer the simplicity of the RDF model and its powerful query langauge (SPARQL) over LPG models (like Neo4j). SPARQL's inability to bind a variable on a "backwards edge" and no first class support for paths only make it harder to use for exploratory querying. If you embed SPARQL in some application code you will already know what your needs are and you'll have time to make the appropriate triple and graph patterns. If you need to find paths you can do some [iterative deepening](https://en.wikipedia.org/wiki/Iterative_deepening_depth-first_search).
 
 
+## Quick final note
+### Making the "ideal query" work
+
+At the beginning I said that this was an ideal query for looking for a direct connection between them.
+
+```
+select * {
+?s ?p ?o .
+filter(?s=wd:Q76 ).
+filter(?o=wd:Q4028).
+} 
+```
+I think it is ideal for the query writer because it can be expressed/typed quickly.
+
+In order to allow this query to work as we desire, in general, we'd need to mandate that all predicates have their inverse represented. For example, if we a triple that corresponds to this statement:
+
+`Paul Simon saw President Obama.`
+
+Upon seeing that triple we'd need to derive this triple:
+
+`President Obama was seen by Paul Simon`
+
+With a reasoner it is easy to set up the conditions for this to happen.
+
+```
+:wasSeenBy a owl:ObjectProperty .
+
+:saw a owl:ObjectProperty ;
+     owl:inverseOf :wasSeenBy . 
+```
+
+But we don't just care about `:seen` and `:wasSeenBy` so we'd need to do this for every predicate (object property, specifically) in all the ontologies our data is using.
+Also, using an OWL reasoner on lots of triples is tricky business.
 
 
 
 ---
-[1]    In order to run this query yourself you can use this bash command:
+[1]    There are some variations on this simple query. Two I can think of right now are using [VALUES](https://www.w3.org/TR/sparql11-query/#inline-data) and using a literal instead of a variable (which you filter on).
+
+[2]    In order to run this query yourself you can use this bash command:
 
 ```
 curl --silent -H 'Accept: text/csv' 'https://query.wikidata.org/sparql'  \
@@ -209,5 +265,5 @@ limit 300'
 ```
 
 
-[2]   If you want to make ASCII graphs like this you can use [graph-easy-box](https://github.com/justin2004/graph-easy-box).
+[3]   If you want to make ASCII graphs like this you can use [graph-easy-box](https://github.com/justin2004/graph-easy-box).
 See `some.dg` in this directory.
