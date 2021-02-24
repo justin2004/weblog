@@ -64,7 +64,7 @@ filter(?o1=wd:Q4028).
 } 
 ```
 
-No results -- but notice that the query only looks for two back to back triple patterns:
+No results -- but notice that the query only looks for *these* two back to back triple patterns:
 ```
 + - - - - - - - - +     + - - - - - - - -+     + - - - - - - +     + - - - - - - - -+     + - - - - - -+
 ' President Obama ' --> ' some predicate ' --> ' some object ' --> ' some predicate ' --> ' Paul Simon '
@@ -72,7 +72,7 @@ No results -- but notice that the query only looks for two back to back triple p
 ```
 
 
-That query will not find these two back to back triples:
+That query will not find *these* two back to back triples patterns:
 ```
 + - - - - - -+     + - - - - - - - -+     + - - - - - - +     + - - - - - - - -+     + - - - - - - - - +
 ' Paul Simon ' --> ' some predicate ' --> ' some object ' --> ' some predicate ' --> ' President Obama '
