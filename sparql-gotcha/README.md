@@ -204,7 +204,7 @@ I still prefer the simplicity of the RDF model and its powerful query langauge (
 ## Quick final note
 #### Making the "ideal query" work
 
-At the beginning I said that this was an ideal query for looking for a direct connection between them.
+At the beginning I said that this was an ideal query for looking for a direct connection between President Obama and Paul Simon.
 
 ```
 select * {
@@ -217,14 +217,14 @@ I think it is ideal for the query writer because it can be expressed/typed quick
 
 In order to allow this query to work as we desire, in general, we'd need to mandate that all predicates have their inverse represented. For example, if we a triple that corresponds to this statement:
 
-`Paul Simon saw President Obama.`
+`Paul Simon saw President Obama`
 
 Upon seeing that triple we'd need to derive this triple:
 
 `President Obama was seen by Paul Simon`
 
 With a reasoner it is easy to set up the conditions for this to happen.
-
+You just need reasoning enabled and these additional triples in your data:
 ```
 :wasSeenBy a owl:ObjectProperty .
 
@@ -232,8 +232,11 @@ With a reasoner it is easy to set up the conditions for this to happen.
      owl:inverseOf :wasSeenBy . 
 ```
 
-But we don't just care about `:seen` and `:wasSeenBy` so we'd need to do this for every predicate (object property, specifically) in all the ontologies our data is using.
-Also, using an OWL reasoner on lots of triples is tricky business.
+But we don't just care about `:seen` and `:wasSeenBy` so we'd need to do this for every predicate (object property, specifically) in all the ontologies our data is using. Which might be a pain to do by hand but I think we could write some SPARQL do this pretty easily.
+
+Maybe the real hurdle is that using an OWL reasoner on lots of triples is tricky business.
+
+And if we pretend that is now easy and fast *then* we'll likely have the need or desire to reason on data in someone else's graph using an ontology we bring. I am working on something now to hopefully make that easier. Stay tuned!
 
 
 
