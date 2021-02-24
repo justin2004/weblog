@@ -238,7 +238,7 @@ But we don't just care about `:seen` and `:wasSeenBy` so we'd need to do this fo
 
 Maybe the real hurdle is that using an OWL reasoner on lots of triples is tricky business.
 
-And if we pretend that is now easy and fast *then* we'll likely have the need or desire to reason on data in someone else's graph using an ontology we bring. I am working on something now to hopefully make that easier. Stay tuned!
+And if we pretend that is now easy and fast *then* we'll likely have the need or desire to reason on data in someone else's graph using an ontology (perhaps with all inverse predicates defined) we bring. I am working on something now to hopefully make that easier. Stay tuned!
 
 
 
