@@ -223,7 +223,7 @@ Upon seeing that triple we'd need to derive this triple:
 
 `President Obama was seen by Paul Simon`
 
-With a reasoner it is easy to set up the conditions for this to happen.
+With a [reasoner](https://en.wikipedia.org/wiki/Semantic_reasoner) it is easy to set up the conditions for this to happen.
 You just need reasoning enabled and these additional triples in your data:
 ```
 :wasSeenBy a owl:ObjectProperty .
