@@ -51,7 +51,7 @@ There are no results found.
 
 
 ## Are they indirectly connected? 
-### Do they have one node between them?
+#### Do they have one node between them?
 
 ```
 select *     {
@@ -202,7 +202,7 @@ I still prefer the simplicity of the RDF model and its powerful query langauge (
 
 
 ## Quick final note
-### Making the "ideal query" work
+#### Making the "ideal query" work
 
 At the beginning I said that this was an ideal query for looking for a direct connection between them.
 
