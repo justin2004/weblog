@@ -243,7 +243,7 @@ And if we pretend that is now easy and fast *then* we'll likely have the need or
 
 
 ---
-[1]    There are some variations on this simple query. Two I can think of right now are using [VALUES](https://www.w3.org/TR/sparql11-query/#inline-data) and using a literal instead of a variable (which you filter on).
+[1]    There are some variations on this simple query. Two more I can think of right now are 1) using [VALUES](https://www.w3.org/TR/sparql11-query/#inline-data) and 2) using a literal instead of a variable (which you filter on).
 
 [2]    In order to run this query yourself you can use this bash command:
 
