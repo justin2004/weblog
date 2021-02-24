@@ -2,6 +2,7 @@
 
 
 Using [Wikidata](https://www.wikidata.org) let's look for a connection between President Obama (Q76) and Paul Simon (Q4028).
+
 It is simple -- should be very easy, right?
 
 
