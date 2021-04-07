@@ -83,7 +83,7 @@ The sequence I had in mind goes like this:
 The project I made ended up [here](https://github.com/justin2004/wikidata_reasoning).
 
 It presents the illusion of remote reasoning (since reasoning actually happens locally) but it does not require any standard extension -- it simply glues together existing tools and uses existing standards.
-It also doesn't tease someone will a desire to reason over a remote SPARQL endpoint. It runs and produces results.
+It also doesn't tease someone with a desire to reason over a remote SPARQL endpoint. It runs and produces results.
 
 I still consider the project to be remote-ish reasoning because from the perspective of an application (or person) that wants to consume the output it is not necessary to build the reasoning in to your application (if you use this project or something like it).
 
