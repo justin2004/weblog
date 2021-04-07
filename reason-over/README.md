@@ -53,11 +53,9 @@ That is partly because files are a great way to allow interprocess communication
 
 I got excited again thinking that I could implement something like remote reasoning using UNIX thinking a.k.a [Small, Sharp tools](https://www.brandur.org/small-sharp-tools).
 
-```
-6.2 Filters
-...
-A sequence of commands separated by vertical bars causes the Shell to execute all the commands simultaneously and to arrange that the standard output of each command be delivered to the standard input of the next command in the sequence.
-```
+> 6.2 Filters
+> ...
+> A sequence of commands separated by vertical bars causes the Shell to execute all the commands simultaneously and to arrange that the standard output of each command be delivered to the standard input of the next command in the sequence.
 
 The sequence I had in mind goes like this:
 
