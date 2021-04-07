@@ -36,11 +36,13 @@ It looked promising.
 I was excited.
 
 But I was reminded that, often, engineers can't easily spend academic currency.
-Publishing a paper (or attempting to) and proposing a standard or an extension to a standard might win academic points but it doesn't help me leverage Wikidata today.
+Publishing a paper (or attempting to) and proposing a standard (or an extension to a standard) might win academic points but it doesn't help me leverage Wikidata today.
 
 I think saying that [The Scientific Paper Is Obsolete](https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/) sounds harsh but I would have much prefered a "computational essay" that actually executes and produces some result than a paper whose writers would like to get a [standard](https://www.w3.org/TR/sparql11-query/) extended.
 
-Also, isn't this a nice path to standardization: ... widely used code or an approach   to standard...
+Side note:
+Someone in academia might think "proposed an extension to a standard" looks good on a CV but wouldn't "wrote a tool that became the cURL of remote SPARQL reasoning" look better?
+I don't even need to link to cURL. You know what it is and how useful it is.
 
 ## Make something that works today
 
