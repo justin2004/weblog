@@ -39,6 +39,7 @@ But I was reminded that, often, engineers can't easily spend academic currency.
 Publishing a paper (or attempting to) and proposing a standard (or an extension to a standard) might win academic points but it doesn't help me leverage Wikidata today.
 
 > For the proof-of-concept, we have extended Apache Jena ARQ query engine to support remote reasoning
+
 The paper mentions but does not make code available.
 
 
