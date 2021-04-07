@@ -5,7 +5,7 @@
 
 I posted [this question](https://www.reddit.com/r/semanticweb/comments/lp0iey/reasoning_over_service/) a few days ago. The idea is that it would be nice to be able to query a remote SPARQL endpoint and specify an ontology to be used with a reasoner over the triples from the remote endpoint. For example I know that in this ontology that I bring I would like this triple:
 
-wdt:P31 rdfs:subPropertyOf rdf:type .
+`wdt:P31 rdfs:subPropertyOf rdf:type .`
 
 wdt:P31 is Wikidata's way of saying "is an instance of" and that is what rdf:type says too.
 
@@ -75,7 +75,7 @@ The sequence I had in mind goes like this:
 The project I made ended up [here](https://github.com/justin2004/wikidata_reasoning).
 
 It presents the illusion of remote reasoning (since reasoning actually happens locally) but it does not require any standard extension -- it simply glues together existing tools and uses existing standards.
-It also doesn't tease someone will a desire to reason over Wikidata. It runs and produces results.
+It also doesn't tease someone will a desire to reason over a remote SPARQL endpoint. It runs and produces results.
 
 I could have made this repo a single command pipeline but the Apache Jena command line utilities sometimes need to see a file (with an extension) so it can guess what RDF serialization format is in use. 
 But it is also nice to store intermediate results in files because then you can change queries or the ontology file and let `make` decide what needs to be executed to update your output file. 
