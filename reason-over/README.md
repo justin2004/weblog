@@ -88,3 +88,5 @@ It also doesn't tease someone will a desire to reason over a remote SPARQL endpo
 I could have made this repo a single command pipeline but the Apache Jena command line utilities sometimes need to see a file (with an extension) so it can guess what RDF serialization format is in use. 
 But it is also nice to store intermediate results in files because then you can change queries or the ontology file and let `make` decide what needs to be executed to update your output file. 
 
+
+See the [project page](https://github.com/justin2004/wikidata_reasoning) for a demonstration.
