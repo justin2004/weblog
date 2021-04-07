@@ -12,12 +12,14 @@ wdt:P31 is Wikidata's way of saying "is an instance of" and that is what rdf:typ
 
 I naively thought this just might work if I query a triplestore that has reasoning enabled and I specify a service to get some triples from [Wikidata](https://www.wikidata.org).
 
+```
  select * where { 
      service <https://query.wikidata.org/sparql> {
          ?s ?p ?o .
          filter(?s=wd:Q23) .
          filter(?o=wd:Q5) .
      }
+```
 
 
 But I couldn't get the local triplestore to reason over the triples that satisfy my service clause.
@@ -29,9 +31,7 @@ A little searching led me to [this](http://ceur-ws.org/Vol-996/papers/ldow2013-p
 
 It looked promising.
 
-```
-However, in this case the sparql endpoint provider decides which inference rules are used for its entailment regimes. In this paper, we propose an extension to the sparql query language to support remote reasoning, in which the data consumer can define the inference rules.
-```
+> ... the sparql endpoint provider decides which inference rules are used for its entailment regimes. In this paper, we propose an extension to the sparql query language to support remote reasoning, in which the data consumer can define the inference rules.
 
 I was excited.
 
@@ -47,9 +47,7 @@ Also, isn't this a nice path to standardization: ... widely used code or an appr
 I had recently read Ritchie and Thompson's "The UNIX Time-Shaing System" [paper](https://archive.org/details/UNIX-Time-Sharing-System) from 1974. 
 Their software composability ideas where mingling with my desire to have reasoning over remote SPARQL endpoints.
 
-```
-The most important role of UNIX is to provide a file system.
-```
+> The most important role of UNIX is to provide a file system.
 
 That is partly because files are a great way to allow interprocess communication to be blending with human interaction.
 
