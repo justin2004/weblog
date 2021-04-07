@@ -57,7 +57,7 @@ Their software composability ideas where mingling with my desire to have reasoni
 
 > The most important role of UNIX is to provide a file system.
 
-That is partly because files are a great way to allow interprocess communication to be blending with human interaction.
+That is partly because files are a great way to allow interprocess communication to be blended with human interaction.
 
 I got excited again thinking that I could implement something like remote reasoning using UNIX thinking a.k.a [Small, Sharp tools](https://www.brandur.org/small-sharp-tools).
 
