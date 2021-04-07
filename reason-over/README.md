@@ -42,7 +42,7 @@ I think saying that [The Scientific Paper Is Obsolete](https://www.theatlantic.c
 
 Side note:
 
-Someone in academia might think "proposed an extension to a standard" looks good on a CV but wouldn't "wrote a tool that became the cURL of remote SPARQL reasoning" look better?
+Someone in academia might think "proposed an extension to a standard" looks good on a CV but wouldn't "wrote a tool that became the cURL of remote-ish SPARQL reasoning" look better?
 I don't even need to link to cURL. You know what it is and how useful it is.
 
 ## Make something that works today
