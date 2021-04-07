@@ -85,7 +85,7 @@ The project I made ended up [here](https://github.com/justin2004/wikidata_reason
 It presents the illusion of remote reasoning (since reasoning actually happens locally) but it does not require any standard extension -- it simply glues together existing tools and uses existing standards.
 It also doesn't tease someone will a desire to reason over a remote SPARQL endpoint. It runs and produces results.
 
-I still consider the project to be remote-ish reasoning because from the perspective of an application or person that wants to consumse the output it is not necessary to build the reasoning in to your application (if you use this project or something like it).
+I still consider the project to be remote-ish reasoning because from the perspective of an application (or person) that wants to consume the output it is not necessary to build the reasoning in to your application (if you use this project or something like it).
 
 I could have made this repo a single command pipeline but the Apache Jena command line utilities sometimes need to see a file (with an extension) so it can guess what RDF serialization format is in use. 
 But it is also nice to store intermediate results in files because then you can change queries or the ontology file and let `make` decide what needs to be executed to update your output file. 
