@@ -7,7 +7,7 @@
 Before I started working as a software engineer I worked on F-16s. 
 Specifically I worked on the F-16 electrical and environmental systems (E&E).
 
-I used to work for a consultancy, as a software engineer, and I would get dispatched to diagnose and troubleshoot problems with multi-tier architecture systems.
+As a software engineer, I used to work for a consultancy and I would get dispatched to diagnose and troubleshoot problems with multi-tier architecture systems.
 
 
 
@@ -18,7 +18,7 @@ You are monitoring when things are basically working as you expect but you are o
 In the F-16 world, the pilot has a master caution light which gets latched by dozens of system caution and warning lights.
 Aside from the flight centric instruments, the pilot also has some analog gauges for fuel pressure, engine RPM, engine temperature, fuel level, liquid oxygen level, etc.
 The lights and gauges are the pilot's interface to the preplanned telemetry system put in place at aircraft design time.
-These lights and gauges let the pilot know when she needs to take action to keep the jet aloft.
+These lights and gauges let the pilot know when she needs to take action to keep the jet in the air.
 
 
 In the software world, monitoring is big business.
@@ -36,6 +36,8 @@ They've got metrics over time and they can show them on a graph (and maybe even 
 
 
 ## monitoring -- ad hoc telemetry
+
+TODO do defs for each
 
 The F-16 doesn't really have anything that fits in this category.
 The pilot can't decide to check the voltage at the air refueling door actuator.
@@ -92,14 +94,19 @@ Since my consultancy was getting paid by the hour (not cheap hours either) our c
 
 ## troubleshooting -- (ad hoc telemetry) hands on system
 
-In the F-16 world, sometimes the preplanned telemetry and decision tree don't isolate the problem.
+In the F-16 world, sometimes the preplanned telemetry and decision trees don't isolate the problem.
 That's when you need "hands on system" troubleshooting.
 
 That is, you need to be able to walk right up to the jet (with your knowledge of system operation) and do things like:
+
 - open panels to expose electro-mechanical relays and use a multimeter to test voltage at their inputs
+
 - put your hand on valves to see if you feel them actuate at the appropriate time as the jet engine throttles up and down
+
 - open panels and visually inspect wires, wire connectors, ducts, and flanged duct connectors
+
 - disconnect components in the system to see if system operation is altered in the way you expect
+
 - use electrical wire breakout boxes so you can measure the voltage and current moving through the system at the breakout point
 
 
@@ -114,9 +121,13 @@ And it never failed that they were using mostly monitoring tools/techniques to d
 It was also the case that most of the time they didn't have someone available with enough knowledge of normal system operation, system configuration, and general [systems programming]() chops.
 
 So my job was to:
+
 1) bring enough knowledge of normal system operation (or learn quickly) 
+
 2) bring awareness of all the ways to configure the system (or learn quickly) a.k.a know which knobs we are able to turn
+
 3) sound the alarm and attempt to persuade access gatekeepers that we need to transition from monitoring tools/techniques and access to troubleshooting tools/techniques and access.
+
 4) apply troubleshooting tools/techniques to operating systems, runtimes (e.g. JVMs), and applications a.k.a be a [systems programmer]().
 
 I enjoy (1) and (2) and I really enjoy (4).
@@ -207,7 +218,9 @@ The commercial application doesn't feel as slick and robust as the vendor advert
 The commercial application vendor says the new version will address the problems.
 The team doing the internally developed application says a refactor/rewrite or a responsibility smaller in scope will address or remove the problems.
 Or maybe they both point at another system within the enterprise that needs to pick up the slack or prevent the slack.
-Eventually a boy dinosaur appears amidst the girl dinosaurs and you find yourself with a different company.
+
+Eventually a boy dinosaur appears amidst the girl dinosaurs and you find yourself with a different company...
+mostly because IT/Infrastructure policies don't differentiate between monitoring and troubleshooting and there is a diffusion of responsibility.
 
 
 foot note: I talk about "running commands they (engineers) need to run" but it isn't always clear what handful of commands you need to run.
