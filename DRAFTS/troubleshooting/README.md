@@ -46,7 +46,7 @@ I am going to skip:
 
 I am skipping these because I didn't do development on any part of the F-16.
 
-Below I am going to discuss:
+I am going to discuss:
 
 - Posture: sustainment, Intent: monitoring, Access: preplanned telemetry
 - Posture: sustainment, Intent: monitoring, Access: ad hoc telemetry
