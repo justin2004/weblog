@@ -9,7 +9,7 @@ As a software engineer, I used to work for a consultancy and I would get dispatc
 
 Work on engineered artifacts like F-16s and multi-tier architecture software systems can be characterized by three independent dimensions.
 
-### The Posture Spectrum: 
+### The Posture spectrum: 
 #### from development to sustainment
 
 - **development**: The system does not fully exist yet. It is actively being designed/engineered/developed.
@@ -17,7 +17,7 @@ Work on engineered artifacts like F-16s and multi-tier architecture software sys
 - **sustainment**: The system (or some part of it) exists. It is in use but it might require attention to keep it in use.
 
 
-### The Intent Spectrum:
+### The Intent spectrum:
 #### from monitoring to troubleshooting
 
 - **monitoring**: The system (or some part of it) is in use and it is being watched for deviations from normal/optimal/expected.
@@ -25,7 +25,7 @@ Work on engineered artifacts like F-16s and multi-tier architecture software sys
 - **troubleshooting**: A deviation from normal/optimal/expected (in the system or some part of it) has been detected and a search for a resolution is underway.
 
 
-### The Access Spectrum:
+### The Access spectrum:
 #### from preplanned telemetry to ad hoc telemetry
 
 - **preplanned telemetry**: Measurements can be read (on some part of the system) that the designers explicitly allowed for.
