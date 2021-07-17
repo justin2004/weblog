@@ -32,7 +32,7 @@ Work on engineered artifacts like F-16s and multi-tier architecture software sys
 
 - **ad hoc telemetry**: Measurements can be read (on some part of the system) that the designers did not explicitly allow for.
 
----
+<br/>
 
 ## Posture: sustainment, Intent: monitoring, Access: preplanned telemetry
 
