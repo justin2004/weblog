@@ -114,7 +114,7 @@ That is, you need to be able to walk right up to the jet (with your knowledge of
 
 Unlike in the F-16 world, I rarely see a corresponding transition in the software world.
 I would expect a tool/technique and access transition to take place in the software world but it doesn't.
-In the F-16 world, the lack of transition would be like watching the maintenance team get in the cockpit, look at the system caution and warning lights, and look at the few dozen analog gauges in an attempt to diagnose the problem using the pilot's monitoring tools.
+In the F-16 world, the lack of transition would be like watching the maintenance team get in the cockpit, look at the system caution and warning lights, and look at the few dozen analog gauges in an attempt to diagnose the problem using only the pilot's monitoring tools.
 
 When I was a consultant I would get called in when one of our clients had been in the troubleshooting phase for longer than they cared to be.
 And it never failed that they were using mostly monitoring tools/techniques to do their troubleshooting.
@@ -197,6 +197,7 @@ When I need to see which configuration file is being read by a process I might w
 I have *never* come across a deployed monitoring service that let's me get that kind of granular "hands on system" derived information.
 Also I don't often come across software engineers that know how to inspect the whole software stack with tools and techniques like that.
 The clue that unravels the whole mystery isn't always one that "preplanned telemetry" will reveal.
+Had we not been allowed to do "hands on system" troubleshooting on the F-16 there are problems ...
 
 
 Some gatekeepers in IT/Infrastructure do appreciate the difference between monitoring and troubleshooting but I suspect that most don't.
@@ -230,3 +231,23 @@ Instead, it takes some time (sometimes days) with the system -- checking file co
 
 
 http://www.brendangregg.com/Perf/linux_observability_tools.png
+
+
+
+
+monitoring vs troubleshooting is about intent
+pp telem vs ad hoc  telem is about _
+
+
+posture: development vs sustainment
+development: "the system does not fully exist yet. it is actively being designed/engineered/developed."
+sustainment: "the system (or some part of it) exists. it is in use but it requires maintenance to keep it in use."
+
+intent: monitoring vs troubleshooting
+monitoring: "the system (or some part of it) is in use and it is being watched for deviations from normal/optimal."
+troubleshooting: "a deviation from normal/optimal (in the system or some part of it) has been detected and a search for a resolution is underway."
+
+access: pp telem vs ad hoc telem
+pp telem: "watching measurements (on some part of the system) that the designers explicitly allowed for"
+ad hoc telem: "watching measurements (on some part of the system) that the designers did not explicitly allowed for."
+
