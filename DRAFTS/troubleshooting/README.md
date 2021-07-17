@@ -22,7 +22,7 @@ Work on engineered artifacts like F-16s and multi-tier architecture software sys
 
 - **monitoring**: The system (or some part of it) is in use and it is being watched for deviations from normal/optimal/expected.
 
-- **troubleshooting**: A deviation from normal/optimal (in the system or some part of it) has been detected and a search for a resolution is underway.
+- **troubleshooting**: A deviation from normal/optimal/expected (in the system or some part of it) has been detected and a search for a resolution is underway.
 
 
 ### Access:
@@ -185,7 +185,7 @@ The engineering spirit allows you to form hypotheses and follow your hunches wit
 
 When I am doing anything with software I am only mildly aware of my intent (monitoring vs. troubleshooting) but I am not at all aware of my access (preplanned telemetry vs. ad hoc telemetry).
 This applies to all postures (development to sustainment) because development consists of cycles of adding something and immediately troubleshooting it as it doesn't do what you expected it to do.
-So I always expect to be able to intermix monitoring flavored tools with troubleshooting flavored tools and all levels of access.
+So I always expect to be able to intermix monitoring flavored tools with troubleshooting flavored tools at all levels of access.
 
 When I need to watch CPU utilization (while focusing on the number of context switches) I might run: 
 
@@ -275,6 +275,8 @@ Instead, it takes some time (sometimes days) with the system -- checking file co
 
 
 2: glass in "single pane of glass" does evoke visibility but it also evokes inaccessibility as in "behind glass"
+
+3: because systems programmers are not super common maybe that is why IT/Infrastructure policies don't accommodate them
 
 
 http://www.brendangregg.com/Perf/linux_observability_tools.png
