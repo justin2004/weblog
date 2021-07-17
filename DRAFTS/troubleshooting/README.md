@@ -20,7 +20,7 @@ Work on engineered artifacts like F-16s and multi-tier architecture software sys
 ### Intent:
 #### from monitoring to troubleshooting
 
-- **monitoring**: The system (or some part of it) is in use and it is being watched for deviations from normal/optimal.
+- **monitoring**: The system (or some part of it) is in use and it is being watched for deviations from normal/optimal/expected.
 
 - **troubleshooting**: A deviation from normal/optimal (in the system or some part of it) has been detected and a search for a resolution is underway.
 
