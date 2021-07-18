@@ -313,7 +313,7 @@ If it was I would just tell IT/Infrastructure to run these commands and send me 
 Instead, it takes some time (sometimes days) with the system -- checking file contents, tuning thread counts, watching some super granular metric, etc.
 
 
-1: "single pane of glass" does evoke visibility but it also evokes inaccessibility as in "behind glass"
+1: "single pane of glass" does evoke visibility, as intended, but it also evokes inaccessibility as in "behind glass" which is accidental justice served
 
 2: It might be interesting to explore why not? 
 I suspect this is related to why there are so many monitoring systems that try imply they can show causes of problems.
