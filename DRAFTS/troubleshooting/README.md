@@ -96,7 +96,7 @@ You may have heard of some monitoring systems:
 
 They are often advertised as a "single pane of glass." [1]
 
-They've got metrics over time and which can be shown on a graph (and maybe even add a bright dashed "red line" to the graph). [8]
+They've got metrics over time which can be shown on a graph (and maybe even add a bright dashed "red line" to the graph). [8]
 
 
 
