@@ -320,7 +320,7 @@ I suspect this is related to why there are so many monitoring systems that try i
 
 3: because systems programmers are not super common maybe that is why IT/Infrastructure policies don't accommodate them
 
-4: note something about all the breeches
+4: note something about all the breaches
 
 5: it is a [skill set](http://www.brendangregg.com/Perf/linux_observability_tools.png) that i think is becoming less common due to a vicious cycle. because movement along the intent and access dimensions is rough, engineers are discouraged from practicing it. because engineers are discouraged from practicing it policies don't carve out space to accommodate single mind (one person) systems programming. because policies don't accommodate single mind systems programming movement along the intent and access dimensions is rough.
 
