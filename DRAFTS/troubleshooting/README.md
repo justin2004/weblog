@@ -92,7 +92,7 @@ You may have heard of some monitoring systems:
 
 They are often advertised as a "single pane of glass." [1]
 
-They've got metrics over time and which can be shown on a graph (and maybe even add a dashed "red line" to the graph).
+They've got metrics over time and which can be shown on a graph (and maybe even add a dashed "red line" to the graph). [8]
 
 
 
@@ -323,6 +323,8 @@ I suspect this is related to why there are so many monitoring systems that try i
 4: note something about all the breeches
 
 5: it is a [skill set](http://www.brendangregg.com/Perf/linux_observability_tools.png) that i think is becoming less common due to a vicious cycle. because movement along the intent and access dimensions is rough, engineers are discouraged from practicing it. because engineers are discouraged from practicing it policies don't carve out space to accommodate single mind (one person) systems programming. because policies don't accommodate single mind systems programming movement along the intent and access dimensions is rough.
+
+8: as if to say "all you have to do is hire people to watch for gauges to get past the red line then they can flip a switch to remedy the situation."
 
 9: it actually brings me joy thinking about that
 
