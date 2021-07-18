@@ -1,5 +1,5 @@
 # Three Independent Dimensions of Work on Engineered Artifacts
-### and the cost of not moving freely in all three
+### And The Cost of Not Moving Freely In All Three
 
 <br/>
 
@@ -9,9 +9,11 @@ Specifically, I worked on the F-16 electrical and environmental systems (E&E).
 
 As a software engineer, I used to work for a consultancy and I would get dispatched to diagnose and troubleshoot problems with multi-tier architecture systems.
 
-Work on engineered artifacts like F-16s and multi-tier architecture software systems can be characterized by three independent dimensions.
+Work on engineered artifacts like F-16s and multi-tier architecture software systems can be characterized by three independent dimensions. I am going to contrast work on these two types of systems to show the cost of not allowing free movement in all three dimensions.
 
-### The Posture spectrum: 
+## Some Definitions
+
+### The Posture dimension: 
 #### from development to sustainment
 
 - **development**: The system does not fully exist yet. It is actively being designed/engineered/developed.
@@ -19,7 +21,7 @@ Work on engineered artifacts like F-16s and multi-tier architecture software sys
 - **sustainment**: The system (or some part of it) exists. It is in use but it might require attention to keep it in use.
 
 
-### The Intent spectrum:
+### The Intent dimension:
 #### from monitoring to troubleshooting
 
 - **monitoring**: The system (or some part of it) is in use and it is being watched for deviations from normal/optimal/expected.
@@ -27,7 +29,7 @@ Work on engineered artifacts like F-16s and multi-tier architecture software sys
 - **troubleshooting**: A deviation from normal/optimal/expected (in the system or some part of it) has been detected and a search for a resolution is underway.
 
 
-### The Access spectrum:
+### The Access dimension:
 #### from preplanned telemetry to ad hoc telemetry
 
 - **preplanned telemetry**: Measurements can be read (on some part of the system) that the designers explicitly allowed for.
@@ -55,7 +57,7 @@ I am going to discuss:
 - Posture: sustainment, Intent: troubleshooting, Access: preplanned telemetry
 - Posture: sustainment, Intent: troubleshooting, Access: ad hoc telemetry
 
-### the cost of not moving freely in all three
+### The Cost of Not Moving Freely In All Three
 
 In the F-16 world, movement along the intent and access dimensions is so smooth you don't even notice it.
 That is, for most problems with the F-16 E&E systems the hardest part is finding the problem. [9]
@@ -68,9 +70,9 @@ In the software world, movement along the intent and access dimensions is so rou
 
 - increased personnel and technology stack churn
 
-- decreased systems programming ability [5]
+- decreased [systems programming](https://en.wikipedia.org/wiki/Systems_programming) ability [5]
 
-That is, for a significant portion of the non-trival problems with multi-tier architecture software systems the hardest part is getting the elevated access to do (single mind) ad hoc telemetry based troubleshooting.
+That is, for a significant portion of the non-trivial problems with multi-tier architecture software systems the hardest part is getting the elevated access to do (single mind) ad hoc telemetry based troubleshooting.
 
 
 ## Posture: sustainment, Intent: monitoring, Access: preplanned telemetry
@@ -94,7 +96,7 @@ You may have heard of some monitoring systems:
 
 They are often advertised as a "single pane of glass." [1]
 
-They've got metrics over time and which can be shown on a graph (and maybe even add a dashed "red line" to the graph). [8]
+They've got metrics over time and which can be shown on a graph (and maybe even add a bright dashed "red line" to the graph). [8]
 
 
 
@@ -116,10 +118,10 @@ We can obtain some ad hoc telemetry on systems with sufficient access to the sys
 In the F-16 the pilot doesn't have many powerful troubleshooting tools at her disposal.
 The jet's systems mostly have to keep things together until the jet is back on the ground.
 When the jet's instruments indicate that a problem exists the pilot assesses the urgency of the need to land.
-Once the jet is on the ground there is a clear transition from monitoring to troubleshooting as the pilot leaves and the maintenance team arrives.
-That is, in the F-16 world, there is a clear appreciation of the intent spectrum (monitoring to troubleshooting).
+Once the jet is on the ground there is free movement along the intent dimension (from monitoring to troubleshooting) as the pilot leaves and the maintenance team arrives.
+That is, in the F-16 world, there is a clear appreciation of the intent dimension.
 
-Also, there aren't blockers on the access spectrum (preplanned telemetry to ad hoc telemetry).
+Also, there aren't blockers on the access dimension (preplanned telemetry to ad hoc telemetry).
 A maintainer can just start opening panels and touching parts of the system.
 
 <!-- Maybe some of you are thinking "wait, monitoring and troubleshooting aren't the same so they require different approaches." -->
@@ -150,12 +152,12 @@ We'll get to when it doesn't in a moment.
 
 
 In the software world, I've never come across such a troubleshooting decision tree. [2]
-And this is the reason why I was able to stay busy as a software engineering consultant -- because there are no troubleshooting decision trees.
+And this is the reason why I was able to stay busy as a software engineering consultant: because there are no troubleshooting decision trees.
 
 Before I would begin diagnosing problems on a client's software system I would let them know I was going to need elevated access (root or sudo) to each of the virtual machines (VM) (yes these were VMs not containers or something more lightweight) in the system.
 I am pretty sure that if someone within my client's company had asked for root access to each of the VMs she would have been *not* been granted that level of access.
 
-#### My clients had application support engineers and developers, DBAs, system administrators, and middleware administrators but there was no affordance for single person to trace behavior/misbehavior in the application all the way down to the hardware.
+#### My clients had application support engineers and developers, database administrators, system administrators, and middleware administrators but there was no affordance for a single mind to trace behavior/misbehavior in the application all the way down to the hardware.
 #### This creates a diffusion of responsibility which contributes to the need for expensive consultants to be hired.
 
 Since my consultancy was getting paid by the hour (not cheap hours either) our clients were motived enough to see that I got the access that I requested.
@@ -180,13 +182,13 @@ That is, you need to be able to walk right up to the jet (with your knowledge of
 
 
 
-Unlike in the F-16 world, I frequently don't see a move along the access spectrum (from preplanned telemetry to ad hoc telemetry) in the software world.
+Unlike in the F-16 world, I frequently don't see a move along the access dimension (from preplanned telemetry to ad hoc telemetry) in the software world.
 I would expect a tool/technique and access transition to take place in the software world but it doesn't.
 In the F-16 world, the lack of transition would be like watching the maintenance team get in the cockpit, look at the system caution and warning lights, and look at the few dozen analog gauges in an attempt to diagnose the problem using only the pilot's monitoring tools.
 
 When I was a consultant I would get called in when one of our clients had been in the troubleshooting phase for longer than they cared to be.
 And it never failed that they were using mostly monitoring tools/techniques to do troubleshooting.
-It was also the case that most of the time they didn't have someone available with enough knowledge of normal system operation, system configuration, and general [systems programming]() chops.
+It was also the case that most of the time they didn't have someone available with enough knowledge of normal system operation, system configuration, and general systems programming ability.
 
 So my job was to:
 
@@ -194,9 +196,9 @@ So my job was to:
 
 2) bring awareness of all the ways to configure the system (or learn quickly) -- a.k.a know which knobs we are able to turn
 
-3) sound the alarm and attempt to persuade access gatekeepers that we need to change access (from preplanned telemetry to ad hoc telemetry).
+3) sound the alarm and attempt to persuade access gatekeepers that we need to move along the access dimension (from preplanned telemetry to ad hoc telemetry).
 
-4) apply troubleshooting tools/techniques to operating systems, runtimes (e.g. JVMs), and applications -- a.k.a be a [systems programmer]().
+4) apply troubleshooting tools/techniques to operating systems, runtimes (e.g. JVMs), and applications -- a.k.a be a systems programmer.
 
 I enjoy (1) and (2) and I really enjoy (4).
 I don't enjoy doing (3).
@@ -230,8 +232,9 @@ In software this consists of doing things like:
 
 `vmstat 1 | awk '/^[ ]*[0-9]/ {for (i=1;i<NF;i++){if (i==12) printf("\033[1m%s \033[0m",$i) ; else printf(" %s ",$i)} printf("\n")} !/^[ ]*[0-9]/'`.
 
-TODO get screenie or use bold tags
+![](media/vmstat.png)
 
+<br/>
 
 
 - Watching a network interface (specifically how packet routing policies are affecting packets)
@@ -244,6 +247,7 @@ Every 2.0s: sudo iptables -v -L INPUT | head -1                                 
 Chain INPUT (policy ACCEPT 532K packets, 1620M bytes)
 ```
 
+<br/>
 
 - Watching the OS [system calls]() a process is making to see which configuration file is being read
 
@@ -257,6 +261,7 @@ Chain INPUT (policy ACCEPT 532K packets, 1620M bytes)
 ...
 ```
 
+<br/>
 
 I have *never* come across a deployed monitoring service that allows me to get that kind of granular ad hoc telemetry derived information.
 Also I don't often come across software engineers that know how to inspect the whole software stack with tools and techniques like that. [5]
@@ -265,9 +270,9 @@ When there is a problem in the software world, the clue that unravels the whole 
 Had we not been allowed to do ad hoc telemetry based troubleshooting on the F-16 there would have been problems we couldn't have addressed. 
 
 
-Some gatekeepers in IT/Infrastructure do appreciate the spectra of intent (monitoring to troubleshooting) and access (preplanned telemetry to ad hoc telemetry) but I suspect that most don't appreciate them enough.
-That is, I don't think they appreciate the [cost](#The Cost TODO) of making movement along the intent and access dimensions rough.
-Those gatekeepers that do appreciate the spectra often find it too inconvenient to accommodate elevated access requests so they punt -- hoping that life will find a way with the already deployed "single pane of glass" that was supposed to to live up to "single" (as in the "single" thing you need to do everything).
+Some gatekeepers in IT/Infrastructure do appreciate the intent dimension (monitoring to troubleshooting) and the access dimension (preplanned telemetry to ad hoc telemetry) but I suspect that most don't appreciate them enough.
+That is, I don't think they appreciate the [cost](#The-Cost-of-Not-Moving-Freely-In-All-Three) of making movement along the intent and access dimensions rough.
+Those gatekeepers that do appreciate those dimensions often find it too inconvenient to accommodate elevated access requests so they punt -- hoping that life will find a way with the already deployed "single pane of glass" that was supposed to to live up to "single" (as in the "single" thing you need to do everything).
 
 <br/>
 
@@ -301,33 +306,44 @@ The team doing the internally developed application says a refactor/rewrite or a
 
 Or maybe they both point the finger at another system within the enterprise that needs to pick up the slack or prevent the slack in the first place.
 
-Eventually a boy dinosaur appears amidst the girl dinosaurs and you find yourself with a different technology stack or with a different team/company because a decision maker decided to tackle a business problem in a different way *mostly* because IT/Infrastructure policies don't appreciate the spectra of intent (monitoring to troubleshooting) and access (preplanned telemetry to ad hoc telemetry) which causes a diffusion of responsibility.
+Eventually a boy dinosaur appears amidst the girl dinosaurs and you find yourself with a different technology stack or with a different team/company because a decision maker decided to tackle a business problem in a different way *mostly* because IT/Infrastructure policies don't appreciate the intent dimension (monitoring to troubleshooting) and the access dimension (preplanned telemetry to ad hoc telemetry) which causes a diffusion of responsibility.
 
 
+<br/>
 
 ---
 
+<br/>
 
 
 
-6: I talk about "running commands they (engineers) need to run" but it isn't always clear what handful of commands you need to run.
+[6] 
+I talk about "running commands that engineers need to run" but it isn't always clear what handful of commands you need to run.
 If it was I would just tell IT/Infrastructure to run these commands and send me the results.
 Instead, it takes some time (sometimes days) with the system -- checking file contents, tuning thread counts, watching some super granular metric, etc.
 
 
-1: "single pane of glass" does evoke visibility, as intended, but it also evokes inaccessibility as in "behind glass" which is accidental justice served
+[1]
+"Single pane of glass" does evoke visibility, as intended, but it also evokes inaccessibility as in "behind glass" which is accidental justice served.
 
-2: It might be interesting to explore why not? 
+[2]
+It might be interesting to explore why not.
 I suspect this is related to why there are so many monitoring systems that try imply they can show causes of problems.
+That is, the monitoring systems vendors pretend that you can use a monitoring system as a fault isolation decision tree.
 
-3: because systems programmers are not super common maybe that is why IT/Infrastructure policies don't accommodate them
+[3]
+because systems programmers are not super common maybe that is why IT/Infrastructure policies don't accommodate them
 
-4: note something about all the breaches
+[4]
+I know you hear a lot about data breaches but data breaches are not caused by IT/Infrastructure policy makers that appreciate the need to move freely through all three dimensions (posture, intent, and access). 
 
-5: it is a [skill set](http://www.brendangregg.com/Perf/linux_observability_tools.png) that i think is becoming less common due to a vicious cycle. because movement along the intent and access dimensions is rough, engineers are discouraged from practicing it. because engineers are discouraged from practicing it policies don't carve out space to accommodate single mind (one person) systems programming. because policies don't accommodate single mind systems programming movement along the intent and access dimensions is rough.
+[5]
+I think systems programming ability might be becoming less common due to a vicious cycle. Because movement along the intent and access dimensions is rough, engineers are discouraged from practicing systems programming. Because engineers are discouraged from practicing systems programming, policies don't carve out space to accommodate single mind (one person) systems programming. Because policies don't accommodate single mind systems programming, movement along the intent and access dimensions is rough.
 
-8: as if to say "all you have to do is hire people to watch for gauges to get past the red line then they can flip a switch to remedy the situation."
+[8]
+As if to say "all you have to do is hire people to watch for gauges to get past the red line then they can flip a switch to remedy the situation"
 
-9: it actually brings me joy thinking about that
+[9]
+it actually brings me joy thinking about that
 
 
