@@ -1,5 +1,5 @@
 # Three Independent Dimensions of Work on Engineered Artifacts
-### And The Cost of Not Moving Freely In All Three
+### And The Cost of Not Moving Freely in All Three
 
 <br/>
 
@@ -57,7 +57,7 @@ I am going to discuss:
 - Posture: sustainment, Intent: troubleshooting, Access: preplanned telemetry
 - Posture: sustainment, Intent: troubleshooting, Access: ad hoc telemetry
 
-### The Cost of Not Moving Freely In All Three
+### The Cost of Not Moving Freely in All Three
 
 In the F-16 world, movement along the intent and access dimensions is so smooth you don't even notice it.
 That is, for most problems with the F-16 E&E systems the hardest part is finding the problem. [9]
@@ -271,7 +271,7 @@ Had we not been allowed to do ad hoc telemetry based troubleshooting on the F-16
 
 
 Some gatekeepers in IT/Infrastructure do appreciate the intent dimension (monitoring to troubleshooting) and the access dimension (preplanned telemetry to ad hoc telemetry) but I suspect that most don't appreciate them enough.
-That is, I don't think they appreciate the [cost](#The-Cost-of-Not-Moving-Freely-In-All-Three) of making movement along the intent and access dimensions rough.
+That is, I don't think they appreciate the [cost](#The-Cost-of-Not-Moving-Freely-in-All-Three) of making movement along the intent and access dimensions rough.
 Those gatekeepers that do appreciate those dimensions often find it too inconvenient to accommodate elevated access requests so they punt -- hoping that life will find a way with the already deployed "single pane of glass" that was supposed to to live up to "single" (as in the "single" thing you need to do everything).
 
 <br/>
