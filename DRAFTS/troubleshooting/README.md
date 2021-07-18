@@ -1,4 +1,5 @@
 # Three Independent Dimensions of Work on Engineered Artifacts
+### and the cost of not moving freely in all three
 
 
 
@@ -53,7 +54,7 @@ I am going to discuss:
 - Posture: sustainment, Intent: troubleshooting, Access: preplanned telemetry
 - Posture: sustainment, Intent: troubleshooting, Access: ad hoc telemetry
 
-## The Cost of Work
+### the cost of not moving freely in all three
 
 In the F-16 world, movement along the intent and access dimensions is so smooth you don't even notice it.
 That is, for most problems with the F-16 E&E systems the hardest part is finding the problem. [9]
