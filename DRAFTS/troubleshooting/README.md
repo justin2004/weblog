@@ -1,6 +1,7 @@
 # Three Independent Dimensions of Work on Engineered Artifacts
 ### and the cost of not moving freely in all three
 
+<br/>
 
 
 Before I started working as a software engineer I worked on [F-16s](https://en.wikipedia.org/wiki/General_Dynamics_F-16_Fighting_Falcon). 
