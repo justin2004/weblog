@@ -56,6 +56,8 @@ I am going to discuss:
 ## The Cost of Work
 
 In the F-16 world, movement along the intent and access dimensions is so smooth you don't even notice it.
+That is, for most problems with the F-16 E&E systems the hardest part is finding the problem. [9]
+
 In the software world, movement along the intent and access dimensions is so rough that it causes:
 
 - increased disappointment in deployed software systems
@@ -65,6 +67,8 @@ In the software world, movement along the intent and access dimensions is so rou
 - increased personnel and technology stack churn
 
 - decreased systems programming ability [5]
+
+That is, for a significant portion of problems with multi-tier architecture software systems the hardest part is getting the elevated access to do (single mind) ad hoc telemetry based troubleshotting.
 
 
 ## Posture: sustainment, Intent: monitoring, Access: preplanned telemetry
@@ -320,6 +324,6 @@ I suspect this is related to why there are so many monitoring systems that try i
 
 5: it is a [skill set](http://www.brendangregg.com/Perf/linux_observability_tools.png) that i think is becoming less common due to a vicious cycle. because movement along the intent and access dimensions is rough, engineers are discouraged from practicing it. because engineers are discouraged from practicing it policies don't carve out space to accommodate single mind (one person) systems programming. because policies don't accommodate single mind systems programming movement along the intent and access dimensions is rough.
 
-
+9: it actually brings me joy thinking about that
 
 
