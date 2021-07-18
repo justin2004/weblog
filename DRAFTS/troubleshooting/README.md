@@ -276,7 +276,7 @@ Those gatekeepers that do appreciate those dimensions often find it too inconven
 
 <br/>
 
-And life does _eventually_ find a way...
+And life does find a way...
 
 Maybe an expensive contractor gets hired to request elevated access and diagnose the problem.
 
