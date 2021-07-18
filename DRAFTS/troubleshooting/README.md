@@ -68,7 +68,7 @@ In the software world, movement along the intent and access dimensions is so rou
 
 - decreased systems programming ability [5]
 
-That is, for a significant portion of problems with multi-tier architecture software systems the hardest part is getting the elevated access to do (single mind) ad hoc telemetry based troubleshotting.
+That is, for a significant portion of the non-trival problems with multi-tier architecture software systems the hardest part is getting the elevated access to do (single mind) ad hoc telemetry based troubleshooting.
 
 
 ## Posture: sustainment, Intent: monitoring, Access: preplanned telemetry
