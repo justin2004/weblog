@@ -158,7 +158,7 @@ Before I would begin diagnosing problems on a client's software system I would l
 I am pretty sure that if someone within my client's company had asked for root access to each of the VMs she would have been *not* been granted that level of access.
 
 #### My clients had application support engineers and developers, database administrators, system administrators, and middleware administrators but there was no affordance for a single mind to trace behavior/misbehavior in the application all the way down to the hardware.
-#### This creates a diffusion of responsibility which contributes to the need for expensive consultants to be hired.
+#### This creates a [diffusion of responsibility](https://en.wikipedia.org/wiki/Diffusion_of_responsibility) which contributes to the need for expensive consultants to be hired.
 
 Since my consultancy was getting paid by the hour (not cheap hours either) our clients were motived enough to see that I got the access that I requested.
 
@@ -263,7 +263,7 @@ Chain INPUT (policy ACCEPT 532K packets, 1620M bytes)
 
 <br/>
 
-I have *never* come across a deployed monitoring service that allows me to get that kind of granular ad hoc telemetry derived information.
+I have *never* come across a deployed monitoring service that allows me to get that kind of granular ad hoc telemetry derived information. [10]
 Also I don't often come across software engineers that know how to inspect the whole software stack with tools and techniques like that. [5]
 Software engineering covers enough ground that specialization is a factor.
 When there is a problem in the software world, the clue that unravels the whole mystery isn't always one that preplanned telemetry will reveal.
@@ -346,4 +346,7 @@ As if to say "all you have to do is hire people to watch for gauges to get past 
 [9]
 it actually brings me joy thinking about that
 
+[10]
+I also don't expect it to because the map is not the territory.
+But then again, I am not the one pretending like monitoring tools are all you need in order to do troubleshooting.
 
