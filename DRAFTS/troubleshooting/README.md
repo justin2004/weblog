@@ -332,7 +332,6 @@ I think systems programming ability (which reduces the negative aspects of speci
 #### 8
 As if to say "all you have to do is hire people to watch for gauges to get past the red line then they can flip a switch to remedy the situation"
 
-[9]
 #### 9
 It actually brings me joy thinking about that.
 
