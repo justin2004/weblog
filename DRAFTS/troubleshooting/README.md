@@ -203,7 +203,7 @@ Eventually you are talking to an access gatekeeper (which can take days to get t
 In software IT/Infrastructure, gatekeepers mostly keep the gate closed. [7](#7)
 
 
-In order to do ad hoc telemetry based troubleshooting on the F-16's E&E systems you need to have some electro-mechanical knowledge, an understanding of system operation, and an engineering spirit.  
+In order to do ad hoc telemetry based troubleshooting on the F-16's E&E systems you need to have some electro-mechanical knowledge, an understanding of system operation, and an engineering spirit.
 That engineering spirit allows you to work backwards from a misbehaving pneumatically actuated but electrically controlled value to trace all pneumatic and electrical dependences without a decision tree telling you where to look.
 
 The same applies to software systems.
