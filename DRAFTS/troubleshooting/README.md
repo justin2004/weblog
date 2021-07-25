@@ -234,7 +234,7 @@ Chain INPUT (policy ACCEPT 532K packets, 1620M bytes)
 
 <br/>
 
-- Watching the OS [system calls]() a process is making to see which configuration file is being read
+- Watching the OS system calls a process is making to see which configuration file is being read
 
 `sudo strace -f -p 17489`
 
