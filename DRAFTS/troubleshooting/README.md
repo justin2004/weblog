@@ -96,7 +96,7 @@ You may have heard of some monitoring systems:
 
 - Prometheus
 
-They are often advertised as a "single pane of glass." [1]
+They are often advertised as a "single pane of glass." [1](#1)
 
 They've got metrics over time which can be shown on a graph (which sometimes includes a bright dashed "red line"). [8]
 
@@ -306,6 +306,7 @@ If it was I would just tell IT/Infrastructure to run these commands and send me 
 Instead, it takes some time (sometimes days) with the system -- checking file contents, tuning thread counts, watching some super granular metric, etc.
 
 
+#### 1
 [1]
 "Single pane of glass" does evoke visibility, as intended, but it also evokes inaccessibility as in "behind glass" which is accidental justice served.
 
