@@ -1,7 +1,7 @@
 # Blending a Google Sheet with Wikidata
 
 
-There is [interest](https://phabricator.wikimedia.org/T181319) in the Wikidata community to access external tabular data in a SPARQL query. While that development looks like it is ongoing you can already do this with [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
+There is [interest](https://phabricator.wikimedia.org/T181319) in the Wikidata community to access external tabular data in a SPARQL query. While that development looks like it is ongoing you can already do access tabular data in a SPARQL query with [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
 
 
 Here is the Google Sheet we'll use in this example:
@@ -20,11 +20,13 @@ Which lives here:
 `https://docs.google.com/spreadsheets/d/1ZE5SGutY1-_O4OFj-W9YPcXObhAfUaCX73SKpSlTRLk/`
 
 
-First you have to run SPARQL Anything. There are instruction in the project's README and [here](https://github.com/SPARQL-Anything/sparql.anything/blob/v0.3-DEV/BROWSER.md) for a docker deployment.
+First you have to run SPARQL Anything. There are instruction in the project's README and [here](https://github.com/SPARQL-Anything/sparql.anything/blob/v0.3-DEV/BROWSER.md) for a docker deployment (which is how I run it for this example).
 
 
-Here is the query (wrapped in a curl call so you can run it in a bash shell):
+The query (wrapped in a curl call so you can run it in a bash shell) is below.
+It uses the Wikidata Q number in the sheet to enrich the rows in the sheet with information about the type of thing each item is and the use of each item.
 
+The query:
 
 ```
 curl --silent 'http://localhost:3000/sparql.anything'  \
