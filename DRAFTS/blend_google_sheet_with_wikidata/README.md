@@ -7,6 +7,16 @@ There is [interest](https://phabricator.wikimedia.org/T181319) in the Wikidata c
 Here is the Google Sheet we'll use in this example:
 
 
+|item\_name   |item\_Q   |item\_note                      |
+|-------------|----------|--------------------------------|
+|hair brush   |Q1642980  |can be used to remover tangles  |
+|tooth brush  |          |soft bristles are the best      |
+|tweezers     |Q192504   |some wee hands                  |
+|diode        |Q11656    |                                |
+
+
+Which lives here:
+
 `https://docs.google.com/spreadsheets/d/1ZE5SGutY1-_O4OFj-W9YPcXObhAfUaCX73SKpSlTRLk/`
 
 
@@ -56,22 +66,6 @@ optional {
 
 
 The output:
-
-```csv
-item_name,item_q,item_note,item_use_label,item_superclass,item_superclass_label
-diode,Q11656,,electrical resistance,http://www.wikidata.org/entity/Q11653,electronic component
-hair brush,Q1642980,can be used to remover tangles,hair care,http://www.wikidata.org/entity/Q10528974,personal hygiene item
-hair brush,Q1642980,can be used to remover tangles,hairdressing,http://www.wikidata.org/entity/Q10528974,personal hygiene item
-hair brush,Q1642980,can be used to remover tangles,hair care,http://www.wikidata.org/entity/Q5639584,hairstyling tool
-hair brush,Q1642980,can be used to remover tangles,hairdressing,http://www.wikidata.org/entity/Q5639584,hairstyling tool
-hair brush,Q1642980,can be used to remover tangles,hair care,http://www.wikidata.org/entity/Q614467,brush
-hair brush,Q1642980,can be used to remover tangles,hairdressing,http://www.wikidata.org/entity/Q614467,brush
-tweezers,Q192504,some wee hands,motion,http://www.wikidata.org/entity/Q1378235,forceps
-tweezers,Q192504,some wee hands,motion,http://www.wikidata.org/entity/Q1074814,surgical instrument
-tweezers,Q192504,some wee hands,motion,http://www.wikidata.org/entity/Q834028,laboratory equipment
-tweezers,Q192504,some wee hands,motion,http://www.wikidata.org/entity/Q2578402,hand tool
-tooth brush,,soft bristles are the best,,,
-```
 
 
 
