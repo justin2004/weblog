@@ -72,3 +72,22 @@ tweezers,Q192504,some wee hands,motion,http://www.wikidata.org/entity/Q834028,la
 tweezers,Q192504,some wee hands,motion,http://www.wikidata.org/entity/Q2578402,hand tool
 tooth brush,,soft bristles are the best,,,
 ```
+
+
+
+
+|item\_name   |item\_q   |item\_note          |item\_use\_label    |item\_superclass    |item\_superclass\_label|
+|-------------|----------|--------------------|--------------------|--------------------|-----------------------|
+|diode        |Q11656    |                    |electrical resistance|http://www\.wikidata\.org/entity/Q11653|electronic component   |
+|hair brush   |Q1642980  |can be used to remover tangles|hair care           |http://www\.wikidata\.org/entity/Q10528974|personal hygiene item  |
+|hair brush   |Q1642980  |can be used to remover tangles|hairdressing        |http://www\.wikidata\.org/entity/Q10528974|personal hygiene item  |
+|hair brush   |Q1642980  |can be used to remover tangles|hair care           |http://www\.wikidata\.org/entity/Q5639584|hairstyling tool       |
+|hair brush   |Q1642980  |can be used to remover tangles|hairdressing        |http://www\.wikidata\.org/entity/Q5639584|hairstyling tool       |
+|hair brush   |Q1642980  |can be used to remover tangles|hair care           |http://www\.wikidata\.org/entity/Q614467|brush                  |
+|hair brush   |Q1642980  |can be used to remover tangles|hairdressing        |http://www\.wikidata\.org/entity/Q614467|brush                  |
+|tweezers     |Q192504   |some wee hands      |motion              |http://www\.wikidata\.org/entity/Q1378235|forceps                |
+|tweezers     |Q192504   |some wee hands      |motion              |http://www\.wikidata\.org/entity/Q1074814|surgical instrument    |
+|tweezers     |Q192504   |some wee hands      |motion              |http://www\.wikidata\.org/entity/Q834028|laboratory equipment   |
+|tweezers     |Q192504   |some wee hands      |motion              |http://www\.wikidata\.org/entity/Q2578402|hand tool              |
+|tooth brush  |          |soft bristles are the best|                    |                    |                       |
+
