@@ -1,7 +1,7 @@
 # Blending a Google Sheet with Wikidata
 
 
-There is [interest](https://phabricator.wikimedia.org/T181319) in the Wikidata community in accessing external tabular data in a SPARQL query. While that development looks like it is ongoing you can already do access tabular data in a SPARQL query with [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
+There is [interest](https://phabricator.wikimedia.org/T181319) in the Wikidata community in accessing external tabular data in a [SPARQL](https://en.wikipedia.org/wiki/SPARQL) query. While that development looks like it is ongoing you can already access tabular data in a SPARQL query with [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
 
 
 Here is the Google Sheet we'll use in this example:
@@ -87,3 +87,7 @@ The output:
 |tweezers     |Q192504   |some wee hands      |motion              |http://www\.wikidata\.org/entity/Q2578402|hand tool              |
 |tooth brush  |          |soft bristles are the best|                    |                    |                       |
 
+
+
+SPARQL Anything supports more than just blending of tabular data (see its README).
+While you could certainly do something like this example with your favorite programming language I think it is quite convenient to have the ability to access non-graph sources of data in a SPARQL query.
