@@ -1,7 +1,7 @@
 # Blending a Google Sheet with Wikidata
 
 
-There is [interest](https://phabricator.wikimedia.org/T181319) in the Wikidata community to access external tabular data in a SPARQL query. While that development looks like it is ongoing you can already do access tabular data in a SPARQL query with [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
+There is [interest](https://phabricator.wikimedia.org/T181319) in the Wikidata community in accessing external tabular data in a SPARQL query. While that development looks like it is ongoing you can already do access tabular data in a SPARQL query with [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
 
 
 Here is the Google Sheet we'll use in this example:
