@@ -1,6 +1,6 @@
 # Dynamic Pagination with SPARQL Anything
 
-[SPARQL Anything]() can talk to REST APIs. 
+[SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything) can talk to REST APIs. 
 Some REST APIs employ pagination to reduce the number of results shown and deliver results incrementally to the client.
 An example of such an API is the [arxiv API](https://arxiv.org/help/api/user-manual#Quickstart).
 
@@ -24,7 +24,7 @@ Finally, page number 15 has offset 150.
 You can handle pagination and step through pages in any application code but you can also step through those pages in a single SPARQL query.
 
 First you have to run SPARQL Anything.
-There are instructions on the project's README and in for example I am using the docker image described [here]().
+There are instructions on the project's README and for this example I am using the docker image described [here](https://github.com/justin2004/sparql.anything/blob/fuseki-docker/BROWSER.md).
 
 
 Here is the query (which you can run in a bash shell):
@@ -98,4 +98,6 @@ Which will produce triples something like:
 
 You'll see 4 subjects at the top level.
 One for each page we allowed (0, 1, 2, and 3).
-Each subject represents a page of results that you can extract values of interest out of and even transform them into thoughtfully modeled triples.
+
+Each subject represents a page of results that you can project values of interest out of (with a SPARQL select). 
+You can even transform them into thoughtfully modeled triples (with a SPARQL construct).
