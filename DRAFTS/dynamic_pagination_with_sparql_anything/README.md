@@ -1,10 +1,11 @@
 # Dynamic Pagination with SPARQL Anything
 
 [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything) can talk to REST APIs. 
-Some REST APIs employ pagination to reduce the number of results shown and deliver results incrementally to the client.
+Some REST APIs employ pagination to reduce the number of results shown and to deliver results incrementally to the client.
 An example of such an API is the [arxiv API](https://arxiv.org/help/api/user-manual#Quickstart).
 
 For example, this curl command does a search for papers written by Seth Lloyd where the abstract contains the word "coherent":
+
 ``curl 'http://export.arxiv.org/api/query?search_query=abs:coherent+AND+au:seth%20lloyd&max_results=10&start=0'``
 
 It returns XML and part of that XML looks like:
