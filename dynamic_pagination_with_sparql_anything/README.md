@@ -53,12 +53,12 @@ bind(iri(concat(?service_string,"&start=0")) as ?service)
 service ?service { # this first service just gets the number of results and discards the first page of actual results
    values ?allowed_page { 0 1 2 3 } .  # pages are 0-based and these are the pages you want (if they exist)
    [] a fx:root ;
-   ?slot_p  [ a a9:totalResults ;
-              rdf:_1 ?total_results ] ;
-   ?slot_p1 [ a a9:itemsPerPage ;
-              rdf:_1 ?items_per_page ] ;
-   ?slot_p2 [ a a9:startIndex ;
-              rdf:_1 ?start_index ] .
+      ?slot_p  [ a a9:totalResults ;
+                 rdf:_1 ?total_results ] ;
+      ?slot_p1 [ a a9:itemsPerPage ;
+                 rdf:_1 ?items_per_page ] ;
+      ?slot_p2 [ a a9:startIndex ;
+                 rdf:_1 ?start_index ] .
    bind(xsd:integer(ceil(xsd:integer(?total_results) / xsd:integer(?items_per_page))) as ?total_pages) .
    filter(xsd:integer(?allowed_page) < ?total_pages) .
    bind(str(xsd:integer(?allowed_page) * xsd:integer(?items_per_page)) as ?offset) .
