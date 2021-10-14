@@ -60,6 +60,8 @@ So the results show us that (in the metamodel language (LPG)):
     - has some properties including the section name, and the actual text
 
 
+TODO is it more clear to talk about choices or options? or a choice with options?
+
 The implementaion choices I am refering to are the choices about where to put data.
 
 With LPG you can put data in:
@@ -68,7 +70,7 @@ With LPG you can put data in:
 - a relationship property (any key, any value)
 - a relationship type     (single key "type", any value)
 
-I think that is 3 choices too many.
+That is 4 options and I think that is 3 options too many.
 If you want your data to participate in the "extended graph" (which includes any other graph you might care about later) then you want most of your choices to be data modeling choices not implementation choices.
 As your graph participates in the "extended graph" you don't want to your modeling choice (saying the paper is of type "Paper") to be undermined by the fact that you chose to implement that assertion with a node label while somewhere else in the extended graph a similar assertion was implemented with a node property even though the modeling agreed on the type "Paper."
 
