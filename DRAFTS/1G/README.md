@@ -72,8 +72,7 @@ If you want your data to participate in the "extended graph" then you want most 
 
 Now let's look at the implementation choices that were made and see what the cost of those choices is.
 
-A) Assertion: The paper is a type of "Paper"
-
+1) Assertion: The paper is a type of "Paper"
     - Implementation: node label "Paper"
 
 B) Assertion: The paper was published in a specific journal
