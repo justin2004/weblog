@@ -145,7 +145,7 @@ select * where {?s :type :JournalArticle}
 select * where {?s :typeOf :JournalArticle}
 ```
 
-But with LPG, if we allow different data modeling options then query content changes and the structure can change to (because there are different implementation options):
+But with LPG, if we allow different data modeling options then query content changes *and* the structure can change to (because there are different implementation options):
 ```
 match (s:Paper)-[p]-(o) return s,p,o
 match (s {type: "Paper"})-[p]-(o) return s,p,o
