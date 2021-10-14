@@ -61,6 +61,7 @@ So the results show us that (in the metamodel language (LPG)):
 
 
 The implementaion choices I am refering to are the choices about where to put data.
+
 With LPG you can put data in:
 - a node property         (any key, any value)
 - a node label            (single key "label", any value)
@@ -68,7 +69,12 @@ With LPG you can put data in:
 - a relationship type     (single key "type", any value)
 
 I think that is 3 choices too many.
-If you want your data to participate in the "extended graph" then you want most of you choices to be data modeling choices not implementation choices.
+If you want your data to participate in the "extended graph" (that included any other care you might care about later) then you want most of you choices to be data modeling choices not implementation choices.
+As your graph participates in the "extended graph" you don't want to your modeling choice (saying the paper is of type "Paper") to be undermined by the fact that you chose to implement that assertion with a node label while somewhere else in the extended graph a similar assertion was implemented with a node property even though the modeling agreed on the type "Paper."
+
+If want your data set to align with any other other data set they must agree in data modeling choice and in implementation choices.
+The data modeling choice is hard enough so why complicate things by adding implementation choices?
+
 
 Now let's look at the implementation choices that were made and see what the cost of those choices is.
 
@@ -96,7 +102,7 @@ But notice how, in natural language, each assertion has the same structure: subj
 
 ```
 ---------------------------------------------------------------------------
-|   |    subject                 |  predicate           |    object
+|    |    subject                 |  predicate           |    object
 |--------------------------------------------------------------------------------
 |1   |   the paper                | is of type           | Paper
 |2   |   the paper                | was published in     | BMC Infect Dis
