@@ -72,7 +72,9 @@ I think that is 3 choices too many.
 If you want your data to participate in the "extended graph" (which includes any other graph you you might care about later) then you want most of your choices to be data modeling choices not implementation choices.
 As your graph participates in the "extended graph" you don't want to your modeling choice (saying the paper is of type "Paper") to be undermined by the fact that you chose to implement that assertion with a node label while somewhere else in the extended graph a similar assertion was implemented with a node property even though the modeling agreed on the type "Paper."
 
-If want your data set to align with any other other data set they must agree in data modeling choices and in implementation choices.
+TODO show the 2 cypher queries for that ^ compared to the single SPARQL
+
+If want your graph to align with any other graph they must agree in data modeling choices and in implementation choices.
 The data modeling choices are hard enough so why complicate things by adding implementation choices?
 
 
