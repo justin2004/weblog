@@ -69,11 +69,11 @@ With LPG you can put data in:
 - a relationship type     (single key "type", any value)
 
 I think that is 3 choices too many.
-If you want your data to participate in the "extended graph" (that included any other care you might care about later) then you want most of you choices to be data modeling choices not implementation choices.
+If you want your data to participate in the "extended graph" (which includes any other graph you you might care about later) then you want most of your choices to be data modeling choices not implementation choices.
 As your graph participates in the "extended graph" you don't want to your modeling choice (saying the paper is of type "Paper") to be undermined by the fact that you chose to implement that assertion with a node label while somewhere else in the extended graph a similar assertion was implemented with a node property even though the modeling agreed on the type "Paper."
 
-If want your data set to align with any other other data set they must agree in data modeling choice and in implementation choices.
-The data modeling choice is hard enough so why complicate things by adding implementation choices?
+If want your data set to align with any other other data set they must agree in data modeling choices and in implementation choices.
+The data modeling choices are hard enough so why complicate things by adding implementation choices?
 
 
 Now let's look at the implementation choices that were made and see what the cost of those choices is.
@@ -113,4 +113,5 @@ But notice how, in natural language, each assertion has the same structure: subj
 ```
 
 
-If instead all of your choices were data modeling choices you could use the single common structure (subject, predicate, object) and then the graph query writer wouldn't need to discover which implementation choices were made.
+You can use a single implementation choice (subject, predicate, object) then you only have to make data modeling choices.
+Also if you use a single implementation choice the graph query writer wouldn't need to discover which implementation choices were made.
