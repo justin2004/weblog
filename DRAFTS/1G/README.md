@@ -72,20 +72,39 @@ If you want your data to participate in the "extended graph" then you want most 
 
 Now let's look at the implementation choices that were made and see what the cost of those choices is.
 
-- Assertion: The paper is a type of "Paper"
+A) Assertion: The paper is a type of "Paper"
     - Implementation: node label "Paper"
 
-- Assertion: The paper was published in a specific journal
+B) Assertion: The paper was published in a specific journal
     - Implementation:  node property key/value pair: "journal", "BMC Infect Dis"
 
-- Assertion: The paper has a collection of text in the body
+C) Assertion: The paper has a collection of text in the body
     - Implementation:  relationship type "PAPER_HAS_BODYTEXTCOLLECTION" with node label "BodyTextCollection"
 
-- Assertion: The collection of text in the body has body text in 0th (and 1st, and 2nd, etc.) position in the paper
+D) Assertion: The collection of text in the body has body text in 0th (and 1st, and 2nd, etc.) position in the paper
     - Implementation:  relationship property key/value pair: "position", 0     (1, 2, etc., etc.)
 
+D1) Assertion: the body text in position 0 has the literal text "Mycoplasma pneumoniae is a common cause..." 
+    - Implementation: node property key/value pair: "text", "Mycoplasma pneumoniae is a common cause..." 
 
-Because these 4 difference implementation choices were made the cost is that in order to query the graph you need to know which choice was made for each assertion.
+
+Because these 4 different implementation choices were made the cost is that in order to query the graph you need to discover which choice was made for each assertion.
 TODO show Cypher differences.
 
-But notice how 
+
+But notice how, in natural language, each assertion has the same structure: subject, predicate, object
+
+```
+---------------------------------------------------------------------------
+|   |    subject                 |  predicate           |    object
+|--------------------------------------------------------------------------------
+|A  |   the paper                | is of type           | Paper
+|B  |   the paper                | was published in     | BMC Infect Dis
+|C  |   the paper                | has a collection     | the body text collection  
+|D  |   the body text collection | has text in position | 0
+|D1 |   text in position 0       | has literal text     | "Mycoplasma pneumoniae is a common cause..." 
+----------------------------------------------------------------------------------
+```
+
+
+If instead all of your choices were data modeling choices you could use the single common structure (subject, predicate, object) and then the graph query writer wouldn't need to discover which implementation choices were made.
