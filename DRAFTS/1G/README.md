@@ -69,7 +69,7 @@ With LPG you can put data in:
 - a relationship type     (single key "type", any value)
 
 I think that is 3 choices too many.
-If you want your data to participate in the "extended graph" (which includes any other graph you you might care about later) then you want most of your choices to be data modeling choices not implementation choices.
+If you want your data to participate in the "extended graph" (which includes any other graph you might care about later) then you want most of your choices to be data modeling choices not implementation choices.
 As your graph participates in the "extended graph" you don't want to your modeling choice (saying the paper is of type "Paper") to be undermined by the fact that you chose to implement that assertion with a node label while somewhere else in the extended graph a similar assertion was implemented with a node property even though the modeling agreed on the type "Paper."
 
 TODO show the 2 cypher queries for that ^ compared to the single SPARQL
@@ -106,8 +106,8 @@ But notice how, in natural language, each assertion has the same structure: subj
 ---------------------------------------------------------------------------
 |    |    subject                 |  predicate           |    object
 |--------------------------------------------------------------------------------
-|1   |   the paper                | is of type           | Paper
-|2   |   the paper                | was published in     | BMC Infect Dis
+|1   |   the paper                | is of type           | "Paper"
+|2   |   the paper                | was published in     | "BMC Infect Dis"
 |3   |   the paper                | has a collection     | the body text collection  
 |4   |   the body text collection | has text in position | 0
 |5   |   text in position 0       | has literal text     | "Mycoplasma pneumoniae is a common cause..." 
