@@ -62,14 +62,30 @@ So the results show us that (in the metamodel language (LPG)):
 
 The implementaion choices I am refering to are the choices about where to put data.
 With LPG you can put data in:
-- a node property
-- a node label
-- a relationship property
-- a relationship type
+- a node property         (any key, any value)
+- a node label            (single key "label", any value)
+- a relationship property (any key, any value)
+- a relationship type     (single key "type", any value)
 
 I think that is 3 choices too many.
 If you want your data to participate in the "extended graph" then you want most of you choices to be data modeling choices not implementation choices.
 
 Now let's look at the implementation choices that were made and see what the cost of those choices is.
 
-1) The journal name was put into a node property.
+- Assertion: The paper is a type of "Paper"
+    - Implementation: node label "Paper"
+
+- Assertion: The paper was published in a specific journal
+    - Implementation:  node property key/value pair: "journal", "BMC Infect Dis"
+
+- Assertion: The paper has a collection of text in the body
+    - Implementation:  relationship type "PAPER_HAS_BODYTEXTCOLLECTION" with node label "BodyTextCollection"
+
+- Assertion: The collection of text in the body has body text in 0th (and 1st, and 2nd, etc.) position in the paper
+    - Implementation:  relationship property key/value pair: "position", 0     (1, 2, etc., etc.)
+
+
+Because these 4 difference implementation choices were made the cost is that in order to query the graph you need to know which choice was made for each assertion.
+TODO show Cypher differences.
+
+But notice how 
