@@ -75,16 +75,16 @@ Now let's look at the implementation choices that were made and see what the cos
 1) Assertion: The paper is a type of "Paper"
     - Implementation: node label "Paper"
 
-B) Assertion: The paper was published in a specific journal
+2) Assertion: The paper was published in a specific journal
     - Implementation:  node property key/value pair: "journal", "BMC Infect Dis"
 
-C) Assertion: The paper has a collection of text in the body
+3) Assertion: The paper has a collection of text in the body
     - Implementation:  relationship type "PAPER_HAS_BODYTEXTCOLLECTION" with node label "BodyTextCollection"
 
-D) Assertion: The collection of text in the body has body text in 0th (and 1st, and 2nd, etc.) position in the paper
+4) Assertion: The collection of text in the body has body text in 0th (and 1st, and 2nd, etc.) position in the paper
     - Implementation:  relationship property key/value pair: "position", 0     (1, 2, etc., etc.)
 
-D1) Assertion: the body text in position 0 has the literal text "Mycoplasma pneumoniae is a common cause..." 
+4.5) Assertion: the body text in position 0 has the literal text "Mycoplasma pneumoniae is a common cause..." 
     - Implementation: node property key/value pair: "text", "Mycoplasma pneumoniae is a common cause..." 
 
 
@@ -98,11 +98,11 @@ But notice how, in natural language, each assertion has the same structure: subj
 ---------------------------------------------------------------------------
 |   |    subject                 |  predicate           |    object
 |--------------------------------------------------------------------------------
-|A  |   the paper                | is of type           | Paper
-|B  |   the paper                | was published in     | BMC Infect Dis
-|C  |   the paper                | has a collection     | the body text collection  
-|D  |   the body text collection | has text in position | 0
-|D1 |   text in position 0       | has literal text     | "Mycoplasma pneumoniae is a common cause..." 
+|1   |   the paper                | is of type           | Paper
+|2   |   the paper                | was published in     | BMC Infect Dis
+|3   |   the paper                | has a collection     | the body text collection  
+|4   |   the body text collection | has text in position | 0
+|4.5 |   text in position 0       | has literal text     | "Mycoplasma pneumoniae is a common cause..." 
 ----------------------------------------------------------------------------------
 ```
 
