@@ -71,10 +71,22 @@ With LPG you can put data in:
 - a relationship type     (single key "type", any value)
 
 That is 4 options and I think that is 3 options too many.
+
 If you want your data to participate in the "extended graph" (which includes any other graph you might care about later) then you want most of your choices to be data modeling choices not implementation choices.
 As your graph participates in the "extended graph" you don't want to your modeling choice (saying the paper is of type "Paper") to be undermined by the fact that you chose to implement that assertion with a node label while somewhere else in the extended graph a similar assertion was implemented with a node property even though the modeling agreed on the type "Paper."
 
-TODO show the 2 cypher queries for that ^ compared to the single SPARQL
+
+When you make the same data modeling choice but a difference implementation choice you lose query uniformity.
+Let's hold the data modeling choice at: "label" means "type of" and "Paper" is the kind of thing we are talking about and step through the implementation options:
+```
+match (s:Paper)-[p]-(o) return s,p,o
+match (s {label: "Paper"})-[p]-(o) return s,p,o
+match (s)-[p:label]-(o:Paper) return s,p,o
+match (s)-[p:label]-(o {label: "Paper"}) return s,p,o
+<!-- match (s)-[p {label: "Paper"}]-(o) return s,p,o -->
+```
+
+
 
 If want your graph to align with any other graph they must agree in data modeling choices and in implementation choices.
 The data modeling choices are hard enough so why complicate things by adding implementation choices?
@@ -117,5 +129,11 @@ But notice how, in natural language, each assertion has the same structure: subj
 ```
 
 
-You can use a single implementation choice (subject, predicate, object) then you only have to make data modeling choices.
+You can use a single implementation option (subject, predicate, object) then you only have to make data modeling choices.
 Also if you use a single implementation choice the graph query writer wouldn't need to discover which implementation choices were made.
+
+This single implementation option is what RDF does.
+With RDF there is only one query flavor to find things that are of type "Paper":
+```
+select * where {?s :type :Paper}
+```
