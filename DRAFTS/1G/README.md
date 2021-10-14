@@ -11,7 +11,7 @@ In RDF you don't have those implementation choices to make.
 For example, let's say we want to talk about this paper (and its sections).
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC35282/
 
-We'll first use an LPG representation (https://github.com/covidgraph/data_cord19) then an RDF representation.
+We'll first use an LPG representation found in [this project](https://github.com/covidgraph/data_cord19) then an RDF representation.
 
 
 The following Cypher query:
@@ -92,7 +92,7 @@ If want your graph to align with any other graph they must agree in data modelin
 The data modeling choices are hard enough so why complicate things by adding implementation choices?
 
 
-Now let's look at the implementation choices that were made and see what the cost of those choices is.
+Now let's look at the implementation choices that were made in [this](https://github.com/covidgraph/data_cord19) project and see what the cost of those choices is.
 
 1) Assertion: The paper is a type of "Paper"
     - Implementation: node label "Paper"
@@ -111,7 +111,6 @@ Now let's look at the implementation choices that were made and see what the cos
 
 
 Because these 4 different implementation choices were made the cost is that in order to query the graph you need to discover which choice was made for each assertion.
-TODO show Cypher differences.
 
 
 But notice how, in natural language, each assertion has the same structure: subject, predicate, object
@@ -125,15 +124,46 @@ But notice how, in natural language, each assertion has the same structure: subj
 |3   |   the paper                | has a collection     | the body text collection  
 |4   |   the body text collection | has text in position | 0
 |5   |   text in position 0       | has literal text     | "Mycoplasma pneumoniae is a common cause..." 
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 ```
 
 
-You can use a single implementation option (subject, predicate, object) then you only have to make data modeling choices.
-Also if you use a single implementation choice the graph query writer wouldn't need to discover which implementation choices were made.
+So you can use a single implementation option (subject, predicate, object) then you only have to make data modeling choices.
+Also if you use a single implementation option, the graph query writer wouldn't need to discover which implementation choices were made.
 
 This single implementation option is what RDF does.
 With RDF there is only one query flavor to find things that are of type "Paper":
 ```
 select * where {?s :type :Paper}
+```
+
+With RDF, if we allow different data modeling options then query content changes but not structure:
+```
+select * where {?s :type :Paper}
+select * where {?s :typeOf :Paper}
+select * where {?s :type :JournalArticle}
+select * where {?s :typeOf :JournalArticle}
+```
+
+But with LPG, if we allow different data modeling options then query content changes and the structure can change to (because there are different implementation options):
+```
+match (s:Paper)-[p]-(o) return s,p,o
+match (s {type: "Paper"})-[p]-(o) return s,p,o
+match (s)-[p:type]-(o:Paper) return s,p,o
+match (s)-[p:type]-(o {type: "Paper"}) return s,p,o
+
+match (s:Paper)-[p]-(o) return s,p,o
+match (s {typeOf: "Paper"})-[p]-(o) return s,p,o
+match (s)-[p:typeOf]-(o:Paper) return s,p,o
+match (s)-[p:typeOf]-(o {typeOf: "Paper"}) return s,p,o
+
+match (s:JournalArticle)-[p]-(o) return s,p,o
+match (s {type: "JournalArticle"})-[p]-(o) return s,p,o
+match (s)-[p:type]-(o:JournalArticle) return s,p,o
+match (s)-[p:type]-(o {type: "JournalArticle"}) return s,p,o
+
+match (s:JournalArticle)-[p]-(o) return s,p,o
+match (s {typeOf: "JournalArticle"})-[p]-(o) return s,p,o
+match (s)-[p:typeOf]-(o:JournalArticle) return s,p,o
+match (s)-[p:typeOf]-(o {typeOf: "JournalArticle"}) return s,p,o
 ```
