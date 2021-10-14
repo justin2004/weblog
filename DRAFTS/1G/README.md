@@ -84,7 +84,7 @@ Now let's look at the implementation choices that were made and see what the cos
 4) Assertion: The collection of text in the body has body text in 0th (and 1st, and 2nd, etc.) position in the paper
     - Implementation:  relationship property key/value pair: "position", 0     (1, 2, etc., etc.)
 
-4.5) Assertion: the body text in position 0 has the literal text "Mycoplasma pneumoniae is a common cause..." 
+5) Assertion: the body text in position 0 has the literal text "Mycoplasma pneumoniae is a common cause..." 
     - Implementation: node property key/value pair: "text", "Mycoplasma pneumoniae is a common cause..." 
 
 
@@ -102,7 +102,7 @@ But notice how, in natural language, each assertion has the same structure: subj
 |2   |   the paper                | was published in     | BMC Infect Dis
 |3   |   the paper                | has a collection     | the body text collection  
 |4   |   the body text collection | has text in position | 0
-|4.5 |   text in position 0       | has literal text     | "Mycoplasma pneumoniae is a common cause..." 
+|5   |   text in position 0       | has literal text     | "Mycoplasma pneumoniae is a common cause..." 
 ----------------------------------------------------------------------------------
 ```
 
