@@ -1,6 +1,57 @@
 # discussion on 1G 
 
 
+AWS Neptune supports LPG and RDF but they are separate sides of Neptune -- that is, LPG and RDF aren't interoperable.
+Some key AWS Neptune team members are thinking about LPG and RDF graph interoperability in what they call "one graph" (1G).
+The idea is that 1G is comprehensive enough to support LPG and RDF metamodels at the same time.
+
+I can understand why they'd want to do that.
+If they can appeal to all the customers that can't easily decided between LPG and RDF they'd have ...
+
+The 1G data model they are thinking about is basically RDF where each triple has an internal identifier.
+
+
+
+
+
+> Making a good choice between the two technology stacks is complex and requires a balanced consideration of data modeling aspects, query language features, and their adequacy for current and future use cases.
+
+When it comes to future use cases, in my experience, all roads lead to (data) integration.
+TODO post about the sv story.
+
+RDF/SPARQL is specifically designed with data integration in mind (global URIs, federated queries, etc.).
+
+```
+... we often see information architects prefer the features of the RDF model because of a good fit with use cases for data alignment, master data management, and data exchange.
+```
+
+LPG seems to be specifically designed with introducing graphs to software developers in mind.
+
+```
+Software developers often choose an LPG language because they find it more natural and more "compatible" with their programming paradigm.
+```
+
+
+"That RDF is not used as much tends to come down to the fact that most developers prefer to model their domain as little as possible."
+https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-star
+
+which causes things like:
+
+> Note that the choice of LPG can also happen when RDF is dismissed out of hand because it is viewed as complex and “academic”.
+
+
+```
+Regardless of what the reasons, we believe that the (forced) choice of graph models slows the adoption of graphs because it creates confusion and segmentation in the graph database space.
+```
+
+I think I agree with that but I am not sure if the optimal way to un-segment the the graph database space is to 
+
+
+
+
+https://www.lassila.org/publications/2021/scg2021-lassila+etal.pdf
+https://www.lassila.org/publications/2021/scg2021-lassila+etal-preso.pdf
+
 I was reading the 1G paper...
 
 As a metamodel, LPG (labeled property graph) has too many options on where to say things.
