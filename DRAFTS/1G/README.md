@@ -25,27 +25,175 @@ RDF/SPARQL is specifically designed with data integration in mind (global URIs, 
 ... we often see information architects prefer the features of the RDF model because of a good fit with use cases for data alignment, master data management, and data exchange.
 ```
 
-LPG seems to be specifically designed with introducing graphs to software developers in mind.
+Right now, as I am feeling a little reckless with my words, I would say that LPG seems to be specifically designed with the following in mind:
+- introducing graphs to software developers
+    - and not strongly encouraging them to model their data thoughtfully
+- support path traversal well
+
+(supporting "point solutions")
+https://allegrograph.com/why-young-developers-dont-get-knowledge-graphs/
+
 
 ```
 Software developers often choose an LPG language because they find it more natural and more "compatible" with their programming paradigm.
 ```
 
 
-"That RDF is not used as much tends to come down to the fact that most developers prefer to model their domain as little as possible."
+Kurt Cagle notes "That RDF is not used as much tends to come down to the fact that most developers prefer to model their domain as little as possible."
 https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-star
 
 which causes things like:
 
 > Note that the choice of LPG can also happen when RDF is dismissed out of hand because it is viewed as complex and “academic”.
 
+The use of LPG makes it more natural to skip thoughtful data modeling.
+TODO back that up
+
 
 ```
 Regardless of what the reasons, we believe that the (forced) choice of graph models slows the adoption of graphs because it creates confusion and segmentation in the graph database space.
 ```
 
-I think I agree with that but I am not sure if the optimal way to un-segment the the graph database space is to 
+I agree with that but I am not sure if the optimal way to un-segment the graph database space is to work hard making a model (the "1G" model) to accommodate a metamodel that makes it more natural to skip thoughtful data modeling (LPG).
 
+
+
+
+
+
+---
+
+A big part of LPG is the ability to make statements about statements (with relationship properties).
+But the ability to make statements about statements encourages you to skip more thoughtful data modeling.
+And it is the thoughtful data modeling that enables data integration and query writers to explore generalizations like analogy.
+
+An example from the 1G paper is:
+```
+<< :Alice :knows :Bob >> :since "2020-01-01"^^xsd:date . 
+```
+Which is here represented in RDF-star but which is also easy to represent LPG (for example with a relationship property).
+
+Maybe you think that statement is easy to read and work with.
+It seems to say something like: "Alice has known Bob since 2020."
+
+But my ontologist colleagues say something like "I probably wouldn't reify that state of affairs like that."
+And what they mean, I think, is they would instead reify the state of affairs more like:
+```
+
+:Alice a :Human .
+:Bob a :Human .
+
+:event-045 a :Conversation , :Introduction ;
+           :hasActualStart "2020-01-01"^^xsd:date ;
+           <!-- :hasParticipant :Alice ; -->
+           <!-- :hasParticipant :Bob ; -->
+           :hasParticipantion [ a :Participation ;
+                                   :hasRole :Interlocutuor ;
+                                   :hasParticipant :Bob ] ;
+           :hasParticipantion [ a :Participation ;
+                                   :hasRole :Interlocutuor ;
+                                   :hasParticipant :Alice ] .
+
+
+
+
+; << :event-045 :hasParticipant :Bob >> :objectHasRole :Interlocutuor .
+; vs
+; 
+; :event-045 :hasParticipantion [ a :Participation ;
+;                                   :hasRole :Interlocutuor ;
+;                                   :hasParticipant :Bob ] .
+
+                      
+:Human rdfs:subClassOf :Agent .
+
+:Participation a rdfs:Class ;
+               rdfs:comment "An act of participation " .
+
+:hasParticipation a TODO:ObjectProperty ;
+               rdfs:label "has act of participation" .
+
+:Introduction rdfs:subClassOf :Event ;
+              rdfs:comment "An Event that involves an explicit brininging together of Things ... not previously brought together?"
+
+:Conversation rdfs:subClassOf :Event ;
+              rdfs:comment "An Event that involves communication among Agents."
+
+
+; P710 
+; :knows  is symmetric
+; :knowsOf is not
+```
+Which is a little more wordy than the rdf-star version but it offers many advantages like...
+
+A) You can represent the fact that people witnessed the introduction.
+  TODO show the rdf-star version and the LPG version
+```
+TODO look at triples for "object has role" qualifier in WD.
+:Fred :event-045 
+
+:event-045 :hasParticipantion [ a :Participation ;
+                                  :hasRole :Observer ;
+                                  :hasParticipant :Fred ] .
+```
+
+B) You can generalize to other similar Events:
+```
+
+:event-555 a :Event ;
+           rdfs:comment "SpaceX SN-8 launch" ;
+           :hasPart :event-0834 .
+
+:event-0834 a :ChemicalReaction ;
+           :hasActualStart "2020-12-08"^^xsd:date ;
+           :hasParticipantion [ a :Participation ;
+                                 :hasRole :Oxidizer ;
+                                 :hasParticipant [ a :Oxygen ] ] ;
+           :hasParticipantion [ a :Participation ;
+                                 :hasRole :Fuel ;
+                                 :hasParticipant [ a :Methane ] ] .
+
+:hasIngredient subclass of hasparticipant .
+:Fuel :closeMatch :Combustable .
+ 
+```
+
+```
+:Casablanca a :Film ;
+            :hasParticipantion [ a :Participation ;
+                                  :hasRole :Actor ;
+                                  :hasParticipant :HumphreyBogart ;
+                                  :hasCharacterRole :RickBlaine  ] ;
+            :hasParticipantion [ a :Participation ;
+                                  :hasRole :Director ;
+                                  :hasParticipant :MichaelCurtiz ]
+```
+
+notice how few strings we have... don't bottom out in strings (things not strings)!
+
+
+
+```
+Put another way - RDF* should not be used to solve modeling deficiencies.
+```
+https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-star
+
+
+
+```
+do you need RDF*? From the annotational standpoint, quite possibly, as it provides a means of tracking volatile property and relationship value changes over time.
+```
+While you could I think I might instead use a triplestore with immutable state like [asami](https://github.com/threatgrid/asami) when I have a volatile named graph but in general I would keep named graphs read-only as often as possible.
+No, nevermind on that.
+Most data is read-only-flavored anyway because as things move from the present into the past their volatility is over. 
+
+
+
+
+
+
+
+---
 
 
 
@@ -58,6 +206,7 @@ As a metamodel, LPG (labeled property graph) has too many options on where to sa
 That means to use an LPG representation you must make implementation choices that aren't data modeling choices.
 
 In RDF you don't have those implementation choices to make.
+In RDF, there is a single way to say things: as a triple.
 
 For example, let's say we want to talk about this paper (and its sections).
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC35282/
@@ -65,7 +214,7 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC35282/
 We'll first use an LPG representation found in [this project](https://github.com/covidgraph/data_cord19) then an RDF representation.
 
 
-The following Cypher query:
+The following Cypher query (against a Neo4j instance):
 ```
 match (s0)-[p0]->(s {id:"c6c001198a1ca7136a0c476b7723d9bf"})-[p:BODYTEXTCOLLECTION_HAS_BODYTEXT]->(o) 
 return s0,labels(s0),p0,type(p0),s,labels(s),p,type(p),o,labels(o) order by p.position
@@ -114,6 +263,7 @@ So the results show us that (in the metamodel language (LPG)):
 TODO is it more clear to talk about choices or options? or a choice with options?
 
 The implementaion choices I am refering to are the choices about where to put data.
+I call these "implementation" choices because a storage location is often an implementation choice.
 
 With LPG you can put data in:
 - a node property         (any key, any value)
@@ -124,7 +274,7 @@ With LPG you can put data in:
 That is 4 options and I think that is 3 options too many.
 
 If you want your data to participate in the "extended graph" (which includes any other graph you might care about later) then you want most of your choices to be data modeling choices not implementation choices.
-As your graph participates in the "extended graph" you don't want to your modeling choice (saying the paper is of type "Paper") to be undermined by the fact that you chose to implement that assertion with a node label while somewhere else in the extended graph a similar assertion was implemented with a node property even though the modeling agreed on the type "Paper."
+As your graph participates in the "extended graph" you don't want to your data modeling choice (saying the paper is of type "Paper") to be undermined by the fact that you chose to implement that assertion with a node label while somewhere else in the extended graph a similar assertion was implemented with a node property even though the data modeling agreed on the type "Paper."
 
 
 When you make the same data modeling choice but a difference implementation choice you lose query uniformity.
@@ -139,8 +289,10 @@ match (s)-[p:label]-(o {label: "Paper"}) return s,p,o
 
 
 
-If want your graph to align with any other graph they must agree in data modeling choices and in implementation choices.
+If want your graph to align with any other graph they must agree in the options they selected for data modeling choices and in the options they chose for implementation choices.
 The data modeling choices are hard enough so why complicate things by adding implementation choices?
+You can prevent implementation choices from impairing data integration by not making any (implementation choices) by using RDF.
+You can't do that with LPG; you must make implementation choices.
 
 
 Now let's look at the implementation choices that were made in [this](https://github.com/covidgraph/data_cord19) project and see what the cost of those choices is.
