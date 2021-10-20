@@ -19,7 +19,7 @@ The 1G data model they are thinking about is basically RDF where each triple has
 When it comes to future use cases, in my experience, all roads lead to (data) integration.
 TODO post about the sv story.
 
-RDF/SPARQL is specifically designed with data integration in mind (global URIs, federated queries, etc.).
+RDF/SPARQL is specifically designed with data integration in mind (global URIs, federated queries, a single representation pattern (the triple), etc.).
 
 ```
 ... we often see information architects prefer the features of the RDF model because of a good fit with use cases for data alignment, master data management, and data exchange.
@@ -211,7 +211,7 @@ In RDF, there is a single way to say things: as a triple.
 For example, let's say we want to talk about this paper (and its sections).
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC35282/
 
-We'll first use an LPG representation found in [this project](https://github.com/covidgraph/data_cord19) then an RDF representation.
+I'll first use an LPG representation found in [this project](https://github.com/covidgraph/data_cord19) then an RDF representation.
 
 
 The following Cypher query (against a Neo4j instance):
@@ -278,7 +278,7 @@ As your graph participates in the "extended graph" you don't want to your data m
 
 
 When you make the same data modeling choice but a difference implementation choice you lose query uniformity.
-Let's hold the data modeling choice at: "label" means "type of" and "Paper" is the kind of thing we are talking about and step through the implementation options:
+Let's hold the data modeling choice at: "label" means "type of" and "Paper" is the kind of thing we are talking about and step through the implementation options' corresponding Cypher query:
 ```
 match (s:Paper)-[p]-(o) return s,p,o
 match (s {label: "Paper"})-[p]-(o) return s,p,o
