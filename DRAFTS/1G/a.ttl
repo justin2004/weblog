@@ -185,9 +185,20 @@
                        :hasParticipant :AlanKay ] .
 
 # Douglas Englebart observes that Alan Kay observes that Douglas Englebart is at the anniversary as an observer
-:Participation-5553344 :hasParticipation [ a :Participation ;
-                                           :hasRole :Observer ;
-                                           :hasParticipant :DouglasEnglebart ] .
+:Participation-5553344 :hasParticipation  _:b1 .
+_:b1 a :Participation ;
+     :hasRole :Observer ;
+     :hasParticipant :DouglasEnglebart .
+
 # TODO how would we say that:
-# Douglas Englebart does not observes that Alan Kay observes that Douglas Englebart is at the anniversary as an observer
+# Douglas Englebart does not observe that Alan Kay observes that Douglas Englebart is at the anniversary as an observer
 # do we need any owl negative fact axioms?
+# i think like this...    yuck
+[ a owl:NegativePropertyAssertion ;
+  owl:sourceIndividual :Participation-5553344 ;
+  owl:assertionProperty :hasParticipation ;
+  owl:targetIndividual _:b1 ]
+# https://www.w3.org/2007/OWL/wiki/Quick_Reference_Guide
+# 
+# i think i'd rather do it like this maybe
+#   :hasNoRole :Observer ;
