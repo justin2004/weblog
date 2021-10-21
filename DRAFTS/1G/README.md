@@ -79,6 +79,9 @@ see a.ttl
 
 Which is a little more wordy than the rdf-star version but it offers many advantages like...
 
+The following advantages come from putting information into the structure of the graph and by using a pareto vocabulary.
+TODO doesn't the 1G paper talk about how RDF puts information into the structure of the graph?
+
 A) You can represent the fact that people witnessed the introduction.
   TODO show the rdf-star version and the LPG version
 
