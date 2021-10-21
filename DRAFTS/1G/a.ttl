@@ -179,6 +179,15 @@
                        :hasParticipant :DouglasEnglebart  .
 
 # Alan Kay observes that Douglas Englebart is at the anniversary as an observer
-:Participation-8573344 :hasParticipation [ a :Participation ;
+:Participation-8573344 :hasParticipation :Participation-5553344 .
+:Participation-5553344 a :Participation ;
+                       :hasRole :Observer ;
+                       :hasParticipant :AlanKay ] .
+
+# Douglas Englebart observes that Alan Kay observes that Douglas Englebart is at the anniversary as an observer
+:Participation-5553344 :hasParticipation [ a :Participation ;
                                            :hasRole :Observer ;
-                                           :hasParticipant :AlanKay ] .
+                                           :hasParticipant :DouglasEnglebart ] .
+# TODO how would we say that:
+# Douglas Englebart does not observes that Alan Kay observes that Douglas Englebart is at the anniversary as an observer
+# do we need any owl negative fact axioms?
