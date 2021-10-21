@@ -31,8 +31,10 @@
 
 
 ###############################################################
-# harry knows sally but we don't know how or since when
-#  TODO was this introduction symmetric? (aka do they both know about each other?)
+# harry knows sally and/or sally knows harry but we don't know how or since when
+#
+#  i don't think we can know if the knowing is symmetric because we don't know
+#  the role each played in the participation
 
 :Harry a :Human .
 :Sally a :Human .
