@@ -1,0 +1,184 @@
+@prefix gist: <https://ontologies.semanticarts.com/gist/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <https://github.com/justin2004/weblog/example/> .
+
+###############################################################
+# alice knows bob and we know how (a conversation) and since when (day granularity)
+
+:Alice a :Human .
+:Bob a :Human .
+
+:event-045 a :Conversation , :Introduction ;
+           gist:hasActualStart "2020-01-01"^^xsd:date ;
+           :hasParticipation [ a :Participation ;
+                                   :hasRole :Interlocutor ;
+                                   :hasParticipant :Bob ] ;
+           :hasParticipation [ a :Participation ;
+                                   :hasRole :Interlocutor ;
+                                   :hasParticipant :Alice ] .
+# NOTE :Interlocutor implies the introduction was symmetric, right ?
+#
+#   maybe there could be a rule like: if there is an introduction where
+#   each act of participation :hasRole something that implies symmetry
+#   then the whole introduction was symmetric 
+#   -> all participants know each other
+###############################################################
+
+
+###############################################################
+# harry knows sally but we don't know how or since when
+#  TODO was this introduction symmetric? (aka do they both know about each other?)
+
+:Harry a :Human .
+:Sally a :Human .
+
+:event-0248 a :Introduction ;
+           :hasParticipation [ a :Participation ;
+                                   :hasParticipant :Harry ] ;
+           :hasParticipation [ a :Participation ;
+                                   :hasParticipant :Sally ] .
+###############################################################
+
+#  :hasParticipant is  gist:hasParticipant  ?
+
+
+
+
+# << :event-045 :hasParticipant :Bob >> :objectHasRole :Interlocutuor .
+# vs
+# 
+# :event-045 :hasParticipation [ a :Participation ;
+#                                   :hasRole :Interlocutuor ;
+#                                   :hasParticipant :Bob ] .
+
+                      
+:Human rdfs:subClassOf :Agent .
+
+:Participation a rdfs:Class ;
+               rdfs:comment "An act of participation " .
+
+:hasParticipation a owl:ObjectProperty ;  # TODO
+               rdfs:label "has act of participation" .
+
+:Introduction rdfs:subClassOf gist:Event ;
+              rdfs:comment "An Event that involves an explicit brininging together of Things ... not previously brought together?"
+
+:Conversation rdfs:subClassOf gist:Event ; # or activity?
+              rdfs:comment "An Event that involves communication among Agents."
+
+
+# P710 
+# :knows  is symmetric
+# :knowsOf is not
+
+# TODO look at triples for "object has role" qualifier in WD.
+
+
+
+###############################################################
+# Fred witnessed Alice meeting Bob
+
+:event-045 :hasParticipation [ a :Participation ;
+                                  :hasRole :Observer ;
+                                  :hasParticipant :Fred ] .
+
+###############################################################
+
+
+
+
+
+
+
+
+:event-555 a gist:Event ;
+           rdfs:comment "SpaceX SN-8 launch" ;
+           :hasPart :event-0834 .
+
+:event-0834 a :ChemicalReaction ;
+           gist:hasActualStart "2020-12-08"^^xsd:date ;
+           :hasParticipation [ a :Participation ;
+                                 :hasRole :Oxidizer ;
+                                 :hasParticipant [ a :Oxygen ] ] ;
+           :hasParticipation [ a :Participation ;
+                                 :hasRole :Fuel ;
+                                 :hasParticipant [ a :Methane ] ] .
+
+#     :Fuel :closeMatch :Combustable .   # ?
+ 
+
+
+
+:Casablanca a :Film ;
+            gist:name "Casablanca" ;
+            :hasParticipation [ a :Participation ;
+                                  :hasRole :Actor ;
+                                  :hasParticipant :HumphreyBogart ;
+                                  :hasCharacterRole :RickBlaine  ] ;
+            :hasParticipation :Participation-5998 .
+
+:Participation-5998 a :Participation ;
+                    :hasRole :Director ;
+                    :hasParticipant :MichaelCurtiz ;
+
+
+
+###############################################################
+# Michael Curtiz was paid $73,400 for directing Casablanca.
+# according to
+# https://www.memorabletv.com/features/casablanca-the-complete-budget-breakdown/
+# TODO make a named graph
+:Balance-00347 gist:goesToAgent :MichaelCurtiz .
+:Balance-00347 a gist:Balance ;
+               gist:isBasedOn :Participation-5998 ;
+               TODO:hasMagnitude [ rdf:value 73400 ;
+                                   TODO:unit gist:_USDollar ] .
+###############################################################
+
+
+
+
+# Some computer scientists attend The Mother of All Demos where Douglas
+# Englebart is the presentor
+:event-111003 a :Presentation ;
+              rdfs:label "The Mother of All Demos" ;
+              gist:hasActualStart "1968-12-08"^^xsd:date ;
+              :hasParticipation [ a :Participation ;
+                                    :hasRole :Presentor ;
+                                    :hasParticipant :DouglasEnglebart ] ;
+              :hasParticipation [ a :Participation ;
+                                    :hasRole :Observer ;
+                                    :hasParticipant :AlanKay ] ;
+              :hasParticipation [ a :Participation ;
+                                    :hasRole :Observer ;
+                                    :hasParticipant :AndriesVanDam] ;
+              :hasParticipation [ a :Participation ;
+                                    :hasRole :Observer ;
+                                    :hasParticipant :CharlesIrby] ;
+              :hasParticipation [ a :Participation ;
+                                    :hasRole :Observer ;
+                                    :hasParticipant :BobSproull] .
+
+
+# Douglas Englebart and Alan Kay attend the anniversary
+:event-221010 a :Presentation ;
+              rdfs:label "The Mother of All Demos 30th Anniversary" ;
+              gist:hasActualStart "1998-12-08"^^xsd:date ;
+              :hasParticipation :Participation-8573344 ;
+              :hasParticipation [ a :Participation ;
+                                    :hasRole :Observer ;
+                                    :hasParticipant :AlanKay ] ;
+
+:Participation-8573344 a :Participation ;
+                       :hasRole :Observer ;
+                       :hasParticipant :DouglasEnglebart  .
+
+# Alan Kay observes that Douglas Englebart is at the anniversary as an observer
+:Participation-8573344 :hasParticipation [ a :Participation ;
+                                           :hasRole :Observer ;
+                                           :hasParticipant :AlanKay ] .

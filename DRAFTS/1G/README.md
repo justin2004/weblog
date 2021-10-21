@@ -26,17 +26,15 @@ RDF/SPARQL is specifically designed with data integration in mind (global URIs, 
 ```
 
 Right now, as I am feeling a little reckless with my words, I would say that LPG seems to be specifically designed with the following in mind:
-- introducing graphs to software developers
+- introducing graphs to software developers (who know json)
     - and not strongly encouraging them to model their data thoughtfully
 - support path traversal well
 
-(supporting "point solutions")
+In other words: LPG was designed to support "point solutions."
 https://allegrograph.com/why-young-developers-dont-get-knowledge-graphs/
 
 
-```
-Software developers often choose an LPG language because they find it more natural and more "compatible" with their programming paradigm.
-```
+> Software developers often choose an LPG language because they find it more natural and more "compatible" with their programming paradigm.
 
 
 Kurt Cagle notes "That RDF is not used as much tends to come down to the fact that most developers prefer to model their domain as little as possible."
@@ -44,15 +42,13 @@ https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-sta
 
 which causes things like:
 
-> Note that the choice of LPG can also happen when RDF is dismissed out of hand because it is viewed as complex and “academic”.
+> Note that the choice of LPG can also happen when RDF is dismissed out of hand because it is viewed as complex and "academic".
 
-The use of LPG makes it more natural to skip thoughtful data modeling.
+The use of LPG makes it more natural to skip thoughtful data modeling (which is the "academic" part) .
 TODO back that up
 
 
-```
-Regardless of what the reasons, we believe that the (forced) choice of graph models slows the adoption of graphs because it creates confusion and segmentation in the graph database space.
-```
+> Regardless of what the reasons, we believe that the (forced) choice of graph models slows the adoption of graphs because it creates confusion and segmentation in the graph database space.
 
 I agree with that but I am not sure if the optimal way to un-segment the graph database space is to work hard making a model (the "1G" model) to accommodate a metamodel that makes it more natural to skip thoughtful data modeling (LPG).
 
@@ -78,96 +74,20 @@ It seems to say something like: "Alice has known Bob since 2020."
 
 But my ontologist colleagues say something like "I probably wouldn't reify that state of affairs like that."
 And what they mean, I think, is they would instead reify the state of affairs more like:
-```
 
-:Alice a :Human .
-:Bob a :Human .
+see a.ttl
 
-:event-045 a :Conversation , :Introduction ;
-           :hasActualStart "2020-01-01"^^xsd:date ;
-           <!-- :hasParticipant :Alice ; -->
-           <!-- :hasParticipant :Bob ; -->
-           :hasParticipantion [ a :Participation ;
-                                   :hasRole :Interlocutuor ;
-                                   :hasParticipant :Bob ] ;
-           :hasParticipantion [ a :Participation ;
-                                   :hasRole :Interlocutuor ;
-                                   :hasParticipant :Alice ] .
-
-
-
-
-; << :event-045 :hasParticipant :Bob >> :objectHasRole :Interlocutuor .
-; vs
-; 
-; :event-045 :hasParticipantion [ a :Participation ;
-;                                   :hasRole :Interlocutuor ;
-;                                   :hasParticipant :Bob ] .
-
-                      
-:Human rdfs:subClassOf :Agent .
-
-:Participation a rdfs:Class ;
-               rdfs:comment "An act of participation " .
-
-:hasParticipation a TODO:ObjectProperty ;
-               rdfs:label "has act of participation" .
-
-:Introduction rdfs:subClassOf :Event ;
-              rdfs:comment "An Event that involves an explicit brininging together of Things ... not previously brought together?"
-
-:Conversation rdfs:subClassOf :Event ;
-              rdfs:comment "An Event that involves communication among Agents."
-
-
-; P710 
-; :knows  is symmetric
-; :knowsOf is not
-```
 Which is a little more wordy than the rdf-star version but it offers many advantages like...
 
 A) You can represent the fact that people witnessed the introduction.
   TODO show the rdf-star version and the LPG version
-```
-TODO look at triples for "object has role" qualifier in WD.
-:Fred :event-045 
 
-:event-045 :hasParticipantion [ a :Participation ;
-                                  :hasRole :Observer ;
-                                  :hasParticipant :Fred ] .
-```
+a.ttl
 
 B) You can generalize to other similar Events:
-```
 
-:event-555 a :Event ;
-           rdfs:comment "SpaceX SN-8 launch" ;
-           :hasPart :event-0834 .
+a.ttl
 
-:event-0834 a :ChemicalReaction ;
-           :hasActualStart "2020-12-08"^^xsd:date ;
-           :hasParticipantion [ a :Participation ;
-                                 :hasRole :Oxidizer ;
-                                 :hasParticipant [ a :Oxygen ] ] ;
-           :hasParticipantion [ a :Participation ;
-                                 :hasRole :Fuel ;
-                                 :hasParticipant [ a :Methane ] ] .
-
-:hasIngredient subclass of hasparticipant .
-:Fuel :closeMatch :Combustable .
- 
-```
-
-```
-:Casablanca a :Film ;
-            :hasParticipantion [ a :Participation ;
-                                  :hasRole :Actor ;
-                                  :hasParticipant :HumphreyBogart ;
-                                  :hasCharacterRole :RickBlaine  ] ;
-            :hasParticipantion [ a :Participation ;
-                                  :hasRole :Director ;
-                                  :hasParticipant :MichaelCurtiz ]
-```
 
 notice how few strings we have... don't bottom out in strings (things not strings)!
 
