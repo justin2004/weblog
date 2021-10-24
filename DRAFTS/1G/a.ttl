@@ -33,8 +33,8 @@
 ###############################################################
 # harry knows sally and/or sally knows harry but we don't know how or since when
 #
-#  i don't think we can know if the knowing is symmetric because we don't know
-#  the role each played in the participation
+#   i don't think we can know if the knowing is symmetric because we don't know
+#   the role each played in the participation
 
 :Harry a :Human .
 :Sally a :Human .
@@ -117,12 +117,15 @@
 
 
 :Casablanca a :Film ;
-            gist:name "Casablanca" ;
-            :hasParticipation [ a :Participation ;
-                                  :hasRole :Actor ;
-                                  :hasParticipant :HumphreyBogart ;
-                                  :hasCharacterRole :RickBlaine  ] ;
-            :hasParticipation :Participation-5998 .
+            gist:name "Casablanca" .
+
+:event-120009 a :Event ;
+              gist:produces :Casablanca ;
+              :hasParticipation [ a :Participation ;
+                                    :hasRole :Actor ;
+                                    :hasParticipant :HumphreyBogart ;
+                                    :hasCharacterRole :RickBlaine  ] ;
+              :hasParticipation :Participation-5998 .
 
 :Participation-5998 a :Participation ;
                     :hasRole :Director ;

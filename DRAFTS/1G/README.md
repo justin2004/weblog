@@ -9,6 +9,7 @@ I can understand why they'd want to do that.
 If they can appeal to all the customers that can't easily decided between LPG and RDF they'd have ...
 
 The 1G data model they are thinking about is basically RDF where each triple has an internal identifier.
+TODO which is interesting -- RDF as the general metamodel...
 
 
 
@@ -21,31 +22,28 @@ TODO post about the sv story.
 
 RDF/SPARQL is specifically designed with data integration in mind (global URIs, federated queries, a single representation pattern (the triple), etc.).
 
-```
-... we often see information architects prefer the features of the RDF model because of a good fit with use cases for data alignment, master data management, and data exchange.
-```
+> ... we often see information architects prefer the features of the RDF model because of a good fit with use cases for data alignment, master data management, and data exchange.
 
-Right now, as I am feeling a little reckless with my words, I would say that LPG seems to be specifically designed with the following in mind:
+To put it not so carefully, I would say that LPG seems to be specifically designed with the following in mind:
 - introducing graphs to software developers (who know json)
     - and not strongly encouraging them to model their data thoughtfully
-- support path traversal well
+- supporting path traversal well
 
-In other words: LPG was designed to support "point solutions."
-https://allegrograph.com/why-young-developers-dont-get-knowledge-graphs/
+In other words: LPG was designed to support "[point solutions](https://allegrograph.com/why-young-developers-dont-get-knowledge-graphs/)."
 
 
 > Software developers often choose an LPG language because they find it more natural and more "compatible" with their programming paradigm.
 
+Kurt Cagle [notes](https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-star) "That RDF is not used as much tends to come down to the fact that most developers prefer to model their domain as little as possible."
 
-Kurt Cagle notes "That RDF is not used as much tends to come down to the fact that most developers prefer to model their domain as little as possible."
-https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-star
+Software developers certainly model their logical and physical schema as needed, but modeling of the conceptual schema (the domain) is given minimal attention.  
 
-which causes things like:
+That developers prefer to model their domain as little as possible causes things like this:
 
 > Note that the choice of LPG can also happen when RDF is dismissed out of hand because it is viewed as complex and "academic".
 
-The use of LPG makes it more natural to skip thoughtful data modeling (which is the "academic" part) .
-TODO back that up
+The use of LPG makes it more natural to skip thoughtful domain modeling (which is the "academic" part) .
+I say that because they many implementation choices to make ... whereas with RDF there are no implementation choices (there are only domain modeling choices).
 
 
 > Regardless of what the reasons, we believe that the (forced) choice of graph models slows the adoption of graphs because it creates confusion and segmentation in the graph database space.
@@ -60,8 +58,10 @@ I agree with that but I am not sure if the optimal way to un-segment the graph d
 ---
 
 A big part of LPG is the ability to make statements about statements (with relationship properties).
-But the ability to make statements about statements encourages you to skip more thoughtful data modeling.
-And it is the thoughtful data modeling that enables data integration and query writers to explore generalizations like analogy.
+But the ability to make statements about statements encourages you to skip more thoughtful domain modeling.
+And it is the thoughtful domain modeling that enables data integration and query writers to explore generalizations like analogy.
+
+Let's look at what thoughtful domain modeling looks like.
 
 An example from the 1G paper is:
 ```
@@ -75,12 +75,14 @@ It seems to say something like: "Alice has known Bob since 2020."
 But my ontologist colleagues say something like "I probably wouldn't reify that state of affairs like that."
 And what they mean, I think, is they would instead reify the state of affairs more like:
 
+
+The RDF representation I'll show is a little more wordy than the rdf-star version but it offers data integration advantages.
+The data integration advantages of RDF with thoughtful domain modeling arise from the fact that relationships (like `:knows`) don't have to be merely a single edge type, instead you can decompose knowing into the structure of the RDF graph like the following:
+
 see a.ttl
 
-Which is a little more wordy than the rdf-star version but it offers many advantages like...
 
 The following advantages come from putting information into the structure of the graph and by using a pareto vocabulary.
-TODO doesn't the 1G paper talk about how RDF puts information into the structure of the graph?
 
 A) You can represent the fact that people witnessed the introduction.
   TODO show the rdf-star version and the LPG version
@@ -96,18 +98,11 @@ notice how few strings we have... don't bottom out in strings (things not string
 
 
 
-```
-Put another way - RDF* should not be used to solve modeling deficiencies.
-```
-https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-star
-
-
-
-```
-do you need RDF*? From the annotational standpoint, quite possibly, as it provides a means of tracking volatile property and relationship value changes over time.
-```
-While you could I think I might instead use a triplestore with immutable state like [asami](https://github.com/threatgrid/asami) when I have a volatile named graph but in general I would keep named graphs read-only as often as possible.
-No, nevermind on that.
+Put another [way](https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-star): "RDF-star [(statements about statements)] should not be used to solve [domain] modeling deficiencies."
+Kurt Cagle also notes "do you need RDF-star? From the annotational standpoint, quite possibly, as it provides a means of tracking volatile property and relationship value changes over time."
+While you could, I think I might instead use something like a triplestore with immutable state (e.g. [asami](https://github.com/threatgrid/asami)) when I have a volatile named graph.
+In general, however, I would keep named graphs read-only as often as possible.
+No, nevermind on that. ?
 Most data is read-only-flavored anyway because as things move from the present into the past their volatility is over. 
 
 
