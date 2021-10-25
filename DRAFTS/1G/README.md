@@ -35,6 +35,7 @@ And if you put (explicitly) that cool stuff that happens in our heads inside som
 Clearly we need them to do cool stuff.
 
 
+delte?
 ## they want to use RDF-star as the 1G metamodel
 
 The 1G data model they are thinking about is basically RDF where each triple has an internal identifier.
@@ -70,7 +71,7 @@ In other words: LPG was designed to support "[point solutions](https://allegrogr
 Making a decision based on what your team is comfortable with (LPG) is about today.
 
 
-### domain modeling vs. implementation choices
+### domain modeling
 
 We have a finite number of choices we can make per day.
 
@@ -83,7 +84,7 @@ That developers prefer to model their domain as little as possible causes things
 > Note that the choice of LPG can also happen when RDF is dismissed out of hand because it is viewed as complex and "academic".
 
 The use of LPG makes it more natural to skip thoughtful domain modeling (which is the "academic" part) .
-I say that because with LPG there are many implementation choices to make and domain modeling choices.
+I say that because with LPG there are many [implementation choices](TODO link to section) to make and domain modeling choices.
 Whereas, with RDF there are no implementation choices (there are only domain modeling choices).
 Because LPG allows software developers to spend their daily budget of decisions on implementation choices the domain modeling can get the attention scraps.
 
@@ -91,6 +92,7 @@ Because LPG allows software developers to spend their daily budget of decisions 
 > Regardless of what the reasons, we believe that the (forced) choice of graph models slows the adoption of graphs because it creates confusion and segmentation in the graph database space.
 
 I agree with that but I am not sure if the optimal way to un-segment the graph database space is to work hard making a model (the "1G" model) to accommodate a metamodel that makes it more natural to skip thoughtful domain modeling.
+After AWS Neptune lands all the indecisive customers, the customers will still eventually have to get onto the important and tricky business of domain modeling so why not just have the customers start now.
 
 
 
@@ -172,6 +174,14 @@ No, nevermind on that. ?
 Most data is read-only-flavored anyway because as things move from the present into the past their volatility is over. 
 
 
+## implementation choices
 
+With LPG you can put put representations in:
+- a node property         (any key, any value)
+- a node label            (single key "label", any value)
+- a relationship property (any key, any value)
+- a relationship type     (single key "type", any value)
 
+That is 4 options and I think that is 3 options too many.
+See [LPGs_many_implementation_choices](./LPGs_many_implementation_choices.md) for an expansion on that.
 

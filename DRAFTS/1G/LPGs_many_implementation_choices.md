@@ -1,15 +1,16 @@
-
+## LPG's implementation choices
 
 As a metamodel, LPG (labeled property graph) has too many options on where to say things.
-That means to use an LPG representation you must make implementation choices that aren't data modeling choices.
+That means to use an LPG representation you must make implementation choices that aren't domain modeling choices.
+
+The implementaion choices I am refering to are the choices about where to put data.
+I call these "implementation" choices because a storage location is often an implementation choice.
 
 In RDF you don't have those implementation choices to make.
 In RDF, there is a single way to say things: as a triple.
 
-For example, let's say we want to talk about this paper (and its sections).
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC35282/
-
-I'll first use an LPG representation found in [this project](https://github.com/covidgraph/data_cord19) then an RDF representation.
+For example, let's say we want to talk about [this paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC35282/) and its sections.
+I'll use the LPG representation found in [this project](https://github.com/covidgraph/data_cord19).
 
 
 The following Cypher query (against a Neo4j instance):
@@ -60,8 +61,6 @@ So the results show us that (in the metamodel language (LPG)):
 
 TODO is it more clear to talk about choices or options? or a choice with options?
 
-The implementaion choices I am refering to are the choices about where to put data.
-I call these "implementation" choices because a storage location is often an implementation choice.
 
 With LPG you can put data in:
 - a node property         (any key, any value)
