@@ -142,10 +142,9 @@ That is, knowing (as defined here) consists of:
 (see [a.ttl](./a.ttl) for more context)
 
 
-The following advantages come from putting information into the structure of the graph and by using a pareto vocabulary.
-By putting information into the structure of the graph and (by using a Pareto vocabulary (ontology)) you can do the following:
+By putting information into the structure of the graph and by using a Pareto vocabulary (ontology) you can do the following:
 
-A) Represent the fact that people witnessed the introduction.
+A) Represent secondary or tertiary facts about previously stated facts.
 
 ```
 # Fred witnessed Alice meeting Bob
@@ -154,12 +153,13 @@ A) Represent the fact that people witnessed the introduction.
                                   :hasRole :Observer ;
                                   :hasParticipant :Fred ] .
 ```
+Also see [a.ttl](./a.ttl) for tertiary fact representation.
 
-B) Generalize to other similar events:
+
+B) Generalize to other events with the same vocabulary.
 
 See [a.ttl](./a.ttl) for representations of film productions and rocket launches using the same vocabulary.
-
-In [a.ttl](./a.ttl) you'll notice how representations don't just bottom out in strings.
+You'll notice how representations don't just bottom out in strings.
 "Things not strings" is a common refrain in the RDF world.
 
 
@@ -170,6 +170,7 @@ While you could, I think I might instead use something like a triplestore with i
 In general, however, I would keep named graphs read-only as often as possible.
 No, nevermind on that. ?
 Most data is read-only-flavored anyway because as things move from the present into the past their volatility is over. 
+
 
 
 
