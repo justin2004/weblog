@@ -1,25 +1,58 @@
-# discussion on 1G 
+# Graph? Yes! Which one? RDF!
 
 
 AWS Neptune supports LPG and RDF but they are separate sides of Neptune -- that is, LPG and RDF aren't interoperable.
 Some key AWS Neptune team members are thinking about LPG and RDF graph interoperability in what they call "one graph" (1G).
 The idea is that 1G is comprehensive enough to support LPG and RDF metamodels at the same time.
 
-I can understand why they'd want to do that.
-If they can appeal to all the customers that can't easily decided between LPG and RDF they'd have ...
+You can understand why they'd want to do that.
+If they can appeal to all the customers that can't easily decided between LPG and RDF they'd appeal to many more customers.
+
+Deciding between LPG and RDF is a matter of deciding between today and many tomorrows, respectively.
+
+
+
+## Why Graphs
+
+When a data scientist is looking at some tabular data she gets a semantic network (a graph) in her head.
+```
+----------------------------------------------------------------
+|    where                 |  who               |    what
+-------------------------------------------------------------------
+|   "library"              | "Colonel Mustard"  | "candlestick"
+|   "conservatory"         | "Mrs. Peacock"     | "lead pipe"
+```
+
+She doesn't just mentally interact with the string "library."
+She mentally interacts with the thing [library](https://www.wikidata.org/wiki/Q29843656).
+The thing library is a specific kind of room.
+It is used to store books.
+It is related to [library](https://www.wikidata.org/wiki/Q7075) the institution.
+
+So graphs aren't magical.
+They are just representations of what happens in our heads when we interact with data.
+And if you put (explicitly) that cool stuff that happens in our heads inside some computers you can use that cool stuff programmatically.
+Clearly we need them to do cool stuff.
+
+
+## they want to use RDF-star as the 1G metamodel
 
 The 1G data model they are thinking about is basically RDF where each triple has an internal identifier.
 TODO which is interesting -- RDF as the general metamodel...
+This is my cheapest observation.
+The observation that the "one graph" metamodel looks more like RDF than LPG.
 
 
 
 
+## today's needs (LPG)                  #  vs. many of tomorrow's needs (RDF) (i need this section somewhere )
+
+I find myself looking for reasons to solve [the general problem](https://xkcd.com/974/) but not everyone does.
+I'm glad we have a mixture of reason seekers.
 
 > Making a good choice between the two technology stacks is complex and requires a balanced consideration of data modeling aspects, query language features, and their adequacy for current and future use cases.
 
 When it comes to future use cases, in my experience, all roads lead to (data) integration.
-TODO post about the sv story.
-
 RDF/SPARQL is specifically designed with data integration in mind (global URIs, federated queries, a single representation pattern (the triple), etc.).
 
 > ... we often see information architects prefer the features of the RDF model because of a good fit with use cases for data alignment, master data management, and data exchange.
@@ -34,6 +67,13 @@ In other words: LPG was designed to support "[point solutions](https://allegrogr
 
 > Software developers often choose an LPG language because they find it more natural and more "compatible" with their programming paradigm.
 
+Making a decision based on what your team is comfortable with (LPG) is about today.
+
+
+### domain modeling vs. implementation choices
+
+We have a finite number of choices we can make per day.
+
 Kurt Cagle [notes](https://www.bbntimes.com/technology/the-pros-and-cons-of-rdf-star-and-sparql-star) "That RDF is not used as much tends to come down to the fact that most developers prefer to model their domain as little as possible."
 
 Software developers certainly model their logical and physical schema as needed, but modeling of the conceptual schema (the domain) is given minimal attention.  
@@ -43,23 +83,24 @@ That developers prefer to model their domain as little as possible causes things
 > Note that the choice of LPG can also happen when RDF is dismissed out of hand because it is viewed as complex and "academic".
 
 The use of LPG makes it more natural to skip thoughtful domain modeling (which is the "academic" part) .
-I say that because they many implementation choices to make ... whereas with RDF there are no implementation choices (there are only domain modeling choices).
+I say that because with LPG there are many implementation choices to make and domain modeling choices.
+Whereas, with RDF there are no implementation choices (there are only domain modeling choices).
+Because LPG allows software developers to spend their daily budget of decisions on implementation choices the domain modeling can get the attention scraps.
 
 
 > Regardless of what the reasons, we believe that the (forced) choice of graph models slows the adoption of graphs because it creates confusion and segmentation in the graph database space.
 
-I agree with that but I am not sure if the optimal way to un-segment the graph database space is to work hard making a model (the "1G" model) to accommodate a metamodel that makes it more natural to skip thoughtful data modeling (LPG).
+I agree with that but I am not sure if the optimal way to un-segment the graph database space is to work hard making a model (the "1G" model) to accommodate a metamodel that makes it more natural to skip thoughtful domain modeling.
 
 
 
 
+## Statements About Statements
 
-
----
 
 A big part of LPG is the ability to make statements about statements (with relationship properties).
 But the ability to make statements about statements encourages you to skip more thoughtful domain modeling.
-And it is the thoughtful domain modeling that enables data integration and query writers to explore generalizations like analogy.
+And it is the thoughtful domain modeling that enables data integration and it allows query writers to explore generalizations such as analogy.
 
 Let's look at what thoughtful domain modeling looks like.
 
@@ -73,28 +114,53 @@ Maybe you think that statement is easy to read and work with.
 It seems to say something like: "Alice has known Bob since 2020."
 
 But my ontologist colleagues say something like "I probably wouldn't reify that state of affairs like that."
-And what they mean, I think, is they would instead reify the state of affairs more like:
-
 
 The RDF representation I'll show is a little more wordy than the rdf-star version but it offers data integration advantages.
-The data integration advantages of RDF with thoughtful domain modeling arise from the fact that relationships (like `:knows`) don't have to be merely a single edge type, instead you can decompose knowing into the structure of the RDF graph like the following:
+The data integration advantages of RDF with thoughtful domain modeling arise from the fact that relationships (like `:knows`) don't have to be merely a single edge type, instead you can decompose "knowing" into the structure of the RDF graph like the following:
 
-see a.ttl
+```
+# alice knows bob and we know how (a conversation) and since when (day granularity)
+:Alice a :Human .
+:Bob a :Human .
+
+:event-045 a :Conversation , :Introduction ;
+           gist:hasActualStart "2020-01-01"^^xsd:date ;
+           :hasParticipation [ a :Participation ;
+                                   :hasRole :Interlocutor ;
+                                   :hasParticipant :Bob ] ;
+           :hasParticipation [ a :Participation ;
+                                   :hasRole :Interlocutor ;
+                                   :hasParticipant :Alice ] .
+```
+That is, knowing (as defined here) consists of:
+- awareness of another (`:Introduction`)
+    - some historical event (`has:hasActualStart`) such as a (`:Conversation`)
+- acts of participation (`:Participation`)
+    - with roles (such as `:Interlocutor`)
+    - and participants
+
+(see [a.ttl](./a.ttl) for more context)
 
 
 The following advantages come from putting information into the structure of the graph and by using a pareto vocabulary.
+By putting information into the structure of the graph and (by using a Pareto vocabulary (ontology)) you can do the following:
 
-A) You can represent the fact that people witnessed the introduction.
-  TODO show the rdf-star version and the LPG version
+A) Represent the fact that people witnessed the introduction.
 
-a.ttl
+```
+# Fred witnessed Alice meeting Bob
 
-B) You can generalize to other similar Events:
+:event-045 :hasParticipation [ a :Participation ;
+                                  :hasRole :Observer ;
+                                  :hasParticipant :Fred ] .
+```
 
-a.ttl
+B) Generalize to other similar events:
 
+See [a.ttl](./a.ttl) for representations of film productions and rocket launches using the same vocabulary.
 
-notice how few strings we have... don't bottom out in strings (things not strings)!
+In [a.ttl](./a.ttl) you'll notice how representations don't just bottom out in strings.
+"Things not strings" is a common refrain in the RDF world.
 
 
 
@@ -111,9 +177,8 @@ Most data is read-only-flavored anyway because as things move from the present i
 
 
 
----
 
-
+## Domain modeling choices vs. implementation choices
 
 https://www.lassila.org/publications/2021/scg2021-lassila+etal.pdf
 https://www.lassila.org/publications/2021/scg2021-lassila+etal-preso.pdf
