@@ -32,16 +32,7 @@ It is related to [library](https://www.wikidata.org/wiki/Q7075) the institution.
 So graphs aren't magical.
 They are just representations of what happens in our heads when we interact with data.
 And if you put (explicitly) that cool stuff that happens in our heads inside some computers you can use that cool stuff programmatically.
-Clearly we need them to do cool stuff.
-
-
-delte?
-## they want to use RDF-star as the 1G metamodel
-
-The 1G data model they are thinking about is basically RDF where each triple has an internal identifier.
-TODO which is interesting -- RDF as the general metamodel...
-This is my cheapest observation.
-The observation that the "one graph" metamodel looks more like RDF than LPG.
+Clearly we need graphs to do cool stuff.
 
 
 

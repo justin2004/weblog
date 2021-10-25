@@ -206,5 +206,6 @@ _:b1 a :Participation ;
   owl:targetIndividual _:b1 ]
 # https://www.w3.org/2007/OWL/wiki/Quick_Reference_Guide
 # 
-# i think i'd rather do it like this maybe
-#   :hasNoRole :Observer ;
+# i think we could say no one witnessed something like:
+#   :hasRole :Nothing ;
+#      or maybe we need to close the world with a closure axiom?
