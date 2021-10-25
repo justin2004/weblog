@@ -113,8 +113,6 @@ The data integration advantages of RDF with thoughtful domain modeling arise fro
 
 ```
 # alice knows bob and we know how (a conversation) and since when (day granularity)
-:Alice a :Human .
-:Bob a :Human .
 
 :event-045 a :Conversation , :Introduction ;
            gist:hasActualStart "2020-01-01"^^xsd:date ;
@@ -167,7 +165,7 @@ Most data is read-only-flavored anyway because as things move from the present i
 
 ## implementation choices
 
-With LPG you can put put representations in:
+With LPG you can put representations in:
 - a node property         (any key, any value)
 - a node label            (single key "label", any value)
 - a relationship property (any key, any value)
