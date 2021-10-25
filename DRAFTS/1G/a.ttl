@@ -69,6 +69,7 @@
 
 :Introduction rdfs:subClassOf gist:Event ;
               rdfs:comment "An Event that involves an explicit brininging together of Things ... not previously brought together?"
+# ^ TODO something about awareness for agents and causal proximity for non-agents
 
 :Conversation rdfs:subClassOf gist:Event ; # or activity?
               rdfs:comment "An Event that involves communication among Agents."
