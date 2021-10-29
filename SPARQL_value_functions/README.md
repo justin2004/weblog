@@ -3,7 +3,7 @@
 When I read Bob DuCharme's [blog on using custom javascript functions](https://www.bobdc.com/blog/arqjavascript/) in SPARQL queries I knew I needed to try it out.
 What I really wanted was to be able to call functions from some [npm](https://www.npmjs.com/) libraries.
 Turns out I wasn't able to figure out how to do that.
-It might not be a simple thing to do because Apache Jena doesn't bundle a node runtime... also I didn't even look at how Apache Jena (ARQ specifically) is evaluating this custom javascript. Still, the ability to call vanilla javascript from a SPARQL function is nice.
+It might not be a simple thing to do because Apache Jena doesn't bundle a node runtime... also I didn't even look at how Apache Jena (ARQ specifically) is evaluating this custom javascript. Still, the ability to call vanilla javascript in a SPARQL query is nice.
 
 But I still wanted to call someone else's library functions so I moved onto another option: SPARQL Value Functions.
 At least that is what Apache Jena [calls this custom fuction pluggability](https://jena.apache.org/documentation/query/writing_functions.html).
