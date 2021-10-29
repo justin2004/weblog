@@ -15,7 +15,6 @@ Take some non-RDF data with string date representations that were messy and cano
 
 Here is the csv example we'll work with:
 
-```
 |classification\_one |classification\_two |classification\_three|company\_system\_of\_record|company\_id |company\_name       |company\_inception       |
 |--------------------|--------------------|--------------------|--------------------|------------|--------------------|-------------------------|
 |Energy, chemicals and utilities|                    |                    |CompanyX\_DeptY\_SystemA|1           |ABT Inc\.           |Last day of August 2004  |
@@ -29,7 +28,6 @@ Here is the csv example we'll work with:
 |Financial institutions|                    |                    |CompanyX\_DeptY\_SystemM|9           |Pet E\. Cash Co\.   |                         |
 |Financial institutions|Asset / investment management and funds|                    |CompanyX\_DeptY\_SystemM|10          |                    |                         |
 
-```
 
 (I started with a .csv I got [here](https://github.com/kg-construct/rml-questions/discussions/3) and added some columns to it.)
 
