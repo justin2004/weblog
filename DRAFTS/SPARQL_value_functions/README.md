@@ -3,9 +3,9 @@
 When I read Bob DuCharme's [blog on using custom javascript functions](https://www.bobdc.com/blog/arqjavascript/) in SPARQL queries I knew I needed to try it out.
 What I really wanted was to be able to call functions from some [npm](https://www.npmjs.com/) libraries.
 Turns out I wasn't able to figure out how to do that.
-It might not be a simple thing to do because Apache Jena doesn't bundle a node runtime... also I didn't even look at how Apache Jena (ARQ specifically) is evaluating this custom javascript.
+It might not be a simple thing to do because Apache Jena doesn't bundle a node runtime... also I didn't even look at how Apache Jena (ARQ specifically) is evaluating this custom javascript. Still, the ability to call vanilla javascript from a SPARQL function is nice.
 
-So I moved onto another option: SPARQL Value Functions.
+But I still wanted to call someone else's library functions so I moved onto another option: SPARQL Value Functions.
 At least that is what Apache Jena [calls this custom fuction pluggability](https://jena.apache.org/documentation/query/writing_functions.html).
 
 Here is what I wanted to do...
@@ -171,6 +171,7 @@ ex:coal  rdf:type     skos:Concept ;
         rdf:type  skos:Concept .
 
 ```
+(NOTE: I wouldn't recommend using blank nodes for the companies like I did here but I am not showing off domain modeling in RDF in this post.)
 
 Here is the query that produced those triples (in a bash command for ease of replication):
 ```
@@ -240,7 +241,7 @@ The function `datething:parse` takes a variable (bound to a string) as an argume
 In order to allow that to happen you have to put a .jar on Apache Jena Fuseki's classpath.
 I am running SPARQL Anything (which is Fuseki but with some added functionality to allow it to treat non-RDF data as RDF).
 
-Here are the steps to do that and invoke this messy string date parsing function:
+Here are the steps to invoke this messy string date parsing function:
 
 1) Build the .jar file for the `datething:parse` functionality by following the instructions [here](https://github.com/justin2004/datething) under the "how" section.
 
