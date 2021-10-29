@@ -1,0 +1,11 @@
+classification_one,classification_two,classification_three,company_system_of_record,company_id,company_name,company_inception
+"Energy, chemicals and utilities",,,CompanyX_DeptY_SystemA,1,ABT Inc.,Last day of August 2004
+"Energy, chemicals and utilities",Chemicals,,CompanyX_DeptY_SystemM,2,,
+"Energy, chemicals and utilities",Electricity - nuclear,,CompanyX_DeptY_SystemZ,3,,OCT 1989
+"Energy, chemicals and utilities",Electricity - renewables,,CompanyX_DeptY_SystemZ,4,,DEC 2011
+"Energy, chemicals and utilities",Electricity - renewables,Biomass,CompanyX_DeptY_SystemM,5,Fred's Renewables LLC,
+"Energy, chemicals and utilities",Electricity - renewables,Hydro,CompanyX_DeptY_SystemP,6,WAT Inc.,9 January 2000
+"Energy, chemicals and utilities",thermal,,CompanyX_DeptY_SystemQ,7,,5 Mar 1992
+"Energy, chemicals and utilities",thermal,coal,CompanyX_DeptY_SystemQ,8,,19 Jun 2020
+Financial institutions,,,CompanyX_DeptY_SystemM,9,Pet E. Cash Co.,
+Financial institutions,Asset / investment management and funds,,CompanyX_DeptY_SystemM,10,,
