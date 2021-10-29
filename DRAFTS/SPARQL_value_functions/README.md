@@ -6,7 +6,6 @@ Turns out I wasn't able to figure out how to do that.
 It might not be a simple thing to do because Apache Jena doesn't bundle a node runtime... also I didn't even look at how Apache Jena (ARQ specifically) is evaluating this custom javascript.
 
 So I moved onto another option: SPARQL Value Functions.
-
 At least that is what Apache Jena [calls this custom fuction pluggability](https://jena.apache.org/documentation/query/writing_functions.html).
 
 Here is what I wanted to do...
@@ -32,7 +31,6 @@ Here is the csv example we'll work with:
 (I started with a .csv I got [here](https://github.com/kg-construct/rml-questions/discussions/3) and added some columns to it.)
 
 You'll notice there is some taxonomy information in there as well as some company information.
-
 Also notice how each source system uses different date representations.
 I didn't want to just do a regex for each style.
 I was looking for an 80/20 rule approach and a general way to add functionality to SPARQL queries.
@@ -238,10 +236,8 @@ PREFIX datething: <java:datething.>
 bind(strdt(datething:parse(?when_string),xsd:dateTime) as ?when)
 ```
 
-The function `datething:parse` takes a variable (bound to a string) as an argument and returns an xsd:dateTime string representation.
-
+The function `datething:parse` takes a variable (bound to a string) as an argument and returns an xsd:dateTime string representation then we cast it to an `xsd:dateTime` with `strdt`.
 In order to allow that to happen you have to put a .jar on Apache Jena Fuseki's classpath.
-
 I am running SPARQL Anything (which is Fuseki but with some added functionality to allow it to treat non-RDF data as RDF).
 
 Here are the steps to do that and invoke this custom string parsing function:
