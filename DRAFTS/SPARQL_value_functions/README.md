@@ -240,7 +240,7 @@ The function `datething:parse` takes a variable (bound to a string) as an argume
 In order to allow that to happen you have to put a .jar on Apache Jena Fuseki's classpath.
 I am running SPARQL Anything (which is Fuseki but with some added functionality to allow it to treat non-RDF data as RDF).
 
-Here are the steps to do that and invoke this custom string parsing function:
+Here are the steps to do that and invoke this messy string date parsing function:
 
 1) Build the .jar file for the `datething:parse` functionality by following the instructions [here](https://github.com/justin2004/datething) under the "how" section.
 
@@ -254,3 +254,9 @@ Here are the steps to do that and invoke this custom string parsing function:
 5) Download `aa.csv` (the .csv example) from this git repo and copy it into the SPARQL Anything directory.
 
 6) Run the bash command above (with the SPARQL query) and you should have your constructed triples!
+
+
+So with this `datething:parse` functionality you can triplify, say, a spreadsheet that has a variety of date representations in it and likely get most of the dates canonicalized so you can sort, filter, etc. on them in a SPARQL query.
+([Here](https://github.com/justin2004/weblog/tree/master/blend_google_sheet_with_wikidata) is my post on using SPARQL Anything to extract triples from a public google sheet.)
+
+Happy triplifying!
