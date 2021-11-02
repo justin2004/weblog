@@ -260,4 +260,6 @@ Here are the steps to invoke this messy string date parsing function:
 So with this `datething:parse` functionality you can triplify, say, a spreadsheet that has a variety of date representations in it and likely get most of the dates canonicalized so you can sort, filter, etc. on them in a SPARQL query.
 ([Here](https://github.com/justin2004/weblog/tree/master/blend_google_sheet_with_wikidata) is my post on using SPARQL Anything to extract triples from a public google sheet.)
 
+This .jar should also work with [CSV2RDF](https://github.com/AtomGraph/CSV2RDF) as it also uses Apache Jena and the SPARQL construct approach to triplification.
+
 Happy triplifying!
