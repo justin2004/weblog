@@ -51,7 +51,7 @@ RDF/SPARQL is specifically designed with data integration in mind (global URIs, 
 
 To put it not so carefully, I would say that LPG seems to be specifically designed with the following in mind:
 - introducing graphs to software developers (who know json)
-    - and not strongly encouraging them to model their data thoughtfully
+    - and not strongly encouraging them to model their domain thoughtfully
 - supporting path traversal well
 
 In other words: LPG was designed to support "[point solutions](https://allegrograph.com/why-young-developers-dont-get-knowledge-graphs/)."
