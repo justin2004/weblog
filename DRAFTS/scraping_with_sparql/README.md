@@ -183,6 +183,9 @@ Which yields:
 
 
 Also note that I requested `text/csv` but you can request the data to be in different format:
+
 `text/tab-separated-values`
+
 `application/sparql-results+xml`
+
 `application/sparql-results+json`
