@@ -278,3 +278,6 @@ If you have to write a query that uses "Customer.name" and "Supplier.name" curio
 Ok, have fun scraping with SPARQL!
 
 
+
+NOTE: If you are seeing this and you want to follow my example (or do some scraping of a webpage of your own) then you'll need to use [my branch of SPARQL Anything](https://github.com/justin2004/sparql.anything/tree/iframes).
+I'll delete this note once my pull request goes into the upstream repository.
