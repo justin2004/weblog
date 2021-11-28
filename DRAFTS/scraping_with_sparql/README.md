@@ -32,16 +32,22 @@ We are just going to do the cheap approach: login with our browser then get the 
 
 Log in with your credentials and navigate to the page you want to scrape.
 
-TODO get all my screenshots
-
 Open your Inspector and go to the Network tab.
+![](media/inspector_open.png)
 
-Scroll up the to first request and click it.
+Refresh the page, in the Inspector scroll up the to first request and click it.
+![](media/inspector_results.png)
+
 In the headers tab you should see Request Headers (I've obscured my cookie value).
+![](media/inspector_request_headers.png)
+
 Usually Request Headers have all the information you need to send to the website in order to scrape.
 Copy information into your SPARQL query as needed.
 
 ## Write a hello world SPARQL (construct) query to see if it works
+
+I've got SPARQL Anything running in its Docker container.
+The SPARQL query is wrapped in a bash command:
 
 ```sparql
 curl --silent 'http://localhost:3000/sparql.anything'  \
@@ -119,13 +125,13 @@ fx:properties fx:http.header.User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64;
 fx:properties fx:http.header.Cookie "atlassian.xsrf.token=BLAHBLAH..." .
 ```
 
-In this case if you don't wait a few seconds your content won't be loaded:
+In this case, if you don't wait a few seconds your content won't be loaded:
 
-![screen](media/jira_loading.png)
+![](media/jira_loading.png)
 
 When you do wait a few seconds you get (as seen in file:///app/screenie.png):
 
-![screen](media/screenie.png)
+![](media/screenie.png)
 
 ## Pick the HTML elements you need
 
@@ -193,7 +199,34 @@ Also note that I requested `text/csv` but you can request the data to be in a di
 `application/sparql-results+json`
 
 
-## Summary
+## Comments on writing the query
+
+To write a query against triplified HTML it it pretty much essential to have the raw triples (from the hello world query above) open in an editor for reference.
+
+I use folding (in my editor) to focus on the nodes of interest.
+
+This part of the query (triple patterns filters) does all the extraction:
+```
+[ ?slotA [ ?slot1 [ xhtml:class "activity-item-user activity-item-author" ;
+                          what:innerText ?username ] ;
+           ?slot2 ?action_string ;
+           ?slot3 [ rdf:_1 [ rdf:_1 ?issue_string ] ;
+                             what:innerText ?issue_label ] ] ;
+  ?slotB [ rdf:_1 [ xhtml:alt ?issue_type ] ;
+                    rdf:_2 [ rdf:_1 ?when_string ] ] ]
+filter(fx:next(?slot1) = ?slot2)
+filter(fx:next(?slot2) = ?slot3)
+filter(fx:next(?slotA) = ?slotB)
+```
+
+It is vanilla SPARQL but with a function that is defined in SPARQL Anything: `fx:next()` which is described [here](https://github.com/SPARQL-Anything/sparql.anything#magic-properties-and-functions).
+
+I find that the part that takes the most time is making the extraction triple patterns.
+One thing that I think would help a lot would be a plugin for my text editor to show the path from the root node to the node my cursor is currently in.
+
+
+
+## Closing
 
 Why would you want to use SPARQL to scrape a webpage?
 
