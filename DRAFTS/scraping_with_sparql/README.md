@@ -189,3 +189,25 @@ Also note that I requested `text/csv` but you can request the data to be in diff
 `application/sparql-results+xml`
 
 `application/sparql-results+json`
+
+
+## Summary
+
+Why would you want to use SPARQL to scrape a webpage?
+
+Of course you can scrape webpages (that render content with javascript) with general purpose languages using libraries like [Puppeteer](https://github.com/puppeteer/puppeteer/) or [Playwright](https://github.com/microsoft/playwright-java) (which is what SPARQL Anything uses under the hood.
+
+What I like about this approach is that SPARQL is the only language that everyone on my team knows very well.
+We already implement non-RDF to RDF transformations using SPARQL constructs and deliver answers to questions using SPARQL.
+
+Also I think it would be easier to teach a non-programmer to scrape using this method.
+Plus it would greatly benefit many non-programmers to learn some SPARQL and start querying [Wikidata](https://www.wikidata.org).
+I recommend [this tutorial](https://www.youtube.com/watch?v=kJph4q0Im98) on SPARQL querying Wikidata.
+
+One thing I did not demonstrate in this post is the ability to, in this single SPARQL query, integrate with:
+- SPARQL endpoints
+- most REST APIs
+- other webpages
+
+So you could scrape from this page, iterate over referenced webpages, then do a lookup using a REST API, then do a final lookup using a SPARQL endpoint.
+If you are interested in such a thing I have a [blog post](/blend_google_sheet_with_wikidata) on using SPARQL Anything to blend a Google Sheet with Wikidata.
