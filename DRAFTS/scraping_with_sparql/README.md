@@ -12,6 +12,7 @@ I created an issue for Apache Jena a while back and I am going to pretend I want
 Let's also pretend that Apache's JIRA doesn't have a more friendly REST API (because sometimes even if one exists you may not have access to use it.).
 
 [This](https://issues.apache.org/jira/secure/ViewProfile.jspa) is the URL we'll be scraping.
+It is my user profile.
 
 Things to note:
 
@@ -28,7 +29,7 @@ I'll break the process down a little bit (assuming you've never scraped a webpag
 
 ## Login
 
-We are just going to do the cheap approach: login with our browser then get the [cookie](https://en.wikipedia.org/wiki/HTTP_cookie) manually.
+We are just going to do the cheap approach: manually login with our browser then manually get the [cookie](https://en.wikipedia.org/wiki/HTTP_cookie).
 
 Log in with your credentials and navigate to the page you want to scrape.
 
@@ -51,6 +52,7 @@ In the headers tab you should see Request Headers (I've obscured my cookie value
 
 Usually Request Headers have all the information you need to send to the website in order to scrape.
 Copy information into your SPARQL query as needed.
+It often requires some experimentation to figure out the minimum set of headers you actually need.
 
 ## Write a hello world SPARQL (construct) query to see if it works
 
@@ -85,7 +87,7 @@ fx:properties fx:http.header.Cookie "atlassian.xsrf.token=BLAHBLAH..." .
 ```
 
 Which yields triples (in turtle format):
-```
+```turtle
 @prefix ex:    <http://www.example.com/> .
 @prefix fx:    <http://sparql.xyz/facade-x/ns/> .
 @prefix ns:    <http://sparql.xyz/facade-x/ns/> .
