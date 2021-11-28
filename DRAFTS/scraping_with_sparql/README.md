@@ -91,31 +91,40 @@ Which yields triples (in turtle format):
 You'll notice in my query that I said:
 
 The URL is:
+
 `fx:properties fx:location "https://issues.apache.org/jira/secure/ViewProfile.jspa" .`
 
 Expect html content:
+
 `fx:properties fx:media-type "text/html" .`        
 
 Use a headless browser (firefox):
+
 `fx:properties fx:html.browser "firefox" .`
 
 Take a screenshot (in case we need to troubleshoot) and save it here:
+
 `fx:properties fx:html.browser.screenshot "file:///app/screenie.png" .`
 
 After the "load" event is emitted wait 5 seconds:
+
 `fx:properties fx:html.browser.wait "5" .`
 
 Send the following two HTTP headers (that we copied from the Inspector earlier):
+
 ```
 fx:properties fx:http.header.User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0" .
 fx:properties fx:http.header.Cookie "atlassian.xsrf.token=BLAHBLAH..." .
 ```
 
 In this case if you don't wait a few seconds your content won't be loaded:
+
 ![screen](media/jira_loading.png)
 
+When you do wait a few seconds you get (as seen in file:///app/screenie.png):
+
+![screen](media/screenie.png)
 
 ## Pick the HTML elements you need
 
 
-![screen](media/screenie.png)
