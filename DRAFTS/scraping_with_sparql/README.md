@@ -212,7 +212,7 @@ One thing I did not demonstrate in this post is the ability to, in this single S
 So you could scrape from this page, iterate over referenced webpages, then do a lookup using a REST API, then do a final lookup using a SPARQL endpoint.
 If you are interested in such a thing I have a [blog post](/blend_google_sheet_with_wikidata) on using SPARQL Anything to blend a Google Sheet with Wikidata.
 
-In general, I think using SPARQL encourages you to lay your data down such that it wears its meaning on its sleeve.
+In general, I think using SPARQL encourages you to lay your data down such that it wears its meaning on its sleeve (because you can't as [easily](/SPARQL_value_functions) invoke arbitrary functions in SPARQL).
 By "wear its meaning on its sleeve I mean": data that doesn't require each query to express an unpacking process and that uses a common vocabulary/ontology across domains.
 
 Example of unpacking:
