@@ -7,7 +7,7 @@ The friendliest API is a SPARQL endpoint.
 Using [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything) you can view many APIs as approximations of SPARQL endpoints.
 You can even view webpages as approximations of SPARQL endpoints.
 
-In this post I am going to be scraping some data from Apache's JIRA.
+In this post I am going to be [scraping](https://en.wikipedia.org/wiki/Web_scraping) some data from Apache's JIRA.
 I created an issue for Apache Jena a while back and I am going to pretend I want to be reminded of my activity on that issue.
 Let's also pretend that Apache's JIRA doesn't have a more friendly REST API (because sometimes even if one exists you may not have access to use it.).
 
@@ -274,3 +274,7 @@ Example of using a common vocabulary/ontology:
 
 If you have a relational database with the tables "Customer" and "Supplier" and each have a column "name" (or a reference to a column that eventually leads to a column called "name") those have the same meaning (casual name) but you can't use the same predicate to obtain the names.
 If you have to write a query that uses "Customer.name" and "Supplier.name" curiosity won't lead you to write a query that uses "Customer.name," "Supplier.name," "TruckDriver.name," "Mechanic.name," "Administrator.name," etc. but curiosity will lead you to a query like "?s [gist:name](https://github.com/semanticarts/gist/blob/develop/gistCore.ttl#L3757) ?name" that will look for any subject that has a casual name.
+
+Ok, have fun scraping with SPARQL!
+
+
