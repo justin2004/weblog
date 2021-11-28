@@ -127,4 +127,58 @@ When you do wait a few seconds you get (as seen in file:///app/screenie.png):
 
 ## Pick the HTML elements you need
 
+Let's just pretend I need a few details of my activity.
+
+After some exploration of the triples I arrive at the following query:
+
+```sparql
+curl --silent 'http://localhost:3000/sparql.anything'  \
+-H 'Accept: text/csv' \
+--data-urlencode 'query=
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX ns: <http://sparql.xyz/facade-x/ns/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX fx: <http://sparql.xyz/facade-x/ns/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix what: <https://html.spec.whatwg.org/#>
+prefix xhtml: <http://www.w3.org/1999/xhtml#> 
+prefix ex: <http://www.example.com/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+select ?username ?action_string ?issue_string ?issue_label ?issue_type ?when_string
+WHERE {
+service <x-sparql-anything:> {
+fx:properties fx:location "https://issues.apache.org/jira/secure/ViewProfile.jspa" .
+fx:properties fx:media-type "text/html" .
+fx:properties fx:html.browser "firefox" .
+fx:properties fx:html.browser.screenshot "file:///app/screenie.png" .
+fx:properties fx:html.browser.wait "5" .
+fx:properties fx:http.header.User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0" .
+fx:properties fx:http.header.Cookie "atlassian.xsrf.token=BLAH" .
+[ ?slotA [ ?slot1 [ xhtml:class "activity-item-user activity-item-author" ;
+                          what:innerText ?username ] ;
+           ?slot2 ?action_string ;
+           ?slot3 [ rdf:_1 [ rdf:_1 ?issue_string ] ;
+                             what:innerText ?issue_label ] ] ;
+  ?slotB [ rdf:_1 [ xhtml:alt ?issue_type ] ;
+                    rdf:_2 [ rdf:_1 ?when_string ] ] ]
+filter(fx:next(?slot1) = ?slot2)
+filter(fx:next(?slot2) = ?slot3)
+filter(fx:next(?slotA) = ?slotB)
+}
+}'
+```
+
+Which yields:
+
+|username  |action\_string      |issue\_string |issue\_label        |issue\_type |when\_string     |
+|----------|--------------------|--------------|--------------------|------------|-----------------|
+|Justin    |created             |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |05/Oct/21 00:49  |
+|Justin    |updated the Description of |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |05/Oct/21 23:33  |
+|Justin    |updated the Description of |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |05/Oct/21 00:53  |
+|Justin    |updated the Description of |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |05/Oct/21 00:52  |
+|Justin    |attached 2 files to |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |05/Oct/21 00:54  |
+|Justin    |commented on        |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |05/Oct/21 13:14  |
+|Justin    |commented on        |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |07/Oct/21 12:48  |
+|Justin    |commented on        |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |07/Oct/21 12:50  |
+
 
