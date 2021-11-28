@@ -4,7 +4,7 @@
 
 Sometimes you want some data that does not sit behind an application friendly API.
 The friendliest API is a SPARQL endpoint.
-Using [SPARQL Anything]() you can view many APIs as approximations of SPARQL endpoints.
+Using [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything) you can view many APIs as approximations of SPARQL endpoints.
 You can even view webpages as approximations of SPARQL endpoints.
 
 In this post I am going to be scraping some data from Apache's JIRA.
@@ -195,7 +195,7 @@ Also note that I requested `text/csv` but you can request the data to be in diff
 
 Why would you want to use SPARQL to scrape a webpage?
 
-Of course you can scrape webpages (that render content with javascript) with general purpose languages using libraries like [Puppeteer](https://github.com/puppeteer/puppeteer/) or [Playwright](https://github.com/microsoft/playwright-java) (which is what SPARQL Anything uses under the hood.
+Of course you can scrape webpages (that render content with javascript) with general purpose languages using libraries like [Puppeteer](https://github.com/puppeteer/puppeteer/) or [Playwright](https://github.com/microsoft/playwright-java) (which is what SPARQL Anything uses under the hood).
 
 What I like about this approach is that SPARQL is the only language that everyone on my team knows very well.
 We already implement non-RDF to RDF transformations using SPARQL constructs and deliver answers to questions using SPARQL.
@@ -211,3 +211,13 @@ One thing I did not demonstrate in this post is the ability to, in this single S
 
 So you could scrape from this page, iterate over referenced webpages, then do a lookup using a REST API, then do a final lookup using a SPARQL endpoint.
 If you are interested in such a thing I have a [blog post](/blend_google_sheet_with_wikidata) on using SPARQL Anything to blend a Google Sheet with Wikidata.
+
+In general, I think using SPARQL encourages you to lay your data such that is wears it meaning on its sleeve.
+By "wear its meaning on its sleeve I mean": data that doesn't require each query to express an unpacking process and that uses a common vocabulary/ontology across domains.
+
+Example of unpacking:
+If you store a range like "32-45" then each query will need to apply some regex or some function to enumerate the integers in the range.
+
+Example of using a common vocabulary/ontology:
+If you have a relational database with the tables "Customer" and "Supplier" and each have a column or a reference to a column that eventually leads to a column called "name" those have the same meaning.
+If you have to write a query that uses "Customer.name" and "Supplier.name" curiosity won't lead you to write a query that uses "Customer.name," "Supplier.name," "TruckDriver.name," "Mechanic.name," "Administrator.name," etc. but curiosity will lead you to a query like "?s [gist:name](https://github.com/semanticarts/gist/blob/develop/gistCore.ttl#L3757) ?name" that will look for any subject that has a casual name.
