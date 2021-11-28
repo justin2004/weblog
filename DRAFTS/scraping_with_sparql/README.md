@@ -184,7 +184,7 @@ Which yields:
 |Justin    |commented on        |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |07/Oct/21 12:50  |
 
 
-Also note that I requested `text/csv` but you can request the data to be in different format:
+Also note that I requested `text/csv` but you can request the data to be in a different format:
 
 `text/tab-separated-values`
 
@@ -211,7 +211,7 @@ One thing I did not demonstrate in this post is the ability to, in this single S
 - most REST APIs
 - other webpages
 
-So you could scrape from this page, iterate over referenced webpages, then do a lookup using a REST API, then do a final lookup using a SPARQL endpoint.
+So you could scrape from this page, iterate over referenced webpages, bind some strings, then do a lookup of those strings using a REST API, then do a final lookup using a SPARQL endpoint.
 If you are interested in such a thing I have a [blog post](/blend_google_sheet_with_wikidata) on using SPARQL Anything to blend a Google Sheet with Wikidata.
 
 In general, I think using SPARQL encourages you to lay your data down such that it wears its meaning on its sleeve (because you can't as [easily](/SPARQL_value_functions) invoke arbitrary functions in SPARQL).
