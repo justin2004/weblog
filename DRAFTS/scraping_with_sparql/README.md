@@ -204,7 +204,7 @@ Which yields:
 |Justin    |commented on        |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |07/Oct/21 12:50  |
 
 
-Also note that I requested `text/csv` but you can request the data to be in a different format:
+Also note that I requested `text/csv` but you can request the data in a different format:
 
 `text/tab-separated-values`
 
@@ -219,7 +219,7 @@ To write a query against triplified HTML it it pretty much essential to have the
 
 I use folding (in my editor) to focus on the nodes of interest.
 
-This part of the query (triple patterns filters) does all the extraction:
+This part of the query (triple patterns and filters) does all the extraction:
 ```
 [ ?slotA [ ?slot1 [ xhtml:class "activity-item-user activity-item-author" ;
                           what:innerText ?username ] ;
@@ -258,10 +258,10 @@ One thing I did not demonstrate in this post is the ability to, in this single S
 - most REST APIs
 - other webpages
 
-So you could scrape from this page, iterate over referenced webpages, bind some strings, then do a lookup of those strings using a REST API, then do a final lookup using a SPARQL endpoint.
+So you could scrape from this page, iterate over referenced webpages (scraping them), bind some strings from the referenced webpages, then do a lookup of those strings using a REST API, then do a final lookup using a SPARQL endpoint.
 If you are interested in such a thing I have a [blog post](/blend_google_sheet_with_wikidata) on using SPARQL Anything to blend a Google Sheet with Wikidata.
 
-In general, I think using SPARQL encourages you to lay your data down such that it wears its meaning on its sleeve (because you can't as [easily](/SPARQL_value_functions) invoke arbitrary functions in SPARQL).
+In general, I think using SPARQL/RDF encourages you to lay your data down such that it wears its meaning on its sleeve (because you can't as [easily](/SPARQL_value_functions) invoke arbitrary functions in SPARQL).
 By "wear its meaning on its sleeve I mean": data that doesn't require each query to express an unpacking process and data that uses a common vocabulary/ontology across domains.
 
 Example of unpacking:
@@ -270,5 +270,5 @@ If you store a range like "32-45" then each query will need to apply some regex 
 
 Example of using a common vocabulary/ontology:
 
-If you have a relational database with the tables "Customer" and "Supplier" and each have a column or a reference to a column that eventually leads to a column called "name" those have the same meaning but you can't use the same predicate to obtain the names.
+If you have a relational database with the tables "Customer" and "Supplier" and each have a column "name" (or a reference to a column that eventually leads to a column called "name") those have the same meaning (casual name) but you can't use the same predicate to obtain the names.
 If you have to write a query that uses "Customer.name" and "Supplier.name" curiosity won't lead you to write a query that uses "Customer.name," "Supplier.name," "TruckDriver.name," "Mechanic.name," "Administrator.name," etc. but curiosity will lead you to a query like "?s [gist:name](https://github.com/semanticarts/gist/blob/develop/gistCore.ttl#L3757) ?name" that will look for any subject that has a casual name.
