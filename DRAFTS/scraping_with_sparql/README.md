@@ -213,11 +213,13 @@ So you could scrape from this page, iterate over referenced webpages, then do a 
 If you are interested in such a thing I have a [blog post](/blend_google_sheet_with_wikidata) on using SPARQL Anything to blend a Google Sheet with Wikidata.
 
 In general, I think using SPARQL encourages you to lay your data down such that it wears its meaning on its sleeve (because you can't as [easily](/SPARQL_value_functions) invoke arbitrary functions in SPARQL).
-By "wear its meaning on its sleeve I mean": data that doesn't require each query to express an unpacking process and that uses a common vocabulary/ontology across domains.
+By "wear its meaning on its sleeve I mean": data that doesn't require each query to express an unpacking process and data that uses a common vocabulary/ontology across domains.
 
 Example of unpacking:
+
 If you store a range like "32-45" then each query will need to apply some regex or some function to enumerate the integers in the range.
 
 Example of using a common vocabulary/ontology:
+
 If you have a relational database with the tables "Customer" and "Supplier" and each have a column or a reference to a column that eventually leads to a column called "name" those have the same meaning.
 If you have to write a query that uses "Customer.name" and "Supplier.name" curiosity won't lead you to write a query that uses "Customer.name," "Supplier.name," "TruckDriver.name," "Mechanic.name," "Administrator.name," etc. but curiosity will lead you to a query like "?s [gist:name](https://github.com/semanticarts/gist/blob/develop/gistCore.ttl#L3757) ?name" that will look for any subject that has a casual name.
