@@ -268,7 +268,7 @@ By "wear its meaning on its sleeve I mean": data that doesn't require each query
 
 Example of unpacking:
 
-If you store a range like "32-45" then each query will need to apply some regex or some function to enumerate the integers in the range.
+If you store a range like "32-45" then each query will need to apply some regex or some function to enumerate the integers in the range if it needs to match a single integer.
 
 Example of using a common vocabulary/ontology:
 
