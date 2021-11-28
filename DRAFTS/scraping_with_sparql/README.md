@@ -32,14 +32,22 @@ We are just going to do the cheap approach: login with our browser then get the 
 
 Log in with your credentials and navigate to the page you want to scrape.
 
+---
+
 Open your Inspector and go to the Network tab.
 ![](media/inspector_open.png)
+
+---
 
 Refresh the page, in the Inspector scroll up the to first request and click it.
 ![](media/inspector_results.png)
 
+---
+
 In the headers tab you should see Request Headers (I've obscured my cookie value).
 ![](media/inspector_request_headers.png)
+
+---
 
 Usually Request Headers have all the information you need to send to the website in order to scrape.
 Copy information into your SPARQL query as needed.
@@ -125,13 +133,19 @@ fx:properties fx:http.header.User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64;
 fx:properties fx:http.header.Cookie "atlassian.xsrf.token=BLAHBLAH..." .
 ```
 
+---
+
 In this case, if you don't wait a few seconds your content won't be loaded:
 
 ![](media/jira_loading.png)
 
+---
+
 When you do wait a few seconds you get (as seen in file:///app/screenie.png):
 
 ![](media/screenie.png)
+
+---
 
 ## Pick the HTML elements you need
 
