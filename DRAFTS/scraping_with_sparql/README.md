@@ -182,3 +182,7 @@ Which yields:
 |Justin    |commented on        |JENA\-2176    |JENA\-2176 \- TDB2 queries can execute quadpatterns with a literal in the subject position JENA\-2176|Question    |07/Oct/21 12:50  |
 
 
+Also note that I requested `text/csv` but you can request the data to be in different format:
+`text/tab-separated-values`
+`application/sparql-results+xml`
+`application/sparql-results+json`
