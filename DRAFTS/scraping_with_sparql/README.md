@@ -32,6 +32,8 @@ We are just going to do the cheap approach: login with our browser then get the 
 
 Log in with your credentials and navigate to the page you want to scrape.
 
+TODO get all my screenshots
+
 Open your Inspector and go to the Network tab.
 
 Scroll up the to first request and click it.
@@ -221,5 +223,5 @@ If you store a range like "32-45" then each query will need to apply some regex 
 
 Example of using a common vocabulary/ontology:
 
-If you have a relational database with the tables "Customer" and "Supplier" and each have a column or a reference to a column that eventually leads to a column called "name" those have the same meaning.
+If you have a relational database with the tables "Customer" and "Supplier" and each have a column or a reference to a column that eventually leads to a column called "name" those have the same meaning but you can't use the same predicate to obtain the names.
 If you have to write a query that uses "Customer.name" and "Supplier.name" curiosity won't lead you to write a query that uses "Customer.name," "Supplier.name," "TruckDriver.name," "Mechanic.name," "Administrator.name," etc. but curiosity will lead you to a query like "?s [gist:name](https://github.com/semanticarts/gist/blob/develop/gistCore.ttl#L3757) ?name" that will look for any subject that has a casual name.
