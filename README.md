@@ -1,5 +1,8 @@
 # Justin's Weblog
 
+## [Scraping Webpages with SPARQL](scraping_with_sparql)
+
+Using SPARQL to extract data from webpages
 
 ## [SPARQL Value Functions](SPARQL_value_functions)
 
