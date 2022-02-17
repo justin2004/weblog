@@ -78,4 +78,6 @@ I actually don't know what they call it but if you type a tacit expression in th
 ⌷     
 ```
 
+If you APL looks interesting to you I can recommend the [Dyalog APL Tutor](https://tutorial.dyalog.com/).
+
 Ok, have fun making random orders to present your team's work in. :)
