@@ -12,7 +12,7 @@ With my team on the call, I fired up an [APL REPL](https://tryapl.org/) and ente
 └─────┴────┴──────┴───┘
 ```
 
-So with 4 characters, `[4?4]`, I had the business end of an expression to select a random permutation. 
+So with 5 characters, `[4?4]`, I had the business end of an expression to select a random permutation. 
 But in that expression I have to manually count the number of people on my team (4) and type it two times.
 Let's see if we can eliminate that so I can add people and have the expression handle it.
 
