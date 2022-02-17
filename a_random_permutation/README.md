@@ -48,7 +48,7 @@ It is only 8 characters (if you don't count the parens which are only there beca
 
 I don't expect that many other languages can express this in 8 characters or less (especially without a library)!
 
-[I've only been using APL recreationally](https://github.com/phantomics/april) for about a year but I was able to arrive at the first two expressions quickly.
+I've only been using APL recreationally ([contributing to April](https://github.com/phantomics/april)) for about a year but I was able to arrive at the first two expressions quickly.
 The tacit style took me at least 20 minutes and I had help from [The APLcart](https://aplcart.info/).
 
 I knew I wanted a permutation of a vector of character vectors so I searched "permutation" in APLcart and I found the following (which is the basis of the expression I wrote):
