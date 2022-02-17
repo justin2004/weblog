@@ -1,5 +1,9 @@
 # Justin's Weblog
 
+## [A Random Permutation](a_random_permutation)
+
+Generating random permutations with APL
+
 ## [Scraping Webpages with SPARQL](scraping_with_sparql)
 
 Using SPARQL to extract data from webpages
