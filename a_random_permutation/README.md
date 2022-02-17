@@ -3,7 +3,7 @@
 The other day I needed to pick a random order for my team to present our work in.
 Usually one of us just makes up an order but this time I decided to do it programmatically.
 
-I fired up an [APL REPL](https://tryapl.org/) and entered an expression like:
+With my team on the call, I fired up an [APL REPL](https://tryapl.org/) and entered an expression like:
 
 ```apl
       'alice' 'bob' 'yazeed' 'zach'[4?4]
@@ -49,15 +49,16 @@ It is only 8 characters (if you don't count the parens which are only there beca
 I don't expect that many other languages can express this in 8 characters or less (especially without a library)!
 
 I've only been using APL recreationally ([contributing to April](https://github.com/phantomics/april)) for about a year but I was able to arrive at the first two expressions quickly.
-The tacit style took me at least 20 minutes and I had help from [The APLcart](https://aplcart.info/).
+The tacit style took me at least 10 minutes and I had help from [The APLcart](https://aplcart.info/).
+(I didn't make my team watch me try to write this tacit style expression; I did it after work.)
 
-I knew I wanted a permutation of a vector of character vectors so I searched "permutation" in APLcart and I found the following (which is the basis of the expression I wrote):
+I knew I wanted a permutation of a vector of character vectors so I searched "permutation" in APLcart and I found the following (which is the basis of the tacit expression I wrote):
 ```
 Iv⌷⍨∘⊂⍨Y              Permute: Reorder major cells of Y according tot permutation vector Iv
 ```
 
 APLcart tells you that Iv is an integer vector and Y is any array.
-I won't describe the 20 minutes in detail but I'll list the things I needed to remember/review/discover in addition to the language primitives:
+I won't describe the 10 minutes in detail but I'll list the things I needed to remember/review/discover in addition to the language primitives:
 
 
 
@@ -78,6 +79,6 @@ I actually don't know what they call it but if you type a tacit expression in th
 ⌷     
 ```
 
-If you APL looks interesting to you I can recommend the [Dyalog APL Tutor](https://tutorial.dyalog.com/).
+If APL looks interesting to you I can recommend the [Dyalog APL Tutor](https://tutorial.dyalog.com/) to get more comfortable with the language.
 
 Ok, have fun making random orders to present your team's work in. :)
