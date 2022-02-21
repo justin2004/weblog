@@ -66,7 +66,7 @@ I won't describe the 10 minutes in detail but I'll list the things I needed to r
 Specifically the monadic fork.
 
 Dyalog APL's expression tree.
-I actually don't know what they call it but if you type a tacit expression in the REPL it prints a cute tree representation of how the functions and operators get glued together.
+I actually don't know what they call it but if you type a tacit expression in the REPL it prints a cute tree representation depicting how the functions and operators get glued together to form a derived function.
 
 ```
       ⌷⍨∘⊂⍨ 
