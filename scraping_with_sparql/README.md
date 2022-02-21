@@ -2,7 +2,7 @@
 
 ## Intro
 
-Sometimes you want some data that does not sit behind an application friendly API.
+Sometimes you want some data that does not sit behind an application friendly interface.
 The friendliest API is a SPARQL endpoint.
 Using [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything) you can view many APIs as approximations of SPARQL endpoints.
 You can even view webpages as approximations of SPARQL endpoints.
