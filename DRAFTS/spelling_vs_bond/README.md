@@ -95,13 +95,16 @@ Let's step through that APL expression (in APL evaluation is right to left).
 
 [iota]() 9
 
+```
       ⍳9
       1 2 3 4 5 6 7 8 9
+```
 
 Let's think of that as the argument and what we do next as the interpose behavior.
 
 [table]() it
 
+```
       ⍪⍳9
 1
 2
@@ -112,8 +115,11 @@ Let's think of that as the argument and what we do next as the interpose behavio
 7
 8
 9
+```
 
 [catenate]() the character ',' onto the matrix (with [scalar extension](https://aplwiki.com/wiki/Scalar_extension)) 
+
+```
       ',',⍪⍳9
 , 1
 , 2
@@ -124,16 +130,21 @@ Let's think of that as the argument and what we do next as the interpose behavio
 , 7
 , 8
 , 9
+```
 
 [ravel]() it
 
+```
       ,',',⍪⍳9
 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9
+```
 
 1 [drop]() to remove the unwanted leading comma
 
+```
       1↓,',',⍪⍳9
 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9
+```
 
 Sometimes you just build an expression up like this and you're done.
 
@@ -145,6 +156,7 @@ But the resultant expression isn't a function so you can't name it, pass actual 
 
 But you could turn that expression into a function (in this case by using ∘ [bind]()).
 
+```
       1∘↓∘,','∘,∘⍪
   ┌─┴─┐ 
   ∘   ∘ 
@@ -152,16 +164,19 @@ But you could turn that expression into a function (in this case by using ∘ [b
  ∘ , ∘ ⍪
 ┌┴┐ ┌┴┐ 
 1 ↓ , , 
+```
 
 
 Also here is another way to express interpose with an APL function:
 
+```
       (⊣,',',⊢)/
     /    
   ┌─┘    
 ┌─┼───┐  
 ⊣ , ┌─┼─┐
     , , ⊢
+```
 
 
 ## summary so far?
