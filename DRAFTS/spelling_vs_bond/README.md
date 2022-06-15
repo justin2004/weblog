@@ -54,6 +54,7 @@ A structural formula of a molecule shows how the constituent atoms (primitives) 
 
 
 CH<sub>3</sub>CH<sub>2</sub>OH
+
 ![ethanol maybe](media/ethanol.png)
 
 An APL expression is a condensed formula that indicates how the language primitives should be bonded together.
