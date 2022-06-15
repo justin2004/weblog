@@ -51,7 +51,7 @@ A structural formula of a molecule shows how the constituent atoms (primitives) 
 
 ![ethanol maybe](media/ethanol.png)
 
-An APL expression shows how the language primitives are bonded together.
+An APL expression is a condensed formula that indicates how the language primitives should be bonded together.
 
 In fact, if you express a function in a [Dyalog APL REPL](https://tryapl.org/) you'll see a tree rendering of the derived function.
 
@@ -64,9 +64,8 @@ In fact, if you express a function in a [Dyalog APL REPL](https://tryapl.org/) y
 ```
 
 The tree diagrams of derived functions are one way Dyalog APL renders the bonding of primitives in what it calls trains.
-Those tree diagrams and structural formulas (like the image below) are helpful for visualizing how the molecule's parts contribute to the whole which will interact with its surroundings (arguments or chemical entities, respectively).
+Those tree diagrams and structural formulas are helpful for visualizing how the molecule's parts contribute to the whole which will interact with its surroundings (arguments or chemical entities, respectively).
 
-(reference image)
 
 Let's look at an example.
 Let's say you want to put a comma between each item in a sequence.
@@ -79,7 +78,7 @@ The Clojure core has already assigned a function to that name.
 ```
 
 In Clojure you spell the name of the function ("interpose" in this example).
-But `interpose` is just a name and interpose itself is really [elsewhere](https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj#L5231).
+But `interpose` is just a name and interpose itself is really [elsewhere](https://github.com/clojure/clojure/blob/35bd89f05f8dc4aec47001ca10fe9163abc02ea6/src/clj/clojure/core.clj#L5231).
 
 It isn't really convenient to break Clojure's interpose into pieces and re-mix the parts to do something different.
 It is intended that interpose is one of your primitives.
@@ -118,7 +117,7 @@ Let's think of that as the argument and what we do next as the interpose behavio
 9
 ```
 
-[catenate](https://help.dyalog.com/18.2/Content/Language/Symbols/Comma.htm#kanchor3327) the character ',' onto the matrix (with [scalar extension](https://aplwiki.com/wiki/Scalar_extension)) 
+[catenate](https://help.dyalog.com/18.2/Content/Language/Symbols/Comma.htm#kanchor3327) the character `,` onto the matrix (with [scalar extension](https://aplwiki.com/wiki/Scalar_extension)) 
 
 ```
       ',',⍪⍳9
@@ -168,7 +167,7 @@ But you could turn that expression into a function (in this case by using ∘ [j
 ```
 
 
-Also here is another way to express interpose with an APL function:
+Also here is another way to formulate interpose with an APL function:
 
 ```
       (⊣,',',⊢)/
@@ -179,25 +178,15 @@ Also here is another way to express interpose with an APL function:
     , , ⊢
 ```
 
-In the evaluation of expressions in other languages trees (ASTs) are involved but in APL the trees aren't just a representation in compilation process.
-When you are writing trains you are actively thinking about the tree.
 
-Source code is a linear sequence of symbols that eventually executes but has an intermediate tree (AST) representation.
-That applies to APL and Clojure.
-
-Why does APL feel different?
-When you are using trains every 2 or 3 functions is a little tree.
-In practice you'll often have a little tree with 2 or 3 characters.
-
-
-## summary so far?
+## Summary Of How It Feels To Use APL
 
 In APL it feel like you are making molecules with atoms (language primitives) and bonds (combinators/trains).
 In APL the spelling of the name of the molecule _is_ the molecule.
 In APL the name isn't a layer of indirection; it is directly the entity.
 
-## If the Molecule Needs More Work
 
+## If the Molecule Needs More Work
 
 Instead of 1,2,3,4,5,6,7,8,9 what if I want pairs partitioned like: 1 2 , 3 4 , 5 6 , 7 8
 
@@ -281,12 +270,15 @@ All together:
 Maybe.
 
 Single character primitives mean you have less to overcome to express something that can stand alone.
+As you type `i` `n` `t` `e` `r` `p` `o` `s` `e` none of that stands alone until you finish the final character.
+In APL every primitive (well except the operators) can stand alone.
+
 My 5 year old son does almost any action, that he wants to do, quickly and with cheerfulness.
 He has very little to overcome to perform an action.
 He doesn't believe the action might be of little value and therefore not worth the effort.
 He has enough energy to do the action.
 
-Adults, on the other hand, [need hear reasons](https://youtu.be/7jVr0-ghGWU?t=26) before they get out of their chairs.
+Adults, on the other hand, [need to hear reasons](https://youtu.be/7jVr0-ghGWU?t=26) before they get out of their chairs.
 
 "At my age if I'm sitting down and somebody tells me I need to get up and go in another room I need to be told all the information why first." - Louis CK
 
@@ -311,4 +303,4 @@ feels like something in between... maybe like scooting down a seat so someone ca
 
 # Conclusion
 
-I kind of want to go back and delete all the chemistry analogies but I'm not sure it is worth the effort.
+I'm not sure if the chemistry analogy was necessary but it seemed fun which was enough to motivate this blog post.
