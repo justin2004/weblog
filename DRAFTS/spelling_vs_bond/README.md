@@ -4,7 +4,8 @@
 ## APL 
 
 APL is A Programming Language.
-![APL](media/APL_logo.png)
+<img src="media/APL_logo.png" alt="APL" width="100"/>
+<!-- ![APL](media/APL_logo.png) -->
 It works quite well when you are working with data that is or can be viewed as a rectangular collection of elements.
 
 I've used it to [teach image processing](https://github.com/justin2004/image-processing#image-processing-with-apl) to students.
