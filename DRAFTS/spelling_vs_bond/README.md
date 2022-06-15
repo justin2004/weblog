@@ -4,6 +4,7 @@
 ## APL 
 
 APL is A Programming Language.
+![APL](media/APL_logo.png)
 It works quite well when you are working with data that is or can be viewed as a rectangular collection of elements.
 
 I've used it to [teach image processing](https://github.com/justin2004/image-processing#image-processing-with-apl) to students.
@@ -29,7 +30,7 @@ APL does have a thoughtfully chosen set of array primitives.
 The primitive coverage feels like it approaches a periodic table of computational process behavior: everything you need to efficiently express any computation.
 You can do anything with it and you can often do things with a [surprisingly small amount of primitives](https://www.youtube.com/watch?v=a9xAKttWgP4).
 
-[But there is more to the language.](https://news.ycombinator.com/item?id=17186470)
+[But there is more to this language.](https://news.ycombinator.com/item?id=17186470)
 
 
 
@@ -46,9 +47,11 @@ Often APL programmers talk of "the spelling of a function in APL" but they mean 
 APL programmers might say "arithmetic mean (or average) is spelled `+/÷≢` in APL"
 
 I suppose an APL expression is like a spelling in that there are typographical items that you string together.
-But APL expressions (specifically [trains](https://help.dyalog.com/18.2/index.htm#Language/Introduction/Trains.htm)) feel like [structural formulae](https://en.wikipedia.org/wiki/Structural_formula) of computational processes.
+But APL expressions (specifically [trains](https://help.dyalog.com/18.2/index.htm#Language/Introduction/Trains.htm)) feel like condensed [structural formulae](https://en.wikipedia.org/wiki/Structural_formula) of computational processes.
 A structural formula of a molecule shows how the constituent atoms (primitives) are bonded together.
 
+
+CH<sub>3</sub>CH<sub>2</sub>OH
 ![ethanol maybe](media/ethanol.png)
 
 An APL expression is a condensed formula that indicates how the language primitives should be bonded together.
