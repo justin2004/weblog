@@ -1,4 +1,4 @@
-# How It Feels To Use APL
+# How it Feels to Use APL
 
 
 ## APL 
@@ -36,7 +36,7 @@ You can do anything with it and you can often do things with a [surprisingly sma
 
 
 
-## How it feels to use it
+## How it Feels to Use it
 
 To me, programming in APL feels like designing molecules.
 I like Clojure a lot but programming in Clojure doesn't feel like that.
@@ -90,7 +90,7 @@ But `interpose` is just a name and interpose itself is really [elsewhere](https:
 It isn't really convenient to break Clojure's interpose into pieces and re-mix the parts to do something different.
 It is intended that interpose is one of your primitives.
 
-In APL you reference interpose behavior directly (without going through a name):
+In APL you reference interpose behavior directly (without going through a multi-character name):
 
 ```apl
       1↓,',',⍪⍳9
@@ -186,7 +186,7 @@ Also here is another way to formulate interpose with an APL function:
 ```
 
 
-## Summary Of How It Feels To Use APL
+## Summary of How it Feels to Use APL
 
 In APL it feels like you are making molecules with atoms (language primitives) and bonds (combinators/trains).
 The spelling of the name of the molecule _is_ the molecule.
@@ -262,7 +262,7 @@ Which will:
 
 - catenate (left and right argument given to `,`): concatenate the comma onto each row of the matrix
 - ravel (right argument given to `,`): turn the matrix into a vector
-- drop (right argument given to `↓`): drop the leading comma
+- drop (right and left argument given to `↓`): drop the leading comma
 
 
 All together:
@@ -272,7 +272,7 @@ All together:
 ```
 
 
-# Is all this chemistry mostly because of APL's single character primitives?
+# Is All This Chemistry Mostly Because of APL's Single Character Primitives?
 
 Maybe.
 
@@ -310,4 +310,4 @@ feels like something in between... maybe like scooting down a seat so someone ca
 
 # Conclusion
 
-I'm not sure if the chemistry analogy was necessary but it seemed fun which was enough to motivate this blog post.
+I'm not sure if the chemistry analogy was necessary but it seemed fun which was enough to motivate me to type all this out.
