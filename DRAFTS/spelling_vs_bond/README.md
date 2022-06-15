@@ -23,9 +23,9 @@ Entering the characters on a standard keyboard is [not a problem](https://aplwik
 
 ## What Is APL Though?
 
-["Is [APL] just a set of well-chosen matrix operators?"](https://news.ycombinator.com/item?id=17173283)
+["Is [APL] just a set of well-chosen matrix operators?"](https://news.ycombinator.com/item?id=17186378)
 
-APL does have a painstakingly thoughtful chosen set of array primitives.
+APL does have a thoughtfully chosen set of array primitives.
 The primitive coverage feels like it approaches a periodic table of computational process behavior: everything you need to efficiently express any computation.
 You can do anything with it and you can often do things with a [surprisingly small amount of primitives](https://www.youtube.com/watch?v=a9xAKttWgP4).
 
@@ -45,7 +45,7 @@ Often APL programmers talk of "the spelling of a function in APL" but they mean 
 
 APL programmers might say "arithmetic mean (or average) is spelled `+/÷≢` in APL"
 
-I suppose an APL expression is like a spelling in that those are the typographical items that you string together.
+I suppose an APL expression is like a spelling in that there are typographical items that you string together.
 But APL expressions (specifically [trains](https://help.dyalog.com/18.2/index.htm#Language/Introduction/Trains.htm)) feel like [structural formulae](https://en.wikipedia.org/wiki/Structural_formula) of computational processes.
 A structural formula of a molecule shows how the constituent atoms (primitives) are bonded together.
 
@@ -64,8 +64,9 @@ In fact, if you express a function in a [Dyalog APL REPL](https://tryapl.org/) y
 ```
 
 The tree diagrams of derived functions are one way Dyalog APL renders the bonding of primitives in what it calls trains.
-Those tree diagrams and structural formulas are helpful for visualizing how the molecule's parts contribute to the whole which will interact with its surroundings (arguments or chemical entities, respectively).
+Those tree diagrams and structural formulas are helpful for visualizing how the molecule's parts contribute to the whole which will interact with their surroundings (arguments or chemical entities, respectively).
 
+## Example Time
 
 Let's look at an example.
 Let's say you want to put a comma between each item in a sequence.
@@ -95,7 +96,7 @@ Let's step through that APL expression (in APL evaluation is right to left).
 
 [iota](https://help.dyalog.com/18.2/Content/Language/Symbols/Iota.htm) 9
 
-```
+```apl
       ⍳9
       1 2 3 4 5 6 7 8 9
 ```
@@ -104,7 +105,7 @@ Let's think of that as the argument and what we do next as the interpose behavio
 
 [table](https://help.dyalog.com/18.2/Content/Language/Symbols/Comma%20Bar.htm) it
 
-```
+```apl
       ⍪⍳9
 1
 2
@@ -119,7 +120,7 @@ Let's think of that as the argument and what we do next as the interpose behavio
 
 [catenate](https://help.dyalog.com/18.2/Content/Language/Symbols/Comma.htm#kanchor3327) the character `,` onto the matrix (with [scalar extension](https://aplwiki.com/wiki/Scalar_extension)) 
 
-```
+```apl
       ',',⍪⍳9
 , 1
 , 2
@@ -134,14 +135,14 @@ Let's think of that as the argument and what we do next as the interpose behavio
 
 [ravel](https://help.dyalog.com/18.2/Content/Language/Symbols/Comma.htm#kanchor3325) it
 
-```
+```apl
       ,',',⍪⍳9
 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9
 ```
 
 1 [drop](https://help.dyalog.com/18.2/Content/Language/Symbols/Down%20Arrow.htm#kanchor1111) to remove the unwanted leading comma
 
-```
+```apl
       1↓,',',⍪⍳9
 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9
 ```
@@ -149,14 +150,14 @@ Let's think of that as the argument and what we do next as the interpose behavio
 Sometimes you just build an expression up like this and you're done.
 
 But the resultant expression isn't a function so you can't name it, pass actual arguments to it, etc.
-```
+```apl
       1↓,',',⍪
       SYNTAX ERROR: Missing right argument
 ```
 
 But you could turn that expression into a function (in this case by using ∘ [jot](https://help.dyalog.com/18.2/Content/Language/Symbols/Jot.htm)).
 
-```
+```apl
       1∘↓∘,','∘,∘⍪
   ┌─┴─┐ 
   ∘   ∘ 
@@ -169,7 +170,7 @@ But you could turn that expression into a function (in this case by using ∘ [j
 
 Also here is another way to formulate interpose with an APL function:
 
-```
+```apl
       (⊣,',',⊢)/
     /    
   ┌─┘    
@@ -181,9 +182,9 @@ Also here is another way to formulate interpose with an APL function:
 
 ## Summary Of How It Feels To Use APL
 
-In APL it feel like you are making molecules with atoms (language primitives) and bonds (combinators/trains).
-In APL the spelling of the name of the molecule _is_ the molecule.
-In APL the name isn't a layer of indirection; it is directly the entity.
+In APL it feels like you are making molecules with atoms (language primitives) and bonds (combinators/trains).
+The spelling of the name of the molecule _is_ the molecule.
+The name isn't a layer of indirection; it is directly the entity.
 
 
 ## If the Molecule Needs More Work
@@ -206,7 +207,7 @@ You'll notice that in trains you don't reference arguments explicitly.
 Trains are a form of [tacit programming](https://en.wikipedia.org/wiki/Tacit_programming).
 
 Here is the train to compute the desired shape:
-```
+```apl
       (,∘2)(⌊÷∘2)
  ┌─┴─┐  
  ∘  ┌┴┐ 
@@ -216,7 +217,7 @@ Here is the train to compute the desired shape:
 ```
 
 Using it looks like:
-```
+```apl
       (,∘2)(⌊÷∘2) 9
 4 2
 ```
@@ -224,7 +225,7 @@ We'll use the result, the vector `4 2`, as the desired shape of the matrix.
 That is, we want to [reshape](https://help.dyalog.com/18.2/Content/Language/Symbols/Rho.htm#kanchor2859) (with ⍴) the argument (a vector) into a matrix with 4 rows 2 columns.
 
 
-```
+```apl
       ⍳9
 1 2 3 4 5 6 7 8 9
       4 2⍴⍳9
@@ -236,7 +237,7 @@ That is, we want to [reshape](https://help.dyalog.com/18.2/Content/Language/Symb
 
 
 And then we embed that train into another train:
-```
+```apl
       ((,∘2)(⌊÷∘2))⍴⍳
    ┌───┼─┐
  ┌─┴─┐ ⍴ ⍳
@@ -247,7 +248,7 @@ And then we embed that train into another train:
 ```
 
 Then we just need to follow up with the expression (that we used a moment ago):
-```
+```apl
       1↓,',',
 ```
 
