@@ -1,5 +1,9 @@
 # Justin's Weblog
 
+## [How it feels to use APL](using_apl)
+
+Using APL feels different than using other languages I know
+
 ## [A Random Permutation](a_random_permutation)
 
 Generating random permutations with APL
