@@ -3,8 +3,9 @@
 
 ## APL 
 
-APL is A Programming Language.
 <img src="media/APL_logo.png" alt="APL" width="100"/>
+
+APL is A Programming Language.
 <!-- ![APL](media/APL_logo.png) -->
 It works quite well when you are working with data that is or can be viewed as a rectangular collection of elements.
 
