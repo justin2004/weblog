@@ -6,7 +6,7 @@
 APL is A Programming Language.
 It works quite well when you are working with data that is or can be viewed as a rectangular collection of elements.
 
-I've used it to [teach image processing](https://github.com/justin2004/image-processing) to students.
+I've used it to [teach image processing](https://github.com/justin2004/image-processing#image-processing-with-apl) to students.
 
 In APL the number of primitives (functions and operators) you need to know is pretty small.
 Each primitive consists of a single character.
@@ -48,6 +48,9 @@ APL programmers might say "arithmetic mean (or average) is spelled `+/÷≢` in 
 I suppose an APL expression is like a spelling in that those are the typographical items that you string together.
 But APL expressions (specifically [trains](https://help.dyalog.com/18.2/index.htm#Language/Introduction/Trains.htm)) feel like [structural formulae](https://en.wikipedia.org/wiki/Structural_formula) of computational processes.
 A structural formula of a molecule shows how the constituent atoms (primitives) are bonded together.
+
+![ethanol maybe](media/ethanol.png)
+
 An APL expression shows how the language primitives are bonded together.
 
 In fact, if you express a function in a [Dyalog APL REPL](https://tryapl.org/) you'll see a tree rendering of the derived function.
@@ -196,7 +199,7 @@ In APL the name isn't a layer of indirection; it is directly the entity.
 ## If the Molecule Needs More Work
 
 
-Instead of 1,2,3,4,5,6,7,8,9 what if i want pairs partitioned like: 1 2 , 3 4 , 5 6 , 7 8
+Instead of 1,2,3,4,5,6,7,8,9 what if I want pairs partitioned like: 1 2 , 3 4 , 5 6 , 7 8
 
 In Clojure you could reference, by name, another function: `partition`.
 
@@ -208,8 +211,7 @@ In Clojure you could reference, by name, another function: `partition`.
 
 Close enough.
 
-<!-- In APL you can get partition behavior with ⍴ (reshape) and a train to compute the desired shape. -->
-In APL you can get partition behavior by reshaping the vector into a matrix.
+In APL you can get partition behavior by first reshaping the vector into a matrix.
 Below we'll use a train to compute the desired shape of the matrix.
 You'll notice that in trains you don't reference arguments explicitly.
 Trains are a form of [tacit programming](https://en.wikipedia.org/wiki/Tacit_programming).
@@ -230,10 +232,12 @@ Using it looks like:
 4 2
 ```
 We'll use the result, the vector `4 2`, as the desired shape of the matrix.
-That is, we want to turn the argument (a vector) into a matrix with 4 rows 2 columns.
+That is, we want to [reshape](https://help.dyalog.com/18.2/Content/Language/Symbols/Rho.htm#kanchor2859) (with ⍴) the argument (a vector) into a matrix with 4 rows 2 columns.
 
 
 ```
+      ⍳9
+1 2 3 4 5 6 7 8 9
       4 2⍴⍳9
 1 2
 3 4
@@ -266,23 +270,24 @@ Which will:
 
 
 All together:
-```
+```apl
       1↓,',',(((,∘2)(⌊÷∘2))⍴⍳) 9
 1 2 , 3 4 , 5 6 , 7 8
 ```
 
 
-# This this all mostly because of APL's single character primitives?
+# Is all this chemistry mostly because of APL's single character primitives?
 
 Maybe.
 
 Single character primitives mean you have less to overcome to express something that can stand alone.
 My 5 year old son does almost any action, that he wants to do, quickly and with cheerfulness.
 He has very little to overcome to perform an action.
-He doesn't believe the action might be of little value.
+He doesn't believe the action might be of little value and therefore not worth the effort.
 He has enough energy to do the action.
 
 Adults, on the other hand, [need hear reasons](https://youtu.be/7jVr0-ghGWU?t=26) before they get out of their chairs.
+
 "At my age if I'm sitting down and somebody tells me I need to get up and go in another room I need to be told all the information why first." - Louis CK
 
 ```c
@@ -290,7 +295,7 @@ for(i=0;i<⍵;i++)
 ```
 feels tedious, like getting up out of my chair and going into another room.
 
-But I bet Louis would be much more willing to just move his eyes to look at something upon request.
+I bet Louis would be much more willing to just move his eyes to look at something upon request.
 
 ```apl
 ⍳ 
@@ -304,3 +309,6 @@ feels atomic, light, and almost reflexive like moving only my eyes to look at so
 ```
 feels like something in between... maybe like scooting down a seat so someone can sit next to me.
 
+# Conclusion
+
+I kind of want to go back and delete all the chemistry analogies but I'm not sure it is worth the effort.
