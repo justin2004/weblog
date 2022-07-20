@@ -173,7 +173,7 @@ Please consider not using fused edges and instead use an ontology that encourage
 
 
 
-schema way
+schema.org way (fused edges)
 ```ttl
 [ a schema:CreativeWork ;
   a wd:Q1886349 ; # Logo 
@@ -182,7 +182,8 @@ schema way
   schema:discussionUrl  "https://gist.github.com/justin2004/183add3d617105cc9cc7cee013d44198" ]
                       
 ```
-my way
+
+points of articulation way
 ```ttl
 [ a schema:UserComments ;
   schema:url "https://gist.github.com/justin2004/183add3d617105cc9cc7cee013d44198" ; 
