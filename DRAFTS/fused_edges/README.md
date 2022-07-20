@@ -23,7 +23,7 @@ Here is a more thoughtful representation
 
 with an additional point of articulation.
 ```ttl
-:event01 :occursAt :venue01 .
+:event01 :occursIn :venue01 .
 :venue01 :name "Olive Garden" .
 ```
 
@@ -52,9 +52,7 @@ I can think of three (two I heard other people say) reasons why fused edges migh
 
 Let me attempt to persuade you that you should mostly ignore those reasons to use fused edges.
 
-(1) 
-
-One of the ideas of the semantic web is AAA: Anyone can say Anything about Any topic.
+1) One of the ideas of the semantic web is AAA: Anyone can say Anything about Any topic.
 
 It is hard for someone to say something about the venue (perhaps its address, current owner, hours of operation) if no node exists in the graph for it.
 With the fused edge, if someone does come along later and they want to express the venue's address it is not a straight forward update.
@@ -63,9 +61,8 @@ Finding all the edges hanging off of the event that express facts about the venu
 At worst, fused edges encourage the use of additional fused edges.
 If you don't have a node to reference then a modeler might make more fused edges in order to express additional information.
 
-(2)
+2) Giving a shortcut a name can be valuable, yes.
 
-Giving a shortcut a name can be valuable.
 But I think if you use a shortcut the thing the shortcut hides should also be available.
 But if you use fused edges that is not available; there is only the shortcut.
 
@@ -86,9 +83,7 @@ And if you have an OWL 2 reasoner active you can just query using the shortcut:
 ?person :mothersMaidenName ?persons_mother_maidenname .
 ```
 
-(3)
-
-I don't have much to say about this.
+3) I don't have much to say about this.
 I can put a billion triples in a triplestore on my laptop and query durations will probably be acceptable.
 If I put 100 billion triples on my laptop query durations might not be acceptable.
 Still I think I would rather consider partitioning the data and using SPARQL query federation rather than fusing edges together to reduce resource requirements. 
