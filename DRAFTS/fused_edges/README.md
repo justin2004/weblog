@@ -156,8 +156,11 @@ You get these bindings:
 
 You can see that most of those object properties are fused edges.
 e.g.
+
 schema:paymentUrl fuses together `hasPayment` and `url`
+
 schema:trackingUrl fuses together `hasTracking` and `url`
+
 schema:codeRepository fuses together `hasCodeRepository` and `url`
 etc.
 
