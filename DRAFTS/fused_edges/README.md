@@ -21,16 +21,16 @@ Here is a more thoughtful representation
 ![articulating edges](media/articulating_edges.png)
 
 
-with an additional point of articulation:
+with an additional point of articulation.
 ```ttl
 :event01 :occursAt :venue01 .
 :venue01 :name "Olive Garden" .
 ```
 
-Another common pair of fused edges:  
+Here is another common pair of fused edges:  
 
 ```ttl
-:person01 :mothersMaidenName "Smith" .
+:person02 :mothersMaidenName "Smith" .
 ```
 
 vs.
@@ -42,15 +42,20 @@ vs.
 
 
 ## Why
-I can think of 3 (2 I heard other people say) reasons why fused edges might be used.
+I can think of three (two I heard other people say) reasons why fused edges might be used.
+
 1) [Your source data may not have details about the venue other than its name.](https://twitter.com/valexiev1/status/1509176909741109258?s=20&t=SBnKJ9_TXmVwgRgvfz2aLg)
+
 2) ["you get better #findability with dedicated properties"](https://twitter.com/salgo60/status/1516753692728471559?s=20&t=sYoBxBlyLxBg0XWUqQ9fNQ)
+
 3) Fewer nodes in a graph likely means fewer hardware resources are required.
 
 Let me attempt to persuade you that you should mostly ignore those reasons to use fused edges.
 
 (1) 
+
 One of the ideas of the semantic web is AAA: Anyone can say Anything about Any topic.
+
 It is hard for someone to say something about the venue (perhaps its address, current owner, hours of operation) if no node exists in the graph for it.
 With the fused edge, if someone does come along later and they want to express the venue's address it is not a straight forward update.
 You'd have to make a new venue node, find the event node in the graph, find all the edges expressing facts about the venue and move them to the new venue node, then connect the event to the new venue node.
@@ -59,6 +64,7 @@ At worst, fused edges encourage the use of additional fused edges.
 If you don't have a node to reference then a modeler might make more fused edges in order to express additional information.
 
 (2)
+
 Giving a shortcut a name can be valuable.
 But I think if you use a shortcut the thing the shortcut hides should also be available.
 But if you use fused edges that is not available; there is only the shortcut.
@@ -81,14 +87,19 @@ And if you have an OWL 2 reasoner active you can just query using the shortcut:
 ```
 
 (3)
+
 I don't have much to say about this.
 I can put a billion triples in a triplestore on my laptop and query durations will probably be acceptable.
 If I put 100 billion triples on my laptop query durations might not be acceptable.
 Still I think I would rather consider partitioning the data and using SPARQL query federation rather than fusing edges together to reduce resource requirements. 
 I say that because I reach for semantic web technologies when I think serendipity (link to Ora) would be valuable.
+
 Fused edges and serendipity don't go together.
-Fused edges are about the use cases you know about.
-Graphs with thoughtful points of articulation are about the use cases you know about and those you discover tomorrow.
+Fused edges are about the use cases you know about and the data you currently have.
+Graphs with thoughtful points of articulation are about the use cases you know about, those you discover tomorrow, and about potential data.
+Points of articulation in a graph suggest enrichment opportunities and new questions.
+
+
 
 
 ## Schema.org
