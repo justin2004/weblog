@@ -6,16 +6,16 @@ But you should resist the temptation.
 
 ## What
 
-In a graph database fused edges occur when the domain modeler uses a single edge when a node and two edges would be more thoughtful.
-By fused edge I mean using a single edge as a shortcut for multiple edges.
+In a graph database a fused edge occurs when a domain modeler uses a single edge when a node and two edges would be more thoughtful.
+A fused edge is a single edge as a shortcut for multiple edges.
 To me a fused edges feels like running an interstate through an area of interest and not putting an exit nearby.
 They also feel like putting a cast on a joint that normally articulates.
 
-Here is an example of fused edges: 
+Here is an example of a fused edge: 
 
 ![fused edges](media/fused_edges.png)
 
-And here is what those fused edges look like in turtle (a popular RDF graph serialization):
+And here is what that fused edge looks like in turtle (a popular RDF graph serialization):
 ```ttl
 :event01 :venueName "Olive Garden" .
 ```
@@ -26,13 +26,13 @@ Here is a more thoughtful representation
 ![articulating edges](media/articulating_edges.png)
 
 
-with an additional point of articulation.
+with an additional point of articulation: the venue.
 ```ttl
 :event01 :occursIn :venue01 .
 :venue01 :name "Olive Garden" .
 ```
 
-Here is another common pair of fused edges:  
+Here is another common fused edge:  
 
 ```ttl
 :person02 :mothersMaidenName "Smith" .
@@ -75,7 +75,7 @@ If you don't have a node to reference then a modeler might make more fused edges
 Giving a shortcut a name can be valuable, yes.
 
 But I think if you use a shortcut the details that the shortcut hides should also be available.
-But if you use fused edges those details are not available; there is only the shortcut.
+If you use fused edges those details are not available; there is only the shortcut.
 
 There are ways to have dedicated properties without sacrificing the details.
 
@@ -136,34 +136,36 @@ WHERE
   }
 }
 ```
-TODO update query result.
 
 That query finds properties that are intended to have only instances of schema:URL in the object position.
 
 You get these bindings:
 
-|s                                    |com                                                                                                                                        |g                                    |
-|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
-|https://schema\.org/sameAs           |URL of a reference Web page that unambiguously indicates the item's identity\. E\.g\. the URL of the item's Wikipedia page, Wikidata entry, or official website\.|http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/additionalType   |An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax\. This is a relationship between something and a class that the thing is in\. In RDFa syntax, it is better to use the native RDFa syntax \- the 'typeof' attribute \- for multiple types\. Schema\.org tools may have only weaker understanding of extra types, in particular those defined externally\.|http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/codeRepository   |Link to the repository where the un\-compiled, human readable code and related code is located \(SVN, github, CodePlex\)\.                 |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/contentUrl       |Actual bytes of the media object, for example the image file or video file\.                                                               |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/discussionUrl    |A link to the page containing the comments of the CreativeWork\.                                                                           |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/downloadUrl      |If the file can be downloaded, URL to download the binary\.                                                                                |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/embedUrl         |A URL pointing to a player for a specific video\. In general, this is the information in the \`\`\`src\`\`\` element of an \`\`\`embed\`\`\` tag and should not be the same as the content of the \`\`\`loc\`\`\` tag\.|http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/installUrl       |URL at which the app may be installed, if different from the URL of the item\.                                                             |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/map              |A URL to a map of the place\.                                                                                                              |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/maps             |A URL to a map of the place\.                                                                                                              |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/paymentUrl       |The URL for sending a payment\.                                                                                                            |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/relatedLink      |A link related to this web page, for example to other related web pages\.                                                                  |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/replyToUrl       |The URL at which a reply may be posted to the specified UserComment\.                                                                      |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/serviceUrl       |The website to access the service\.                                                                                                        |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/significantLinks |The most significant URLs on the page\. Typically, these are the non\-navigation links that are clicked on the most\.                      |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/significantLink  |One of the more significant URLs on the page\. Typically, these are the non\-navigation links that are clicked on the most\.               |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/targetUrl        |The URL of a node in an established educational framework\.                                                                                |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/thumbnailUrl     |A thumbnail image relevant to the Thing\.                                                                                                  |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/trackingUrl      |Tracking url for the parcel delivery\.                                                                                                     |http://127\.0\.0\.1:3030/three/data/g1|
-|https://schema\.org/url              |URL of the item\.                                                                                                                          |http://127\.0\.0\.1:3030/three/data/g1|
+
+|s                   |com                                                                                                                                        |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+|https://schema\.org/sameAs|URL of a reference Web page that unambiguously indicates the item's identity\. E\.g\. the URL of the item's Wikipedia page, Wikidata entry, or official website\.|
+|https://schema\.org/additionalType|An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax\. This is a relationship between something and a class that the thing is in\. In RDFa syntax, it is better to use the native RDFa syntax \- the 'typeof' attribute \- for multiple types\. Schema\.org tools may have only weaker understanding of extra types, in particular those defined externally\.|
+|https://schema\.org/codeRepository|Link to the repository where the un\-compiled, human readable code and related code is located \(SVN, github, CodePlex\)\.                 |
+|https://schema\.org/contentUrl|Actual bytes of the media object, for example the image file or video file\.                                                               |
+|https://schema\.org/discussionUrl|A link to the page containing the comments of the CreativeWork\.                                                                           |
+|https://schema\.org/downloadUrl|If the file can be downloaded, URL to download the binary\.                                                                                |
+|https://schema\.org/embedUrl|A URL pointing to a player for a specific video\. In general, this is the information in the \`\`\`src\`\`\` element of an \`\`\`embed\`\`\` tag and should not be the same as the content of the \`\`\`loc\`\`\` tag\.|
+|https://schema\.org/installUrl|URL at which the app may be installed, if different from the URL of the item\.                                                             |
+|https://schema\.org/map|A URL to a map of the place\.                                                                                                              |
+|https://schema\.org/maps|A URL to a map of the place\.                                                                                                              |
+|https://schema\.org/paymentUrl|The URL for sending a payment\.                                                                                                            |
+|https://schema\.org/relatedLink|A link related to this web page, for example to other related web pages\.                                                                  |
+|https://schema\.org/replyToUrl|The URL at which a reply may be posted to the specified UserComment\.                                                                      |
+|https://schema\.org/serviceUrl|The website to access the service\.                                                                                                        |
+|https://schema\.org/significantLinks|The most significant URLs on the page\. Typically, these are the non\-navigation links that are clicked on the most\.                      |
+|https://schema\.org/significantLink|One of the more significant URLs on the page\. Typically, these are the non\-navigation links that are clicked on the most\.               |
+|https://schema\.org/targetUrl|The URL of a node in an established educational framework\.                                                                                |
+|https://schema\.org/thumbnailUrl|A thumbnail image relevant to the Thing\.                                                                                                  |
+|https://schema\.org/trackingUrl|Tracking url for the parcel delivery\.                                                                                                     |
+|https://schema\.org/url|URL of the item\.                                                                                                                          |
+
+
 
 You can see that most of those object properties are fused edges.
 
@@ -177,14 +179,22 @@ schema:codeRepository fuses together `hasCodeRepository` and `url`
 
 etc.
 
-If you run that same query with `schema:Place` (instead of `schema:URL`) you can see many more fused properties.
+I think each of those named shortcuts would be fine if they were built up from primitives like
+```ttl
+:codeRepositoryURL  owl:propertyChainAxiom  ( :hasCodeRepository  :url ) .
+```
+but I might not put them in core Schema.org because then what stops people from thinking all their favorite named shortcuts belong in core Schema.org?
+
+
+Also if you run that same query with `schema:Place` (instead of `schema:URL`) you can see many more fused properties.
 Maybe I'll do another post where I catalog all the fused properties in Schema.org.
+
+## Wrap it up
 
 If you find yourself in the position of building an ontology (the T-box) then remember that the object properties you create will shape the way domain modelers think about decomposing their data. 
 An ontology with generic and composable object properties, such as [Gist](https://github.com/semanticarts/gist), encourages domain modlers to use points of articulation in their graphs.
 You can always later define object properties that build upon the more primitive and composable object properties but once you start fusing edges it could be hard to reel it in.
 
-That's the end of this blog post.
 Please consider not using fused edges and instead use an ontology that encourages the thoughtful use of points (nodes) of articulation!
 
 
