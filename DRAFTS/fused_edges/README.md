@@ -1,16 +1,21 @@
 # Fused Edges
-By fused edge I mean using a single edge as a shortcut for multiple edges.
+
+If you are doing domain modeling and using a graph database you might be tempted to used fused edges.
+You see them around the semantic web.
+But you should resist the temptation.
 
 ## What
 
 In a graph database fused edges occur when the domain modeler uses a single edge when a node and two edges would be more thoughtful.
+By fused edge I mean using a single edge as a shortcut for multiple edges.
 To me a fused edges feels like running an interstate through an area of interest and not putting an exit nearby.
+They also feel like putting a cast on a joint that normally articulates.
 
 Here is an example of fused edges: 
 
 ![fused edges](media/fused_edges.png)
 
-And here is what those fused edges look like in turtle:
+And here is what those fused edges look like in turtle (a popular RDF graph serialization):
 ```ttl
 :event01 :venueName "Olive Garden" .
 ```
@@ -43,6 +48,7 @@ vs.
 
 ## Why
 I can think of three (two I heard other people say) reasons why fused edges might be used.
+Let's use the event and venue example.
 
 1) [Your source data may not have details about the venue other than its name.](https://twitter.com/valexiev1/status/1509176909741109258?s=20&t=SBnKJ9_TXmVwgRgvfz2aLg)
 
@@ -59,44 +65,47 @@ One of the ideas of the semantic web is AAA: Anyone can say Anything about Any t
 It is hard for someone to say something about the venue (perhaps its address, current owner, hours of operation) if no node exists in the graph for it.
 With the fused edge, if someone does come along later and they want to express the venue's address it is not a straight forward update.
 You'd have to make a new venue node, find the event node in the graph, find all the edges expressing facts about the venue and move them to the new venue node, then connect the event to the new venue node.
-Finding all the edges hanging off of the event that express facts about the venue will likely be a manual effort -- there probably won't be clever data for the machine to use that says `:mothersMaidenName` is not a direct attribute of the subject but rather a direct attribute of the subject's mother. 
-At worst, fused edges encourage the use of additional fused edges.
+Finding all the edges hanging off of the event that express facts about the venue will likely be a manual effort -- there probably won't be clever data for the machine to use that says `:venueName` is not a direct attribute of the event but rather it is a direct attribute of the venue not yet represented in the graph.
+
+Also, fused edges encourage the use of additional fused edges.
 If you don't have a node to reference then a modeler might make more fused edges in order to express additional information.
 
 (2) 
 
 Giving a shortcut a name can be valuable, yes.
 
-But I think if you use a shortcut the thing the shortcut hides should also be available.
-But if you use fused edges that is not available; there is only the shortcut.
+But I think if you use a shortcut the details that the shortcut hides should also be available.
+But if you use fused edges those details are not available; there is only the shortcut.
+
+There are ways to have dedicated properties without sacrificing the details.
 
 In SPARQL you can use shortcuts: property paths.
 In OWL you can define those shortcuts: property chains.
 
 In a SPARQL query you could just do
 ```sparql
-?person :hasMother/:maidenName ?persons_mother_maidenname .
+?event :occursIn/:name ?venue_name .
 ```
 
 Or you could define that in OWL
 ```ttl
-:mothersMaidenName  owl:propertyChainAxiom  ( :hasMother  :maidenName ) .
+:venueName  owl:propertyChainAxiom  ( :occursIn  :name ) .
 ```
-And if you have an OWL 2 reasoner active you can just query using the shortcut:
+And if you have an OWL 2 reasoner active you can just query using the shortcut
 ```sparql
-?person :mothersMaidenName ?persons_mother_maidenname .
+?event :venueName ?venue_name .
 ```
 
 (3)
 
-I don't have much to say about this.
+Ok, using fused edges does reduce the number of triples in your graph.
 I can put a billion triples in a triplestore on my laptop and query durations will probably be acceptable.
 If I put 100 billion triples on my laptop query durations might not be acceptable.
 Still I think I would rather consider partitioning the data and using SPARQL query federation rather than fusing edges together to reduce resource requirements. 
-I say that because I reach for semantic web technologies when I think serendipity (link to Ora) would be valuable.
+I say that because I reach for semantic web technologies when I think radical data interopability and serendipity would be valuable.
 
-Fused edges and serendipity don't go together.
-Fused edges are about the use cases you know about and the data you currently have.
+Fused edges and radical data interoperability don't go together.
+Fused edges are about the use cases you currently know about and the data you currently have.
 Graphs with thoughtful points of articulation are about the use cases you know about, those you discover tomorrow, and about potential data.
 Points of articulation in a graph suggest enrichment opportunities and new questions.
 
@@ -105,13 +114,13 @@ Points of articulation in a graph suggest enrichment opportunities and new quest
 
 ## Schema.org
 
-Schema.org loves to use fused edges.
+[Schema.org](https://github.com/schemaorg/schemaorg) is a well known ontology that unfortunately has lots of fused edges.
 
-If you run this SPARQL query against `schema.ttl`:
+If you run this SPARQL query against `schema.ttl` you'll see some examples.
 ```sparql
 PREFIX  schema: <https://schema.org/>
 PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT *
+SELECT ?s ?com
 WHERE
   { graph ?g {
       ?s rdfs:comment ?com .
@@ -127,6 +136,8 @@ WHERE
   }
 }
 ```
+TODO update query result.
+
 That query finds properties that are intended to have only instances of schema:URL in the object position.
 
 You get these bindings:
@@ -155,6 +166,7 @@ You get these bindings:
 |https://schema\.org/url              |URL of the item\.                                                                                                                          |http://127\.0\.0\.1:3030/three/data/g1|
 
 You can see that most of those object properties are fused edges.
+
 e.g.
 
 schema:paymentUrl fuses together `hasPayment` and `url`
@@ -162,10 +174,15 @@ schema:paymentUrl fuses together `hasPayment` and `url`
 schema:trackingUrl fuses together `hasTracking` and `url`
 
 schema:codeRepository fuses together `hasCodeRepository` and `url`
+
 etc.
 
-If you run that same query with `schema:Place` you can see many fused properties as well.
+If you run that same query with `schema:Place` (instead of `schema:URL`) you can see many more fused properties.
+Maybe I'll do another post where I catalog all the fused properties in Schema.org.
 
+If you find yourself in the position of building an ontology (the T-box) then remember that the object properties you create will shape the way domain modelers think about decomposing their data. 
+An ontology with generic and composable object properties, such as [Gist](https://github.com/semanticarts/gist), encourages domain modlers to use points of articulation in their graphs.
+You can always later define object properties that build upon the more primitive and composable object properties but once you start fusing edges it could be hard to reel it in.
 
 That's the end of this blog post.
 Please consider not using fused edges and instead use an ontology that encourages the thoughtful use of points (nodes) of articulation!
