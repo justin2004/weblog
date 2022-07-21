@@ -6,10 +6,9 @@ But you should resist the temptation.
 
 ## What
 
-In a graph database a fused edge occurs when a domain modeler uses a single edge when a node and two edges would be more thoughtful.
-A fused edge is a single edge as a shortcut for multiple edges.
-To me a fused edges feels like running an interstate through an area of interest and not putting an exit nearby.
-They also feel like putting a cast on a joint that normally articulates.
+In a graph database a fused edge occurs when a domain modeler uses a single edge where a node and two edges would be more thoughtful.
+To me a fused edge feels like running an interstate through an area of interest and not putting an exit nearby.
+It also feels like putting a cast on a joint that normally articulates.
 
 Here is an example of a fused edge: 
 
@@ -62,7 +61,7 @@ Let me attempt to persuade you that you should mostly ignore those reasons to us
 
 One of the ideas of the semantic web is AAA: Anyone can say Anything about Any topic.
 
-It is hard for someone to say something about the venue (perhaps its address, current owner, hours of operation) if no node exists in the graph for it.
+It is hard for someone to say something about the venue (perhaps its address, current owner, hours of operation, other events that occur there, etc.) if no node exists in the graph for it.
 With the fused edge, if someone does come along later and they want to express the venue's address it is not a straight forward update.
 You'd have to make a new venue node, find the event node in the graph, find all the edges expressing facts about the venue and move them to the new venue node, then connect the event to the new venue node.
 Finding all the edges hanging off of the event that express facts about the venue will likely be a manual effort -- there probably won't be clever data for the machine to use that says `:venueName` is not a direct attribute of the event but rather it is a direct attribute of the venue not yet represented in the graph.
@@ -91,7 +90,7 @@ Or you could define that in OWL
 ```ttl
 :venueName  owl:propertyChainAxiom  ( :occursIn  :name ) .
 ```
-And if you have an OWL 2 reasoner active you can just query using the shortcut
+And if you have an OWL 2 reasoner active you can just query using the shortcut you just defined
 ```sparql
 ?event :venueName ?venue_name .
 ```
@@ -102,7 +101,7 @@ Ok, using fused edges does reduce the number of triples in your graph.
 I can put a billion triples in a triplestore on my laptop and query durations will probably be acceptable.
 If I put 100 billion triples on my laptop query durations might not be acceptable.
 Still I think I would rather consider partitioning the data and using SPARQL query federation rather than fusing edges together to reduce resource requirements. 
-I say that because I reach for semantic web technologies when I think radical data interopability and serendipity would be valuable.
+I say that because I reach for semantic web technologies when I think radical data interoperability and serendipity would be valuable.
 
 Fused edges and radical data interoperability don't go together.
 Fused edges are about the use cases you currently know about and the data you currently have.
@@ -192,10 +191,11 @@ Maybe I'll do another post where I catalog all the fused properties in Schema.or
 ## Wrap it up
 
 If you find yourself in the position of building an ontology (the T-box) then remember that the object properties you create will shape the way domain modelers think about decomposing their data. 
-An ontology with generic and composable object properties, such as [Gist](https://github.com/semanticarts/gist), encourages domain modlers to use points of articulation in their graphs.
+An ontology with composable object/data properties, such as [Gist](https://github.com/semanticarts/gist), encourages domain modelers to use points of articulation in their graphs.
 You can always later define object properties that build upon the more primitive and composable object properties but once you start fusing edges it could be hard to reel it in.
 
-Please consider not using fused edges and instead use an ontology that encourages the thoughtful use of points (nodes) of articulation!
+Please consider not using fused edges and instead use an ontology that encourages the thoughtful use of points (nodes) of articulation.
+I don't see how [the semantic web can turn down any stereo's volume when you get a phone call](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf) without thoughtful points of articulation.
 
 
 
@@ -231,3 +231,8 @@ So it is 2 edges fused together in such a way that you can't reference the node 
 If you can't reference the node in the middle (the discussion itself) you can't say when it started, when it ended, 
 who the participants were, etc.
 
+
+Oh, I think the reason Schema.org has so many fused edges is that it is designed as a way to add semantics to webpages.
+A webpage is a document... which is often a bag of information.
+So a fused edge leaving a bag of information doesn't seem like such a sin.
+But, personally, that makes me want to do more than attempt to hang semantics off of a bag of information.
