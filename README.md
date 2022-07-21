@@ -1,5 +1,9 @@
 # Justin's Weblog
 
+## [Fused Edges, Please Don't](fused_edges)
+
+What is a Fused Edge and why you shouldn't do it
+
 ## [How it feels to use APL](using_apl)
 
 Using APL feels different than using other languages I know
