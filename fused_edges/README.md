@@ -1,6 +1,6 @@
 # Fused Edges
 
-If you are doing domain modeling and using a graph database you might be tempted to used fused edges.
+If you are doing domain modeling and using a graph database you might be tempted to use fused edges.
 You see them around the semantic web.
 But you should resist the temptation.
 
