@@ -200,7 +200,7 @@ I don't see how [the semantic web can turn down any stereo's volume when you get
 ## Final Appeal
 
 If you believe you must use an edge like `:venueName` then please put something like this in your Tbox:
-`owl:propertyChainAxiom  ( :occursIn  :name ) .`
+`:venueName  owl:propertyChainAxiom  ( :occursIn  :name ) .`
 
 
 
