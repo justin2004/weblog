@@ -197,6 +197,11 @@ You can always later define object properties that build upon the more primitive
 Please consider not using fused edges and instead use an ontology that encourages the thoughtful use of points (nodes) of articulation.
 I don't see how [the semantic web can turn down any stereo's volume when you get a phone call](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf) without thoughtful points of articulation.
 
+## Final Appeal
+
+If you believe you must use an edge like `:venueName` then please put something like this in your Tbox:
+`owl:propertyChainAxiom  ( :occursIn  :name ) .`
+
 
 
 ## Appendix
