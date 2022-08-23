@@ -46,7 +46,7 @@ If you work with git much you probably recognize what most of that is.
 But the semantic web isn't about just allowing you to work with data you already know about.
 So that means we need to unpack this compact application-centric representation into a [data-centric](http://www.datacentricmanifesto.org/) representation.
 
-It is a fine representation for the `patch` tool but doesn't really check any of [these boxes](https://youtu.be/f9wautaqWUs?t=1116).
+It is a fine representation for the `patch` tool but doesn't really check any of [these boxes](https://youtu.be/f9wautaqWUs?t=1116):
 
 ![Ora slide](media/ora_slide.jpg)
 
