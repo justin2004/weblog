@@ -43,23 +43,32 @@ index 0000000..882149f
 
 Notice how compact that representation is.
 If you work with git much you probably recognize what most of that is.
-But the semantic web isn't about just allowing you to work with data you already know about.
+But the semantic web isn't about just allowing you to work with data you already know how to decipher.
 So that means we need to unpack this compact application-centric representation into a [data-centric](http://www.datacentricmanifesto.org/) representation.
 
-It is a fine representation for the `patch` tool but doesn't really check any of [these boxes](https://youtu.be/f9wautaqWUs?t=1116):
+That compact representation is fine for the `patch` tool but doesn't really check any of [these boxes](https://youtu.be/f9wautaqWUs?t=1116):
 
 ![Ora slide](media/ora_slide.jpg)
 
 
 
-Ok, I've transformed that representation into a thoughtful RDF graph... let's take a look (using RDFox's graph viz):
+Ok, I ran my conversion tool on that commit and it transformed that representation into a thoughtful RDF graph.
+
+Let's take a look (using RDFox's graph viz):
 
 
 ![as visual graph](media/first.png)
 
 
+You'll notice that [commits](https://www.wikidata.org/wiki/Q20058545) have parts: hunks.
+Those [hunks](https://www.wikidata.org/wiki/Q113509427) produce contiguous lines.
+Those [contiguous lines](https://www.wikidata.org/wiki/Q113515824):
+- occur in a [text file](https://www.wikidata.org/wiki/Q86920) with a name
+- are identified by a [line number](https://www.wikidata.org/wiki/Q6553274)
+- have a magnitude with a unit of measure (line count)
+- and have the literal contained text
 
-Note that I've used Wikidata entities because Wikidata is basically the hub of the semantic web.
+Note that I've used Wikidata entities because Wikidata is a nice hub in the semantic web.
 Here is a Wikidata subgraph with labels that are relevant for the RDF I've produced:
 
 ```turtle
@@ -74,10 +83,7 @@ wd:Q113515824 rdfs:label "contiguous lines"@en .
 ```
 
 
-You'll notice that...
 
-TODO get prefixes
-and ttl-ify in one pass so things get consolidated.
 
 ```turtle
 @prefix :        <http://example.com/> .
@@ -122,9 +128,7 @@ and ttl-ify in one pass so things get consolidated.
 ```
 
 
-
-next commit...
-this one has...
+Here is another commit:
 
 ```
 commit 0e40522a20754fc82d751000eae710b5ad09e2f3
@@ -228,11 +232,17 @@ And the RDF:
 
 ```
 
+You'll notice that this commit does a little more.
+The hunk produces contiguous lines as before.
+The hunk also affects contiguous lines.
+That is because this commit does not add a new file; it changes an existing file.
+
 
 ## Why
 
 At this point maybe you wondering why the data isn't more "direct."
-<!-- Why are generic predicate like `gist:produces` and `gist:name` used? -->
+The RDF seems to spread things out and use generic predicates.
+That is intentional.
 
 My conversion utility does use some intermediate "direct" data:
 
@@ -286,16 +296,34 @@ My conversion utility does use some intermediate "direct" data:
 But that data does not snap together with other data like RDF does.
 It does not have formal semantics.
 It has not unpacked the meaning of the data.
-It is more like a compact projection of the data.
+It is more like an ad hoc projection of data.
 It is not something I would want to pass around between applications.
-...
 
 
 
+Some of the nice things about this domain modeling and representation:
 
-you can start anywhere -- e.g. look for things with names, etc. without needing to know where all the names live in various represeatntions.
 
-## How
+You can start anywhere with queries.
+
+If you want to find all things with names you just:
+
+```sparql
+select * where {
+?s gist:name ?name .
+}
+```
+
+If you want to find all files with names:
+
+```sparql
+select * where {
+?s a wd:Q86920 .
+?s gist:name ?name .
+}
+```
+You don't need to know structurally where these "fields" live.
+
 
 def in terms of more primitive things
   eventually bottom out
@@ -332,6 +360,12 @@ enrichment
 unix -- radical program composability
   using RDF graphs as input and output
   https://twitter.com/stylewarning/status/1561759622167293954?s=20&t=FyJW8TW0F-SfD2HqEfciXQ
+
+## How
+
+In another blog post I might describe how the conversion utility works.
+It is written in Clojure and it uses SPARQL Anything.
+I expect to push it to Github soon.
 
 
 ## Answering Questions About cURL
