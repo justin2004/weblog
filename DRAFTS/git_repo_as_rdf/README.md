@@ -61,8 +61,11 @@ Let's take a look (using RDFox's graph viz):
 
 
 You'll notice that [commits](https://www.wikidata.org/wiki/Q20058545) have parts: hunks.
+
 Those [hunks](https://www.wikidata.org/wiki/Q113509427) produce contiguous lines.
+
 Those [contiguous lines](https://www.wikidata.org/wiki/Q113515824):
+
 - occur in a [text file](https://www.wikidata.org/wiki/Q86920) with a name
 - are identified by a [line number](https://www.wikidata.org/wiki/Q6553274)
 - have a magnitude with a unit of measure (line count)
