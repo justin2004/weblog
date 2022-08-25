@@ -85,6 +85,12 @@ wd:Q6553274 rdfs:label "line number"@en .
 wd:Q113515824 rdfs:label "contiguous lines"@en .
 ```
 
+By the way, don't let those Q numbers scare you.
+I don't memorize them (well I do have [wd:Q2](https://www.wikidata.org/wiki/Q2) memorized since it is pretty special).
+I use auto completion in my text editor and Wikidata has it [here](https://query.wikidata.org/) too.
+You just type `wd:` then press control-enter then type what you want.
+Also, Wikidata has some good reasons for using opaque URIs.
+
 
 Here is the RDF graph (the same one as in the image above) in turtle serialization:
 
@@ -238,7 +244,7 @@ And the RDF:
 You'll notice that this commit does a little more.
 The hunk produces contiguous lines as before.
 The hunk also affects contiguous lines.
-That is because this commit does not add a new file; it changes an existing file.
+That is because this commit does not add a new file; it changes an existing file by replacing some contiguous lines with some other contiguous lines.
 
 
 ## Why
@@ -347,7 +353,7 @@ One of the reasons this is helpful is that you can query against the more primit
 (3)
 
 You are encouraged (if you use a thoughtful upper ontology) to unpack meaning.
-I think of the semantic web as the exploded part diagram for the web's data. 
+I think of the semantic web as something like the exploded part diagram for the web's data. 
 
 ![exploded diagram](media/exploded_diagram.jpg)
 
@@ -360,19 +366,19 @@ You'll instead have to write a query to find a postal code (some of them are rea
 
 If you require users to unpack all your representations before they use them then maybe they'll lose interest and move on to something else.
 
-A thoughtful ontology will help you put space between things by having a thoughtful set of generic predicates.
-You might not be using a thoughtful ontology if you can connect any two arbitrary things with a single edge.
+A thoughtful ontology will help you carve the world at its joints, putting points of articulation between things, by having a thoughtful set of generic predicates.
+You might _not_ be using a thoughtful ontology if you can connect any two arbitrary things with a single edge.
 
 An unpacked representations isn't just the form for a particular application -- it is the form for all applications, present and future.
 If you have a vocabulary used by all applications then ...
 
-The unified output format for diff works well for the `patch` program and `git` but not many humans asking questions.
+The unified output format for diff works well for the `git` and `patch` programs but not for humans asking questions.
 
 Sure, unpacked representations mean more triples but the alternatives (application-centric data, LPGs/RDF-Star, etc.) are like bodge wires:
 
 ![bodge wire](media/bodge.png)
 
-They are acceptable for your final act but not something you'd want to live with.
+They are acceptable for your final act, ![maybe](media/maybe.gif), but not something you'd want to live with.
 
 
 (4)
