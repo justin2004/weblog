@@ -378,7 +378,11 @@ Sure, unpacked representations mean more triples but the alternatives (applicati
 
 ![bodge wire](media/bodge.png)
 
-They are acceptable for your final act, ![maybe](media/maybe.gif), but not something you'd want to live with.
+<!-- ![maybe](media/maybe.gif) -->
+
+They are acceptable for your final act,
+<img src="media/maybe.gif" alt="maybe" width="35"/>
+, but not something you'd want to live with.
 
 
 (4)
