@@ -16,7 +16,7 @@ I like those tools and use them daily but I wondered what it would be like to an
 In order to answer questions semantic web style you first have to find or make some thoughtful RDF.
 I say "thoughtful" because it is possible to use the semantic web stack (RDF/SPARQL/OWL/SHACL, etc.) without doing much domain modeling.
 
-In our case we can easily get some structured data.
+In our case we can easily get some structured data to start with.
 Here is a git commit I just made:
 
 ```
@@ -44,9 +44,10 @@ Notice how compact that representation is.
 The meat of that text is the unified output format of the `diff` tool.
 If you work with git much you probably recognize what most of that is.
 But the semantic web isn't about just allowing you to work with data you already know how to decipher.
-So that means we need to unpack this compact application-centric representation into a [data-centric](http://www.datacentricmanifesto.org/) representation.
+To participate in the semantic web we need to unpack this compact application-centric representation into a [data-centric](http://www.datacentricmanifesto.org/) representation so that others don't need to do the deciphering.
+In the semantic web we want data to wear its meaning on its sleeve.
 
-That compact representation is fine for the `patch` tool but doesn't really check any of [these boxes](https://youtu.be/f9wautaqWUs?t=1116):
+That compact representation is fine for the `diff` and `patch` tools but doesn't really check any of [these boxes](https://youtu.be/f9wautaqWUs?t=1116):
 
 ![Ora slide](media/ora_slide.jpg)
 
@@ -341,6 +342,7 @@ You don't need to know structurally where these "fields" live.
 (2)
 
 You define things in terms of more primitive things.
+
 For example, if you look on Wikidata you'll see that `commit` is defined in terms of `changeset`, and `version control`.
 `Hunk` is defined in terms of `diff unified format` and `line`.
 
@@ -353,13 +355,14 @@ One of the reasons this is helpful is that you can query against the more primit
 (3)
 
 You are encouraged (if you use a thoughtful upper ontology) to unpack meaning.
+
 I think of the semantic web as something like the exploded part diagram for the web's data. 
 
 ![exploded diagram](media/exploded_diagram.jpg)
 
 Yes, it takes up more space than a render of fully assembled thing but all the components you might want to talk about are addressable and their relationship to other components is evident.
 
-One example of how not unpacking makes _ harder is how Wikidata packs up postal code ranges with an en dash (–).
+One example of how not unpacking makes question answering harder is how Wikidata packs up postal code ranges with an en dash (–).
 
 If you query Wikidata to see what region has postal code "10498" allocated to it you won't find any results.
 You'll instead have to write a query to find a postal code (some of them are really a range of postal codes designated with an en dash) by making a procedure that gets the start and stop symbols (numbers in this case) and enumerates the range and does a `where in` or something similar.
@@ -369,12 +372,9 @@ If you require users to unpack all your representations before they use them the
 A thoughtful ontology will help you carve the world at its joints, putting points of articulation between things, by having a thoughtful set of generic predicates.
 You might _not_ be using a thoughtful ontology if you can connect any two arbitrary things with a single edge.
 
-An unpacked representations isn't just the form for a particular application -- it is the form for all applications, present and future.
-If you have a vocabulary used by all applications then ...
-
 The unified output format for diff works well for the `git` and `patch` programs but not for humans asking questions.
 
-Sure, unpacked representations mean more triples but the alternatives (application-centric data, LPGs/RDF-Star, etc.) are like bodge wires:
+Sure, unpacked representations mean more data (triples) but the alternatives (application-centric data, LPGs/RDF-Star, etc.) are like bodge wires:
 
 ![bodge wire](media/bodge.png)
 
@@ -382,12 +382,13 @@ Sure, unpacked representations mean more triples but the alternatives (applicati
 
 They are acceptable for your final act,
 <img src="media/maybe.gif" alt="maybe" width="35"/>
-, but not something you'd want to live with.
+, but not something you'd want to build upon.
 
 
 (4)
 
 RDF allows for incremental enrichment.
+
 As a followup to this project I think it would be interesting to [transform CWEs](https://www.reddit.com/r/semanticweb/comments/t7epy5/common_weakness_enumeration_cwe_in_rdf/) (Common Weakness Enumeration) and CVEs (Common Vulnerabilities and Exposures) into RDF and connect them to the git repositories where the vulnerable code is.
 
 
@@ -401,12 +402,6 @@ The ease of using SPARQL has a bit to do with the thoughtfulness of the domain m
 
 Below I pose several question to the data and I obtain answers with SPARQL.
 
-
-## How
-
-In another blog post I might describe how the conversion utility works.
-It is written in Clojure and it uses [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
-I expect to push it to Github soon.
 
 
 ## Answering Questions About cURL
@@ -738,17 +733,23 @@ Result:
 And depending on how you count the people the query finds between 678 and 727 people that authored commits in libcurl's lib/ directory.
 That was Daniel's first question.
 He got 629 with his method but that was a few months ago and I don't know exactly what his method of counting was.
+He may not have included the act of deleting a file in that directory like I did.
 
 To answer his next three questions I'd need to simulate the application of hunks in SPARQL or add the output of `git blame` to the RDF.
 Daniel likely used the output of `git blame`.
 I'll think about adding it to the RDF.
 
+## How
+
+In another blog post I might describe how the conversion utility works.
+It is written in Clojure and it uses [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
+I expect to push it to Github soon.
 
 ## Closing Thoughts
 
 It is fun to imagine having all the git repos in Github as RDF graphs in a massive triplestore and asking questions with SPARQL.
 
-In my example queries I didn't make use of the fact that each source code line is in the data.
+In my example queries I didn't make use of the fact that each source code line is in the RDF.
 Most triplestores have full text search capabilities so I'll write some queries that make use of that too. 
 
 I think this technique could be applied to other application-centric file formats. 
