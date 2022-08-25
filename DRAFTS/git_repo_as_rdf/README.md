@@ -388,10 +388,8 @@ They are acceptable for your final act,
 (4)
 
 RDF allows for incremental enrichment.
-As a followup to this project I think it would be interesting to [transform CWEs](https://www.reddit.com/r/semanticweb/comments/t7epy5/common_weakness_enumeration_cwe_in_rdf/) (Common Weakness Enumeration) and CVEs (Common Vulnerabilities and Exposures) as RDF and connect them to the git repositories where the vulnerable code is.
+As a followup to this project I think it would be interesting to [transform CWEs](https://www.reddit.com/r/semanticweb/comments/t7epy5/common_weakness_enumeration_cwe_in_rdf/) (Common Weakness Enumeration) and CVEs (Common Vulnerabilities and Exposures) into RDF and connect them to the git repositories where the vulnerable code is.
 
-
-TODO compare using unix tools with SPARQL to answer questions.
 
 
 (5)
@@ -401,7 +399,7 @@ More people can ask questions of the data.
 SPARQL is a declarative query language.
 The ease of using SPARQL has a bit to do with the thoughtfulness of the domain modeling. 
 
-Below I pose several question of the data that I obtain answers to with SPARQL.
+Below I pose several question to the data and I obtain answers with SPARQL.
 
 
 ## How
@@ -416,7 +414,7 @@ I expect to push it to Github soon.
 The cURL git repo has about 29k commits and commits going back to 1999. 
 
 My conversion tool turned it into just under 8 million triples in 70 minutes.
-I haven't focued on execution efficiency yet.
+I haven't focused on execution efficiency yet.
 I wanted to run queries against the data to get a feel the utility of this approach before I refine the tool.
 
 Let's answer some questions about the development of cURL.
@@ -739,8 +737,11 @@ Result:
 
 And depending on how you count the people the query finds between 678 and 727 people that authored commits in libcurl's lib/ directory.
 That was Daniel's first question.
+He got 629 with his method but that was a few months ago and I don't know exactly what his method of counting was.
 
 To answer his next three questions I'd need to simulate the application of hunks in SPARQL or add the output of `git blame` to the RDF.
+Daniel likely used the output of `git blame`.
+I'll think about adding it to the RDF.
 
 
 ## Closing Thoughts
@@ -749,3 +750,7 @@ It is fun to imagine having all the git repos in Github as RDF graphs in a massi
 
 In my example queries I didn't make use of the fact that each source code line is in the data.
 Most triplestores have full text search capabilities so I'll write some queries that make use of that too. 
+
+I think this technique could be applied to other application-centric file formats. 
+SPARQL Anything gets you part of the way there for [several file formats](https://github.com/SPARQL-Anything/sparql.anything#supported-formats) but I'd like to hear if you have other ideas.
+
