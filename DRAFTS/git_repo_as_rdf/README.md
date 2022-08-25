@@ -56,7 +56,7 @@ That compact representation is fine for the `diff` and `patch` tools but doesn't
 
 Ok, I ran my conversion tool on that commit and it transformed that representation into a thoughtful RDF graph.
 
-Let's take a look (using RDFox's graph viz):
+Let's take a look (using [RDFox](https://www.oxfordsemantic.tech/product)'s graph viz):
 
 
 ![as visual graph](media/first.png)
@@ -64,7 +64,7 @@ Let's take a look (using RDFox's graph viz):
 
 You'll notice that [commits](https://www.wikidata.org/wiki/Q20058545) have parts: hunks.
 
-Those [hunks](https://www.wikidata.org/wiki/Q113509427) produce contiguous lines.
+Those [hunks](https://www.wikidata.org/wiki/Q113509427), when applied, produce contiguous lines.
 
 Those [contiguous lines](https://www.wikidata.org/wiki/Q113515824):
 
@@ -251,7 +251,7 @@ That is because this commit does not add a new file; it changes an existing file
 
 ## Why
 
-At this point maybe you wondering why the data isn't more "direct."
+At this point maybe you're wondering why the data isn't more "direct."
 The RDF seems to spread things out and use generic predicates (produces, occurs in, etc.).
 That is intentional.
 
@@ -312,8 +312,6 @@ It is not something I would want to pass around between applications.
 
 
 
-<!-- Some of the nice things about this (unpacked) domain modeling and representation: -->
-
 There are some nice things about using RDF to express the content of a git repository.
 This is not a comprehensive list but rather just stuff that I thought of while doing this project:
 
@@ -355,7 +353,7 @@ One of the reasons this is helpful is that you can query against the more primit
 
 (3)
 
-You are encouraged (if you use a thoughtful upper ontology) to unpack meaning.
+You are encouraged (if you use a thoughtful upper ontology such as [Gist](https://github.com/semanticarts/gist)) to unpack meaning.
 
 I think of the semantic web as something like the exploded part diagram for the web's data. 
 
@@ -390,7 +388,7 @@ They are acceptable for your final act,
 
 RDF allows for incremental enrichment.
 
-As a followup to this project I think it would be interesting to [transform CWEs](https://www.reddit.com/r/semanticweb/comments/t7epy5/common_weakness_enumeration_cwe_in_rdf/) (Common Weakness Enumeration) and CVEs (Common Vulnerabilities and Exposures) into RDF and connect them to the git repositories where the vulnerable code is.
+As a followup to this project I think it would be interesting to [transform CWEs](https://www.reddit.com/r/semanticweb/comments/t7epy5/common_weakness_enumeration_cwe_in_rdf/) (Common Weakness Enumeration) and CVEs (Common Vulnerabilities and Exposures) into RDF and connect them to the git repositories where the vulnerability producing code is.
 
 
 
@@ -401,7 +399,7 @@ More people can ask questions of the data.
 SPARQL is a declarative query language.
 The ease of using SPARQL has a bit to do with the thoughtfulness of the domain modeling. 
 
-Below I pose several question to the data and I obtain answers with SPARQL.
+Below I pose several questions to the data and I obtain answers with SPARQL.
 
 
 
@@ -431,15 +429,10 @@ PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX  wd:   <http://www.wikidata.org/entity/>
 SELECT  ?creator_email (SUM(?num_deleted_lines) AS ?total_deleted_lines)
 WHERE
-  { ?commit  gist:hasPart     ?hunk ;
-             gist:atDateTime  ?at .
+  { ?commit  gist:hasPart ?hunk .
     ?commit dcterms:creator/schema:email ?creator_email .
-    ?hunk  gist:affects  ?start_contig_lines .
-    ?start_contig_lines gist:hasMagnitude/gist:numericValue ?start_line_count .
-    ?start_contig_lines gist:occursIn/gist:name ?start .
-    ?hunk  gist:produces  ?end_contig_lines .
-    ?end_contig_lines gist:hasMagnitude/gist:numericValue ?end_line_count .
-    ?end_contig_lines gist:occursIn/gist:name ?end
+    ?hunk  gist:affects/gist:hasMagnitude/gist:numericValue ?start_line_count .
+    ?hunk  gist:produces/gist:hasMagnitude/gist:numericValue ?end_line_count .
     FILTER ( ?end_line_count < ?start_line_count )
     BIND(( ?start_line_count - ?end_line_count ) AS ?num_deleted_lines)
   }
@@ -743,7 +736,7 @@ I'll think about adding it to the RDF.
 ## How
 
 In another blog post I might describe how the conversion utility works.
-It is written in Clojure and it uses [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
+It is written in Clojure and it uses [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything) (which is built upon [Apache Jena](https://jena.apache.org/)).
 I expect to push it to Github soon.
 
 ## Closing Thoughts
@@ -752,7 +745,10 @@ It is fun to imagine having all the git repos in Github as RDF graphs in a massi
 
 In my example queries I didn't make use of the fact that each source code line is in the RDF.
 Most triplestores have full text search capabilities so I'll write some queries that make use of that too. 
+In general I haven't been overly impressed with search built-into Gitlab and Bitbucket (I haven't used Github's search much) so I wonder if keeping an RDF representation with full text search would be a useful approach. I'd love to see a SPARQL endpoints for searching hosted git platforms!
 
 I think this technique could be applied to other application-centric file formats. 
 SPARQL Anything gets you part of the way there for [several file formats](https://github.com/SPARQL-Anything/sparql.anything#supported-formats) but I'd like to hear if you have other ideas.
+
+Please feel free to start a discussion above if you have ideas!
 
