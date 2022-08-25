@@ -2,15 +2,14 @@
 
 ## Motivation
 
-A while back cURL's creator, Daniel Stenberg, tweeted some stats on cURL's git repository.
+A while back cURL's creator, Daniel Stenberg, [tweeted](https://twitter.com/bagder/status/1507002666488000514?s=20&t=ZPZXYELS73inW1HuhyIMlw) some stats on cURL's git repository.
 
 ![cURL tweet](media/curl_tweet.png)
 
-[tweet](https://twitter.com/bagder/status/1507002666488000514?s=20&t=ZPZXYELS73inW1HuhyIMlw)
 
 I have a pretty good idea about how he answered those questions.
 I bet he used some tools like sed, awk, and grep.
-I like thoes those tools and use them daily but I wondered what it would be like to answer those questions semantic web style.
+I like those tools and use them daily but I wondered what it would be like to answer those questions semantic web style.
 
 ## What
 
@@ -42,6 +41,7 @@ index 0000000..882149f
 ```
 
 Notice how compact that representation is.
+The meat of that text is the unified output format of the `diff` tool.
 If you work with git much you probably recognize what most of that is.
 But the semantic web isn't about just allowing you to work with data you already know how to decipher.
 So that means we need to unpack this compact application-centric representation into a [data-centric](http://www.datacentricmanifesto.org/) representation.
@@ -71,7 +71,7 @@ Those [contiguous lines](https://www.wikidata.org/wiki/Q113515824):
 - have a magnitude with a unit of measure (line count)
 - and have the literal contained text
 
-Note that I've used Wikidata entities because Wikidata is a nice hub in the semantic web.
+Note that I've used [Wikidata](https://www.wikidata.org/) entities because Wikidata is a nice hub in the semantic web.
 Here is a Wikidata subgraph with labels that are relevant for the RDF I've produced:
 
 ```turtle
@@ -86,7 +86,7 @@ wd:Q113515824 rdfs:label "contiguous lines"@en .
 ```
 
 
-
+Here is the RDF graph (the same one as in the image above) in turtle serialization:
 
 ```turtle
 @prefix :        <http://example.com/> .
@@ -244,7 +244,7 @@ That is because this commit does not add a new file; it changes an existing file
 ## Why
 
 At this point maybe you wondering why the data isn't more "direct."
-The RDF seems to spread things out and use generic predicates.
+The RDF seems to spread things out and use generic predicates (produces, occurs in, etc.).
 That is intentional.
 
 My conversion utility does use some intermediate "direct" data:
@@ -304,8 +304,12 @@ It is not something I would want to pass around between applications.
 
 
 
-Some of the nice things about this domain modeling and representation:
+<!-- Some of the nice things about this (unpacked) domain modeling and representation: -->
 
+There are some nice things about using RDF to express the content of a git repository.
+This is not a comprehensive list but rather just stuff that I thought of while doing this project:
+
+(1)
 
 You can start anywhere with queries.
 
@@ -328,46 +332,72 @@ select * where {
 You don't need to know structurally where these "fields" live.
 
 
-def in terms of more primitive things
-  eventually bottom out
-wd:Q20058545 commit
-https://www.wikidata.org/wiki/Q20058545
+(2)
 
-wd:Q113509427 hunk
-https://www.wikidata.org/wiki/Q113509427
-  (part of a unifiedDiff)
+You define things in terms of more primitive things.
+For example, if you look on Wikidata you'll see that `commit` is defined in terms of `changeset`, and `version control`.
+`Hunk` is defined in terms of `diff unified format` and `line`.
 
-wd:Q113515824   contiguous lines of text
-https://www.wikidata.org/wiki/Q113515824
+Eventually definitions bottom out in really primitive things that aren't defined in terms of anything else.
 
-wd:Q86920   text file
-https://www.wikidata.org/wiki/Q86920
-
-wd:Q6553274   line number
-https://www.wikidata.org/wiki/Q6553274
-
-unpacking (em dash)
-  exploded diagram
-  a good ontology will help you put space between things by having a thoughtful set of generic predicates.
-  this unpacked form isn't the form for a particular application -- it is the form for all applications.
-  the unified diff form works well for the `patch` program and `git` but not for X.
-  i know that means more triples -- RDF* == bodge wire picture
+One of the reasons this is helpful is that you can query against the more primitive things and get back results containing more composite things (built up from the more primitive things).
 
 
 
-enrichment
-  connecting vulnerabilies (CVEs) to file names / commits / tags / releases
-  AAA
+(3)
+
+You are encouraged (if you use a thoughtful upper ontology) to unpack meaning.
+I think of the semantic web as the exploded part diagram for the web's data. 
+
+![exploded diagram](media/exploded_diagram.jpg)
+
+Yes, it takes up more space than a render of fully assembled thing but all the components you might want to talk about are addressable and their relationship to other components is evident.
+
+One example of how not unpacking makes _ harder is how Wikidata packs up postal code ranges with an en dash (–).
+
+If you query Wikidata to see what region has postal code "10498" allocated to it you won't find any results.
+You'll instead have to write a query to find a postal code (some of them are really a range of postal codes designated with an en dash) by making a procedure that gets the start and stop symbols (numbers in this case) and enumerates the range and does a `where in` or something similar.
+
+If you require users to unpack all your representations before they use them then maybe they'll lose interest and move on to something else.
+
+A thoughtful ontology will help you put space between things by having a thoughtful set of generic predicates.
+You might not be using a thoughtful ontology if you can connect any two arbitrary things with a single edge.
+
+An unpacked representations isn't just the form for a particular application -- it is the form for all applications, present and future.
+If you have a vocabulary used by all applications then ...
+
+The unified output format for diff works well for the `patch` program and `git` but not many humans asking questions.
+
+Sure, unpacked representations mean more triples but the alternatives (application-centric data, LPGs/RDF-Star, etc.) are like bodge wires:
+
+![bodge wire](media/bodge.png)
+
+They are acceptable for your final act but not something you'd want to live with.
 
 
-unix -- radical program composability
-  using RDF graphs as input and output
-  https://twitter.com/stylewarning/status/1561759622167293954?s=20&t=FyJW8TW0F-SfD2HqEfciXQ
+(4)
+
+RDF allows for incremental enrichment.
+As a followup to this project I think it would be interesting to [transform CWEs](https://www.reddit.com/r/semanticweb/comments/t7epy5/common_weakness_enumeration_cwe_in_rdf/) (Common Weakness Enumeration) and CVEs (Common Vulnerabilities and Exposures) as RDF and connect them to the git repositories where the vulnerable code is.
+
+
+TODO compare using unix tools with SPARQL to answer questions.
+
+
+(5)
+
+More people can ask questions of the data.
+
+SPARQL is a declarative query language.
+The ease of using SPARQL has a bit to do with the thoughtfulness of the domain modeling. 
+
+Below I pose several question of the data that I obtain answers to with SPARQL.
+
 
 ## How
 
 In another blog post I might describe how the conversion utility works.
-It is written in Clojure and it uses SPARQL Anything.
+It is written in Clojure and it uses [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything).
 I expect to push it to Github soon.
 
 
@@ -376,6 +406,8 @@ I expect to push it to Github soon.
 The cURL git repo has about 29k commits and commits going back to 1999. 
 
 My conversion tool turned it into just under 8 million triples in 70 minutes.
+I haven't focued on execution efficiency yet.
+I wanted to run queries against the data to get a feel the utility of this approach before I refine the tool.
 
 Let's answer some questions about the development of cURL.
 
@@ -521,7 +553,8 @@ PREFIX  dcterms: <http://purl.org/dc/terms/>
 PREFIX  gist: <https://ontologies.semanticarts.com/gist/>
 SELECT DISTINCT  ?commit_id ?creator_email ?creator_name ?at
 WHERE
-  { ?commit  gist:hasPart  ?hunk .
+  { VALUES ?start_file {"lib/http.c"}
+    ?commit  gist:hasPart  ?hunk .
     ?commit gist:isIdentifiedBy/gist:uniqueText ?commit_id .
     ?commit  gist:atDateTime  ?at .
     ?hunk gist:affects/gist:occursIn/gist:name ?start_file
@@ -529,7 +562,6 @@ WHERE
       { ?commit dcterms:creator/schema:email ?creator_email }
     OPTIONAL
       { ?commit dcterms:creator/gist:name ?creator_name }
-    FILTER regex(?start_file, "^lib/http[.]c$")
     FILTER ( ( ?at >= "2019-01-01T00:00:00"^^xsd:dateTime ) &&
              ( ?at < "2020-01-01T00:00:00"^^xsd:dateTime ) )
   }
@@ -568,8 +600,7 @@ SELECT  ?creator_email ?creator_name
 WHERE
   { { SELECT  ?creator_email (COUNT(DISTINCT ?creator_name) AS ?creator_name_count)
       WHERE
-        { ?commit  gist:hasPart  ?hunk .
-          ?commit dcterms:creator/schema:email ?creator_email .
+        { ?commit dcterms:creator/schema:email ?creator_email .
           ?commit dcterms:creator/gist:name ?creator_name
         }
       GROUP BY ?creator_email
@@ -697,3 +728,14 @@ Result:
 ...
 
 And depending on how you count the people the query finds between 678 and 727 people that authored commits in libcurl's lib/ directory.
+That was Daniel's first question.
+
+To answer his next three questions I'd need to simulate the application of hunks in SPARQL or add the output of `git blame` to the RDF.
+
+
+## Closing Thoughts
+
+It is fun to imagine having all the git repos in Github as RDF graphs in a massive triplestore and asking questions with SPARQL.
+
+In my example queries I didn't make use of the fact that each source code line is in the data.
+Most triplestores have full text search capabilities so I'll write some queries that make use of that too. 
