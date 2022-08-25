@@ -9,12 +9,13 @@ A while back cURL's creator, Daniel Stenberg, [tweeted](https://twitter.com/bagd
 
 I have a pretty good idea about how he answered those questions.
 I bet he used some tools like sed, awk, and grep.
-I like those tools and use them daily but I wondered what it would be like to answer those questions semantic web style.
+If I had to answer those questions I too might use those CLI utilities with a throw away shell pipeline.
+But I wondered what it would be like to answer those questions semantic web style.
 
 ## What
 
 In order to answer questions semantic web style you first have to find or make some thoughtful RDF.
-I say "thoughtful" because it is possible to use the semantic web stack (RDF/SPARQL/OWL/SHACL, etc.) without doing much domain modeling.
+I say "thoughtful" because it is possible, though mostly not desirable, to use the semantic web stack (RDF/SPARQL/OWL/SHACL, etc.) without doing much domain modeling.
 
 In our case we can easily get some structured data to start with.
 Here is a git commit I just made:
@@ -90,7 +91,7 @@ By the way, don't let those Q numbers scare you.
 I don't memorize them (well I do have [wd:Q2](https://www.wikidata.org/wiki/Q2) memorized since it is pretty special).
 I use auto completion in my text editor and Wikidata has it [here](https://query.wikidata.org/) too.
 You just type `wd:` then press control-enter then type what you want.
-Also, Wikidata has some good reasons for using opaque URIs.
+Also, Wikidata has some good reasons for using opaque IRIs.
 
 
 Here is the RDF graph (the same one as in the image above) in turtle serialization:
@@ -735,7 +736,7 @@ That was Daniel's first question.
 He got 629 with his method but that was a few months ago and I don't know exactly what his method of counting was.
 He may not have included the act of deleting a file in that directory like I did.
 
-To answer his next three questions I'd need to simulate the application of hunks in SPARQL or add the output of `git blame` to the RDF.
+To answer his next three questions I'd need to record each commit's parent commit (I don't yet -- one of my many TODOs) and simulate the application of hunks in SPARQL or add the output of `git blame` to the RDF.
 Daniel likely used the output of `git blame`.
 I'll think about adding it to the RDF.
 
