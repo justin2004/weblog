@@ -1,5 +1,9 @@
 # Justin's Weblog
 
+## [Git Repositories as RDF Graphs](git_repo_as_rdf)
+
+Transforming git repos into RDF graphs
+
 ## [Fused Edges, Please Don't](fused_edges)
 
 What is a Fused Edge and why you shouldn't do it
