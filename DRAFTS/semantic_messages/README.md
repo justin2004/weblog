@@ -36,7 +36,7 @@ I am running a software agent (semantic web style) to whom I make requests.
 I have a file on my machine that I want to load into a dataset on the Apache Jena Fuseki instance.
 I type this request to my agent "load /mnt/toys/gifts.ttl into Apache Jena Fuseki listening on port 3030 at dataset 'gifts' on 25 Dec early in the morning."
 
-My agent produces the following RDF (or I do by some other means):
+My agent produces the following RDF (or I do by some other means) in TriG serialization:
 
 ```turtle
 @prefix : <https://example.com/> .
