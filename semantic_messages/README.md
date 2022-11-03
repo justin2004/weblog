@@ -51,7 +51,7 @@ My agent produces the following RDF (or I do by some other means) in TriG serial
 
 :message0 a gist:Message ;
   gist:comesFromAgent [ gist:name "Justin Dowdy" ;
-                        gist:hasAddress "justin2004@hotmail.com" ];
+                        gist:hasAddress [ gist:containedText "justin2004@hotmail.com" ] ] ;
   gist:isAbout :message0content .
 
 :message0content a gist:Content, :NamedGraph ;
