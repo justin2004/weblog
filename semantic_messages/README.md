@@ -26,7 +26,7 @@ Let's see an example of such a loosey-goosey semantic message.
 ## Semantic Messages
 
 I'm writing another blog post on what "semantic" means in the semantic web.
-I'll put a link here once I am done but in the mean time think of "semantic" as getting different things (people and machines) to see eye to eye.
+I'll put a link here once I am done but in the mean time think of "semantic" as getting different things (different people, different machines, people and machines, etc.) to see eye to eye.
 Yes, a tall order, but I'm optimistic about it.
 
 The hypothetical situation is that I have an instance of Apache Jena Fuseki (a database for RDF) running on my local machine.
