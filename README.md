@@ -1,5 +1,9 @@
 # Justin's Weblog
 
+## [Semantic Messages](semantic_messages)
+
+The limits of specificity ; you want things to just work
+
 ## [Git Repositories as RDF Graphs](git_repo_as_rdf)
 
 Transforming git repos into RDF graphs
