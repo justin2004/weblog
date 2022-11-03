@@ -90,8 +90,8 @@ You might notice that I've used the URI of an RDF named graph in the place where
 With this blog post I am also thinking about using named graphs to represent the content of goals (`gist:Goal`).
 Really a named graph could represent the content of many different types of things.
 
-RDF-star is designed to allow one to treat a single triple as a resource that you can refer to but I think RDF named graphs already allow that and they allow the more general case of referencing multiple triples.
-So far I think RDF-star is, at best, unnecessary and at worst it encourages domain modeling that is based on annotating statements rather than expressing things and relationships in the world.
+<!-- RDF-star is designed to allow one to treat a single triple as a resource that you can refer to but I think RDF named graphs already allow that and they allow the more general case of referencing multiple triples. -->
+<!-- So far I think RDF-star is, at best, too low level and at worst it encourages domain modeling that is based on annotating statements rather than expressing things and relationships in the world. -->
 
 
 ## Back to the semantic message example
