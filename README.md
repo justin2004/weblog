@@ -2,7 +2,7 @@
 
 ## [Semantic Messages](semantic_messages)
 
-The limits of specificity ; you want things to just work
+Too much specificity can prevent things from working
 
 ## [Git Repositories as RDF Graphs](git_repo_as_rdf)
 
