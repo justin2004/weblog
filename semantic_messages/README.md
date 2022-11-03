@@ -55,7 +55,7 @@ My agent produces the following RDF (or I do by some other means) in TriG serial
   gist:isAbout :message0content .
 
 :message0content a gist:Content, :NamedGraph ;
-  rdfs:comment "this is the content of the message" .
+  rdfs:comment "this named graph is the content of the message" .
 
 :message0content {
     :message0content gist:hasGoal :goal0 .
