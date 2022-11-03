@@ -60,13 +60,14 @@ My agent produces the following RDF (or I do by some other means) in TriG serial
 :message0content {
     :message0content gist:hasGoal :goal0 .
   :goal0 a gist:Goal ;
-    gist:isAbout :content0 .
+    rdfs:comment "this is the goal specified in the content of the message" ;
+    gist:isAbout :goal0content .
 }
 
-:content0 a gist:Content , :NamedGraph ;
+:goal0content a gist:Content , :NamedGraph ;
   rdfs:comment "this named graph is the content of the goal" .
 
-:content0 {
+:goal0content {
   [ a gist:Event ;
     gist:produces [ a gist:Content ;
                     gist:isBasedOn [ a gist:FormattedContent ;
