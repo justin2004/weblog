@@ -112,6 +112,7 @@ My agent needs to know things like:
 - it can look in my existing graphs (perhaps my "personal knowledge graphs") to gather information
 
 Fuseki's agent can't be too finicky about interpreting the RDF.
+The RDF isn't really a request conforming to a contract; it is more of a spirit of a request.
 
 If you are familiar with RDF and [gist](https://github.com/semanticarts/gist), the spirit of the RDF is pretty clear "early in the morning on December 25th find the file /mnt/toys/gifts.ttl and load it into the dataset 'gifts' on the Apache Jena Fuseki server running on localhost at port 3030."
 
