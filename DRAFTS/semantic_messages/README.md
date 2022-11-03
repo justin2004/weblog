@@ -38,7 +38,7 @@ I type this request to my agent "load /mnt/toys/gifts.ttl into Apache Jena Fusek
 
 My agent produces the following RDF (or I do by some other means):
 
-```trig
+```turtle
 @prefix : <https://example.com/> .
 @prefix gist: <https://ontologies.semanticarts.com/gist/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
