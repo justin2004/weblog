@@ -6,25 +6,29 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <http://schema.org/> .
 
 :message0 a gist:Message ;
   gist:comesFromAgent [ gist:name "Justin Dowdy" ;
                         gist:hasAddress "justin2004@hotmail.com" ];
   gist:isAbout :message0content .
 
+:message0content a gist:Content, :NamedGraph ;
+  rdfs:comment "this is the content of the message" .
+
 :message0content {
-  :message0content a gist:Content . #?
-  :message0content gist:hasGoal :goal0 .
+    :message0content gist:hasGoal :goal0 .
   :goal0 a gist:Goal ;
     gist:isAbout :content0 .
 }
 
+:content0 a gist:Content , :NamedGraph ;
+  rdfs:comment "this named graph is the content of the goal" .
+
 :content0 {
-  # :content0 a gist:Content .
-  # this graph contains the content of the goal
   [ a gist:Event ;
     gist:produces [ a gist:Content ;
-                    gist:isBasedOn [ gist:FormattedContent ;
+                    gist:isBasedOn [ a gist:FormattedContent ;
                                      gist:hasAddress [ gist:containedText "file:///mnt/toys/gifts.ttl" ] ;
                                      gist:isExpressedIn [ a gist:MediaType ;
                                                           schema:encodingFormat "application/turtle" ] ] ;
@@ -32,8 +36,7 @@
                                     gist:name "gifts" ;
                                     rdfs:comment 'the dataset called "gifts"' ;
                                     gist:isPartOf [ a gist:System ;
-                                                    gist:hasAddress [ gist:containedText "http://127.0.0.1:3030/" ] ;
+                                                    gist:hasAddress [ gist:containedText "http://127.0.0.1:3030" ] ;
                                                     gist:name "Apache Jena Fuseki" ] ] ] ;
-   gist:plannedStartDateTime "2022-12-25T02:00:00Z"^^xsd:dateTime ]
-
+   gist:plannedStartDateTime "2022-12-25T01:00:00Z"^^xsd:dateTime ]
 }
