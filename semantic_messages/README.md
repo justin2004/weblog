@@ -30,7 +30,7 @@ I'll put a link here once I am done but in the mean time think of "semantic" as 
 Yes, a tall order, but I'm optimistic about it.
 
 The hypothetical situation is that I have an instance of Apache Jena Fuseki (a database for RDF) running on my local machine.
-There is a [software agent (semantic web style)](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf) running on my local machine that knows how to interact with Apache Jena Fuseki.
+There is a software agent (semantic web style) running on my local machine that knows how to interact with Apache Jena Fuseki.
 I am running a software agent (semantic web style) to whom I make requests.
 
 I have a file on my machine that I want to load into a dataset on the Apache Jena Fuseki instance.
