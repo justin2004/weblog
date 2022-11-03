@@ -108,13 +108,18 @@ So far I think RDF-star is, at best, unnecessary and at worst it encourages doma
 My agent then puts that RDF onto the semantic message bus (the bus where agents listen for and send RDF) on my local machine.
 The agent that governs Apache Jena Fuseki sees the RDF and recognizes that it knows how to handle the request.
 
-The agent that inteprets that RDF needs to know some things.
+The Fuseki agent that inteprets that RDF needs to know some things.
 
-It needs to know things like:
+The Fuseki agent needs to know things like:
 - that it is capable of and allowed to handle requests to load data into the Apache Jena Fuseki running on localhost at port 3030
 - how to use GSP or some other programmatic method to load data into Fuseki
   - how to reference a dataset or optionally create one if the desired on does not exist
 - how to delay the execution of this (since the `gist:plannedStartDateTime` is in the future)
+
+My agent needs to know things like:
+- it is allowed to make assumptions 
+  - e.g. if I leave off the year, when I am talking about a goal, when I reference a date then I probably mean whatever year that date occurs in next
+- it can look in my existing graphs (perhaps my "personal knowledge graphs") to gather information
 
 Fuseki's agent can't be too finicky about interpreting the RDF.
 
@@ -133,6 +138,33 @@ curl -X POST 'http://127.0.0.1:3030/gifts/data' -H 'Content-type: text/turtle' -
 ```
 
 My agent recieves some confirmation RDF and the gifts should be available, via SPARQL, before the kids wake up on Christmas morning.
+
+## The Article
+
+In this post I'm mostly sketechting out some of the consequences of the ideas presented in [this](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf) 2001 Scientific American article.
+
+> Standardization can only go sofar, because we can't anticipate all possible future needs.
+
+> The Semantic Web, in contrast, is more flexible. The consumer and producer agents can reach a shared understanding by exchanging ontologies, which provide the vocabulary needed for discussion. 
+
+I'm less optimistic that we'll sort out useful ontology exchange anytime soon.
+In the mean time I think picking a single upper ontology that is squishy in the right ways is a path forward.
+
+> Semantics also makes it easier to take advantage of a service that only partially matches a request.
+
+I think for semantics to work in this way we have to accept that our systems will get more adaptive at the cost of becoming less brittle.
+
+Brittle: 
+- by design, shouldn't ever be wrong
+- when it sees something unexpected it stops or breaks
+
+Adaptive: 
+- by design, could be wrong
+- when it sees something unexpected it tries to figure it out
+
+That might be hard for people to accept.
+Perhaps it is why we haven't progressed much on these kind of agents since the 2001 article.
+
 
 ## Closing
 
