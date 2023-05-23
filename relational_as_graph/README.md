@@ -16,8 +16,12 @@ In this post we'll use:
 
 I've loaded up an instance of Postgres with a few tables:
 
+```bash
+echo "\d" | PGPASSWORD=mysecretpassword psql -h 172.17.0.1 -p 5432 -U postgres --csv -f /dev/stdin
 ```
-# echo "\d" | PGPASSWORD=mysecretpassword psql -h 172.17.0.1 -p 5432 -U postgres --csv -f /dev/stdin
+
+Produces:
+```csv
 Schema,Name,Type,Owner
 public,freightrates,table,postgres
 public,orderlist,table,postgres
@@ -30,8 +34,12 @@ public,whcosts,table,postgres
 
 Let's peek at one of the tables:
 
+```bash
+echo "select * from whcosts limit 3" | PGPASSWORD=mysecretpassword psql -h 172.17.0.1 -p 5432 -U postgres --csv -f /dev/stdin
 ```
-root@a3a18a220ab3:/# echo "select * from whcosts limit 3" | PGPASSWORD=mysecretpassword psql -h 172.17.0.1 -p 5432 -U postgres --csv -f /dev/stdin
+
+Produces:
+```csv
 WH,Cost/unit
 PLANT15,1.42
 PLANT17,0.43
