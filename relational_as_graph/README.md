@@ -46,11 +46,13 @@ PLANT17,0.43
 PLANT18,2.04
 ```
 
-The tables happen to be about a supply chain but it content doesn't matter for this post.
+The tables happen to be about a supply chain but the content doesn't matter for this post.
 
 We've recently added a feature to SPARQL Anything that allows us to more easily transform these tables into RDF.
+As of writing you'll need to use the branch `v0.9-DEV` to run these queries.
+I'll update this post once this feature gets into the next release.
 
-First let's just enumerate the table names using a SPARQL query:
+First, let's just enumerate the table names using a SPARQL query:
 
 ```sparql
 PREFIX  xyz:  <http://sparql.xyz/facade-x/data/>
@@ -69,6 +71,7 @@ WHERE
 
 The Postgres (psql) command to list the tables is `\d`.
 Notice we had to think carefully about escaping that backslash. :)
+
 Other than that, the command text is exactly what you'd type in the shell.
 We just happen to be embedding that command text into a SPARQL query.
 
@@ -149,13 +152,13 @@ ex:Warehouse_PLANT13  a           gist:Building ;
 ...
 ```
 
-Note that I spent only 38 seconds "modeling" the situation where each warehouse has a associated with it a certain cost per unit for sending units through it.
+Note that I spent only 38 seconds "modeling" the situation where each warehouse has associated with it a certain cost per unit for sending units through it.
 I wouldn't model the situation that way but this post isn't about modeling.
 I just want to demonstrate the technical moves here.
 
 Also note that I hardcoded the string "select * from whcosts" but you could `BIND` variables and do something more programmatic.
 
-For example, here is one way to iterate over all the tables and put generate the resulant naive RDF:
+For example, here is one way to iterate over all the tables and generate the resulant naive RDF:
 
 ```sparql
 PREFIX  xyz:  <http://sparql.xyz/facade-x/data/>
@@ -194,7 +197,7 @@ WHERE
 Notice this SPARQL query doesn't hardcode table names so it can accomodate any changes to the database of tables.
 
 It produces this RDF (I've remove some triples for brevity):
-```trig
+```ttl
 @prefix ex:  <http://example.com/> .
 @prefix fx:  <http://sparql.xyz/facade-x/ns/> .
 @prefix xyz: <http://sparql.xyz/facade-x/data/> .
@@ -262,7 +265,7 @@ ex:NamedGraph_freightrates {
 ```
 
 Notice this time we are producing quads (triples in a named graph).
-We get one named graph per databse table.
+We get one named graph per database table.
 
 ## Final Thoughts
 
