@@ -14,7 +14,9 @@ In this post we'll use:
 
 ## Examples
 
-I've loaded up an instance of Postgres with a few tables:
+I've loaded up an instance of Postgres with a few tables.
+
+Let's list the tables using the command line interface to Postgres:
 
 ```bash
 echo "\d" | PGPASSWORD=mysecretpassword psql -h 172.17.0.1 -p 5432 -U postgres --csv -f /dev/stdin
@@ -32,7 +34,7 @@ public,whcapacities,table,postgres
 public,whcosts,table,postgres
 ```
 
-Let's peek at one of the tables:
+Let's also peek at one of the tables by running a SQL select query using the command line interface:
 
 ```bash
 echo "select * from whcosts limit 3" | PGPASSWORD=mysecretpassword psql -h 172.17.0.1 -p 5432 -U postgres --csv -f /dev/stdin
@@ -90,8 +92,10 @@ And here are the results:
 |whcapacities      |
 |freightrates      |
 
+SPARQL _select_ queries produce tables, like that one.
+But SPARQL _construct_ queries produce RDF (graphs).
 
-Now let's just focus on one table and transform it into some modeled RDF.
+Now let's just focus on one table and transform it, with a SPARQL construct query, into some modeled RDF.
 
 ```sparql
 PREFIX  fx:   <http://sparql.xyz/facade-x/ns/>
@@ -149,7 +153,9 @@ ex:Warehouse_PLANT13  a           gist:Building ;
                                                          gist:numericValue      "0.47"^^xsd:double
                                                        ]
                                   ] .
+
 ...
+
 ```
 
 Note that I spent only 38 seconds "modeling" the situation where each warehouse has associated with it a certain cost per unit for sending units through it.
@@ -158,7 +164,7 @@ I just want to demonstrate the technical moves here.
 
 Also note that I hardcoded the string "select * from whcosts" but you could `BIND` variables and do something more programmatic.
 
-For example, here is one way to iterate over all the tables and generate the resulant naive RDF:
+For example, here is one way to iterate over all the tables and generate the resultant naive RDF:
 
 ```sparql
 PREFIX  xyz:  <http://sparql.xyz/facade-x/data/>
@@ -194,7 +200,7 @@ WHERE
   }
 ```
 
-Notice this SPARQL query doesn't hardcode table names so it can accomodate any changes to the database of tables.
+Notice this SPARQL query doesn't hardcode table names so it can accommodate any changes to the database of tables.
 
 It produces this RDF (I've remove some triples for brevity):
 ```ttl
@@ -262,18 +268,25 @@ ex:NamedGraph_freightrates {
               ]
     ] .
 }
+
+...
+
 ```
 
 Notice this time we are producing quads (triples in a named graph).
-We get one named graph per database table.
+We asked for one named graph per database table.
+
+Also notice that the RDF is in what the SPARQL Anything project calls [Facade-X](https://github.com/SPARQL-Anything/sparql.anything#facade-x): a subset of RDF for representing data from diverse sources into containers and slots.
+
+We rarely using this container-slot representation as a final form; it is almost always transformed with a SPARQL construct query like we did above.
 
 ## Final Thoughts
 
+Although this demonstration uses PostgreSQL, there are equivalent command line invocations for Oracle, MySQL, MSSQL, etc.
+
 This kind of "support" for relational database sources is stringy and not first class.
-SPARQL Anything recognizes csv as a first class data input and we are just bridging the gap between the databse and csv by using the `fx:command` property.
+SPARQL Anything recognizes csv as a first class data input and we are just bridging the gap between the database and csv by using the `fx:command` property.
 
 But I do like that for small to medium sized relational source systems we could quickly start modeling and transforming into RDF without much tooling.
 
-Tables are simply projections of graphs so the more tables we express as graphs the better.
-
-Have fun constructing graphs!
+Have fun turning tables into graphs!

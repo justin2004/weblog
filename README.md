@@ -1,6 +1,12 @@
 # Justin's Weblog
 
+## [Relational Databases as Graphs](relational_as_graph)
+### May 23 2023
+
+Querying a Relational Database with a Graph Query Language
+
 ## [Semantic Messages](semantic_messages)
+### Nov 3 2022
 
 Too much specificity can prevent things from working
 
