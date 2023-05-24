@@ -278,7 +278,7 @@ We asked for one named graph per database table.
 
 Also notice that the RDF is in what the SPARQL Anything project calls [Facade-X](https://github.com/SPARQL-Anything/sparql.anything#facade-x): a subset of RDF for representing data from diverse sources into containers and slots.
 
-We rarely using this container-slot representation as a final form; it is almost always transformed with a SPARQL construct query like we did above.
+We rarely use this container-slot representation as a final form; it is almost always transformed with a SPARQL construct query like we did above.
 
 ## Final Thoughts
 
