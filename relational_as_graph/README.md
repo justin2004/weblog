@@ -288,5 +288,7 @@ This kind of "support" for relational database sources is stringy and not first 
 SPARQL Anything recognizes csv as a first class data input and we are just bridging the gap between the database and csv by using the `fx:command` property.
 
 But I do like that for small to medium sized relational source systems we could quickly start modeling and transforming into RDF without much tooling.
+Also, we don't need much verbosity either. 
+SPARQL construct queries are a very efficient way to express transformations (that is, not much text and few primitives) on RDF compared to other methods in use.
 
 Have fun turning tables into graphs!
