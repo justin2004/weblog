@@ -92,7 +92,7 @@ hellogoodbye
 ## The End
 
 Sure, APL has an additional glyph to learn (`,`) if need to concatenate. 
-But by introducing that glyph (at design time) and using `+` with two operands to always mean arithmetic addition, APL was able to do with 1 piece of machinery what Python needs 4 for.
+But by introducing that glyph (at design time) and using `+` with two operands to always mean arithmetic addition, APL was able to do with 1 piece of machinery what Python needs 4 to do.
 
 That is generally the case when comparing APL and Python: ["each one of these single-character glyphs in APL when translated equates to anywhere from roughly 1 to 50 lines of Python!"](https://www.reddit.com/r/Python/comments/z7doen/i_spent_the_last_2_months_converting_apl/)
 
