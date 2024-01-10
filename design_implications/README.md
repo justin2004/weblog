@@ -15,14 +15,14 @@ It can do arithmetic addition (for numeric operands) or concatenation (for seque
 
 When operands are numbers we get arithmetic addition:
 ```python
-[ins] In [28]: 1 + 1
-Out[28]: 2
+  1 + 1
+2
 ```
 
 When operands are sequences we get concatenation:
 ```python
-[ins] In [29]: [1, 2] + [3, 4]
-Out[29]: [1, 2, 3, 4]
+  [1, 2] + [3, 4]
+[1, 2, 3, 4]
 ```
 
 But what if you have a sequences of numbers and you want to add the numbers in the sequences?
@@ -31,7 +31,7 @@ If you want item wise addition of sequences (with numeric elements) you need mor
 You need _four_ pieces of machinery (a function `zip`, a list comprehension, a `for` loop, and the `+`):
 
 ```python
-[ins] In [33]: print([x + y for x, y in zip([1,2,3], [1,2,3])])
+  [x + y for x, y in zip([1,2,3], [1,2,3])]
 [2, 4, 6]
 ```
 
