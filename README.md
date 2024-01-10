@@ -1,5 +1,8 @@
 # Justin's Weblog
 
+## [Design Implications](design_implications)
+### Jan 09 2024
+
 ## [Relational Databases as Graphs](relational_as_graph)
 ### May 23 2023
 
