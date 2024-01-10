@@ -39,7 +39,7 @@ I'm talking about the core language here not libraries.
 
 ## APL
 
-In other parts of the world (Hello, Canada!) we have APL.
+In other parts of the world (Hello, Canada!) we have [APL](https://tryapl.org/).
 
 APL was designed silmultaneously as a mathematical notation *and* as an executable language.
 Ken Iverson, the designer of APL: ["the advantages of executability and universality found in programming languages can be effectively combined, in a single coherent language, with the advantages offered by mathematical notation."](https://www.jsoftware.com/papers/tot.htm)
