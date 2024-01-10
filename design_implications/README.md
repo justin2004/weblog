@@ -97,4 +97,4 @@ But by introducing that glyph (at design time) and using `+` with two operands t
 That is generally the case when comparing APL and Python: ["each one of these single-character glyphs in APL when translated equates to anywhere from roughly 1 to 50 lines of Python!"](https://www.reddit.com/r/Python/comments/z7doen/i_spent_the_last_2_months_converting_apl/)
 
 
-As I use Python I'll continue to wish I was able to sprinkle in APL expressions as needed.
+As I use Python I'll continue to wish I was able to sprinkle in APL expressions to taste.
