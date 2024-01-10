@@ -28,7 +28,7 @@ When operands are sequences we get concatenation:
 But what if you have a sequences of numbers and you want to add the numbers in the sequences?
 If you want item wise addition of sequences (with numeric elements) you need more than just `+`.
 
-You need _four_ pieces of machinery (a function `zip`, a list comprehension, a `for` loop, and the `+`):
+You need *four* pieces of machinery (a function `zip`, a list comprehension, a `for` loop, and the `+`):
 
 ```python
   [x + y for x, y in zip([1,2,3], [1,2,3])]
@@ -63,7 +63,7 @@ When both operands are arrays of one dimension.
 2 4 6
 ```
 
-Note that in APL, item wise addition of arrays (sequences in Python speak) only required _one_ piece of machinery: `+`.
+Note that in APL, item wise addition of arrays (sequences in Python speak) only required *one* piece of machinery: `+`.
 
 And concatenation is a different glyph: `,`.
 
