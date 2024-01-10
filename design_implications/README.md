@@ -102,3 +102,5 @@ As I use Python I'll continue to wish I was able to sprinkle in APL expressions 
 If you want to get an idea of what it feels like I use APL check [this](https://github.com/justin2004/weblog/tree/master/using_apl) out.
 
 If you want to learn APL, a search for "learn APL" works but I found [this](https://tutorial.dyalog.com/) to be useful.
+
+The [APL Wiki](https://aplwiki.com/wiki/Main_Page) is good too.
