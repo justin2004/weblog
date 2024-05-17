@@ -1,7 +1,14 @@
 # Justin's Weblog
 
+## [An iDE: integrating development environment](iDE)
+### May 17 2024
+
+Using escape hatches to make the development environment you need
+
 ## [Design Implications](design_implications)
 ### Jan 09 2024
+
+An ounce of thoughtful design is worth a pound of clever implementation
 
 ## [Relational Databases as Graphs](relational_as_graph)
 ### May 23 2023

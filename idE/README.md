@@ -63,7 +63,7 @@ Here are the elements of my semantic web iDE:
 
 - Editing, viewing, syntax highlighting/checking, execution
   - [vim](https://en.wikipedia.org/wiki/Vim_(text_editor))
-    - Note that I get asyncronous SPARQL query execution in vim so I can keep editing queries while running a big query
+    - Note that I get asynchronous SPARQL query execution in vim so I can keep editing queries while running a big query
   - [Apache Jena's riot command](https://jena.apache.org/documentation/tools/index.html)
 
 - RDF (e.g. turtle file) formatting
@@ -129,7 +129,7 @@ sudo apt install tmux git vim-common default-jre universal-ctags python3
 ```
 
 Also, I recommend that you [install Docker](https://docs.docker.com/engine/install/debian/#install-using-the-repository).
-This is how I package [the SPARQL query pretty printer](https://github.com/justin2004/sparql_pretty) and it is useful for running things like instances of Apache Jena Fuseki, SPARQL ANything, etc.
+This is how I package [the SPARQL query pretty printer](https://github.com/justin2004/sparql_pretty) and it is useful for running things like instances of Apache Jena Fuseki, SPARQL Anything, etc.
 Without Docker, you have to think "do I have the runtime it requires? all the dependencies? the config files? what is this thing's path?"
 
 
@@ -368,9 +368,9 @@ In VisiData when your cursor is on a cell with a URI in it you can press `3` to 
 ## Need Help?
 
 I hope you find this useful.
-Perhaps it can inspire you to build an iDE for youself.
+Perhaps it can inspire you to build an iDE for yourself.
 
-Feel free to open a issue or start a discussion on this repository if you need help getting any of this to work.
+Feel free to open a issue or start a discussion on this repository if you need help getting any of this to work or have any ideas on how to extend it.
 
 ---
 
