@@ -139,9 +139,9 @@ Without Docker, you have to think "do I have the runtime it requires? all the de
 Set up the vim plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
 There are instructions there in its readme.
 
-And put this into your ~/.vimrc in the section designated for Vundle:
+And put this into your `~/.vimrc` in the section designated for Vundle:
 
-```
+```vim
 " for syntax highlighting
 Plugin 'niklasl/vim-rdf'
 " for running commands asynchronously in vim
@@ -188,9 +188,9 @@ Also, you need to tell vim about the lexical syntax of keywords in turtle files.
 e.g. URI Qnames have the `:` character, full URIs are surrounded by `<` and `>`, etc.
 
 While we are at the let's set up a few other useful settings for RDF and SPARQL files.
-Put this into your .vimrc:
+Put this into your `~/.vimrc`:
 
-**NOTE**: you'll have to look at the raw markdown file to copy this vim configuration from.
+(**NOTE**: you'll need to look at the raw markdown file to copy this vim configuration from.)
 
 ```vim
 " set the filetype to 'sparql' for .sparql and .rq
