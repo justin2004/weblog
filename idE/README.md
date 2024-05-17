@@ -1,4 +1,4 @@
-# iDE - Integrat*ing* Development Enrivonment
+# iDE - Integrat**ing** Development Enrivonment
 
 
 ## An iDE?
@@ -6,7 +6,7 @@
 If you are around software development you've heard of IDEs (integrated development environment).
 You probably use one or know someone who does.
 
-I'd like to contrast IDEs (integrat*ed*) with iDEs (integrat*ing*).
+I'd like to contrast IDEs (integrat**ed**) with iDEs (integrat**ing**).
 
 "Integrated" connotes finality.
 As in "it has already been integrated for you -- you just use it now."
@@ -53,43 +53,42 @@ In order to demonstrate this workflow I've set up some RDF files in the `example
 
 ## Demonstration
 
-First the demonstration then I'll describe the setup.
-I thought it would be easier show the workflow with a video.
-
-
-<img src="media/async-execution.gif" width="750px">
-
 Here are the elements of my semantic web iDE:
 
 - Named terminal sessions
-  - [terminal multiplexer (tmux)]()
+  - [terminal multiplexer (tmux)](https://github.com/tmux/tmux/wiki)
   - I typically have a session for editing RDF files, editing and running SPARQL queries, and I usually keep a session for each serivice I am running (Apache Jena Fuseki, SPARQL Anything, Protege, etc.)
 
 - Editing, viewing, syntax highlighting/checking, execution
-  - [vim]()
+  - [vim](https://en.wikipedia.org/wiki/Vim_(text_editor))
     - Note that I get asyncronous SPARQL query execution in vim so I can keep editing queries while running a big query
-  - [Apache Jena's riot command]()
+  - [Apache Jena's riot command](https://jena.apache.org/documentation/tools/index.html)
 
 - RDF (e.g. turtle file) formatting
-  - [rdf-toolkit]()
+  - [rdf-toolkit](https://github.com/edmcouncil/rdf-toolkit)
   - This has the benefit that everyone on your team can use their favorite RDF editor and you can still have minimal diffs (when using version control)
 
 - SPARQL query formatting and execution
-  - [Apache Jena]()
+  - [Apache Jena](https://jena.apache.org/)
     - Note: I've done the same thing with other triple stores (RDFox, GraphDB, Stardog, etc.)
+    - Even if I am not using Jena as the triplestore I still always use the Jena java library and the command line utilities.
 
 - RDF navigation (jumping to RDF resources)
-  - [ctags]()
+  - [ctags](https://en.wikipedia.org/wiki/Ctags)
     - It's been around a long time and is supported by many tools.
 
 - Analyzing/manipulating query results
-  - [VisiData]()
+  - [VisiData](https://www.visidata.org/)
     - I highly recommend learning VisiData -- I used [this tutorial](https://jsvine.github.io/intro-to-visidata/index.html).
 
 
+First the demonstration then I'll describe the setup below.
 
-Here is the video.
+I thought it would be easier show the workflow with a video and narration.
 
+[Here is the video]().
+
+<img src="media/async-execution.gif" width="750px">
 
 
 ## Areas of future improvement?
@@ -184,7 +183,7 @@ e.g. URI Qnames have the `:` character, full URIs are surrounded by `<` and `>`,
 While we are at the let's set up a few other useful settings for RDF and SPARQL files.
 Put this into your .vimrc:
 
-```
+```vim
 " set the filetype to 'sparql' for .sparql and .rq
 au BufRead,BufNewFile *.{sparql,rq}   setfiletype sparql
 au BufRead,BufNewFile *.{turtle,ttl}  setfiletype turtle
@@ -213,13 +212,13 @@ Put your cursor on a URI and press `ctrl` `]` to jump to the definition.
 
 You can get more help on jumping to keywords in vim by running:
 
-```
+```vim
 :help ^]
 ```
 
 or
 
-```
+```vim
 :help tags
 ```
 
@@ -267,7 +266,7 @@ Using vim, create a file (e.g. `sparql.sh`) for your SPARQL queries.
 
 At the top of the file put this:
 
-```sh
+```bash
 # vim: filetype=sparql
 #
 # optionally you can include variables like this if you need them:
@@ -342,7 +341,7 @@ If I want whitespace I just use a leading `#` on those lines.
 
 In vim run this if you want more details on text objects:
 
-```
+```vim
 :help text-objects
 ```
 
@@ -351,6 +350,7 @@ With your cursor anywhere in the SPARQL query body, press `@q` and the query sho
 
 In VisiData when your cursor is on a cell with a URI in it you can press `3` to jump to the tmux "ontology" session and find that keyword.
 
+## conclusion
 
 ---
 
