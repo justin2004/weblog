@@ -59,7 +59,7 @@ Here are the elements of my semantic web iDE:
 
 - Named terminal sessions
   - [terminal multiplexer (tmux)](https://github.com/tmux/tmux/wiki)
-  - I typically have a session for editing RDF files, editing and running SPARQL queries, and I usually keep a session for each serivice I am running (Apache Jena Fuseki, SPARQL Anything, Protege, etc.)
+  - I typically have a session for editing RDF files, editing and running SPARQL queries, and I usually keep a session for each serivice I am running (Apache Jena Fuseki, [SPARQL Anything](https://github.com/SPARQL-Anything/sparql.anything), Protege, etc.)
 
 - Editing, viewing, syntax highlighting/checking, execution
   - [vim](https://en.wikipedia.org/wiki/Vim_(text_editor))
@@ -95,7 +95,6 @@ I thought it would be easier show the workflow with a video and narration.
 ## Areas of future improvement?
 
 
-When I need to transform data into RDF I use SPARQL Anything.
 
 When I want to see a tree view of a class hierarchy or taxonomy I often use Protege but for skos based taxonomies I first have to transform to it to a `rdfs:subClassOf` style hierarchy.
 I [started on a visidata based tree viewer](https://github.com/saulpw/visidata/discussions/2282#discussioncomment-8633738) but I need to finish it.
@@ -183,6 +182,8 @@ e.g. URI Qnames have the `:` character, full URIs are surrounded by `<` and `>`,
 
 While we are at the let's set up a few other useful settings for RDF and SPARQL files.
 Put this into your .vimrc:
+
+**NOTE**: you'll have to look at the raw markdown file to copy this vim configuration from.
 
 ```vim
 " set the filetype to 'sparql' for .sparql and .rq
