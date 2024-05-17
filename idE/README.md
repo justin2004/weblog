@@ -88,7 +88,7 @@ First the demonstration then I'll describe the setup below.
 
 I thought it would be easier show the workflow with a video and narration.
 
-[Here is the video]().
+[Here is the video](https://www.youtube.com/watch?v=mJpgZGddOMs).
 
 
 
@@ -119,6 +119,9 @@ I assume you are using `bash` as the interpreter but I think the commands will s
 Also, although I use vim I have a colleague who uses emacs in a similar manner.
 I bet you could get a similar iDE with several other text editors provided they have sufficient escape hatch capability.
 
+
+### Packages
+
 First we need to install some packages (I am assuming a Debian based distro):
 
 ```bash
@@ -129,6 +132,8 @@ Also, I recommend that you [install Docker](https://docs.docker.com/engine/insta
 This is how I package [the SPARQL query pretty printer](https://github.com/justin2004/sparql_pretty) and it is useful for running things like instances of Apache Jena Fuseki, SPARQL ANything, etc.
 Without Docker, you have to think "do I have the runtime it requires? all the dependencies? the config files? what is this thing's path?"
 
+
+### VIM Plugins
 
 
 Set up the vim plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
@@ -148,6 +153,8 @@ Plugin 'tpope/vim-commentary'
 In vim, run `:PluginInstall` as Vundle requires for new packages.
 
 
+### RDF File Serializer
+
 Download an rdf-toolkit release jarfile.
 
 The current version is [here](https://github.com/edmcouncil/rdf-toolkit/releases/tag/v2.0).
@@ -164,7 +171,7 @@ ls -1 *ttl | while read IN ; do java -jar ~/Downloads/rdf-toolkit.jar -sdt expli
 Later I'll show you a way to do directly from vim if you prefer.
 
 
-Navigation
+### RDF File Navigation
 
 Since we are serializing using rdf-toolkit we can the widely supported `ctags` to jump to URIs (in the same and different files).
 
@@ -227,7 +234,7 @@ or
 After you jump to several keywords (URIs) you can jump back through the URIs you came through with `ctrl` `t`.
 
 
-### formatting
+### RDF File Formatting/Validation
 
 In vim, you can format (and syntax check) a RDF (turtle) file by going to the first line `GG` and then pressing `=G`.
 That will invoke the `equalprg` we defined in `.vimrc` on the text in the file.
@@ -254,9 +261,9 @@ Since we forgot the closing `]` at the end of the blank node on line 4.
 
 
 
-tmux
+### Terminal Multiplexing
 
-Maybe first find a quick tutorial on tmux.
+Maybe first [find a quick tutorial on tmux](https://letmegooglethat.com/?q=tmux+tutorial).
 I started with GNU Screen long ago and then upgraded to tmux so I don't have one to recommend but there are several out there.
 
 Create a tmux session called "ontology".
@@ -291,6 +298,8 @@ limit 5
 '
 
 ```
+
+### VisiData Configuration
 
 Before we use the execution macro let's get VisiData setup.
 
@@ -333,6 +342,9 @@ BaseSheet.addCommand('3', 'go-to-uri', 'to_uri()')
 That defines a python function and makes a VisiData command to invoke it and binds the key `3` to it.
 You can change the key of course.
 
+
+### SPARQL Query Execution
+
 Now, put your cursor anywhere on the body of the SPARQL query we put into `query.sh`.
 To pretty print the query press `@p`.
 
@@ -348,11 +360,17 @@ In vim run this if you want more details on text objects:
 ```
 
 Now to execute the SPARQL query.
+
 With your cursor anywhere in the SPARQL query body, press `@q` and the query should get executed and VisiData will open in another tmux pane with the results of the query.
 
 In VisiData when your cursor is on a cell with a URI in it you can press `3` to jump to the tmux "ontology" session and find that keyword.
 
-## conclusion
+## Need Help?
+
+I hope you find this useful.
+Perhaps it can inspire you to build an iDE for youself.
+
+Feel free to open a issue or start a discussion on this repository if you need help getting any of this to work.
 
 ---
 
