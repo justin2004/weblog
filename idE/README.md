@@ -18,6 +18,8 @@ No, they don't call their thing an iDE but they do use it like an iDE.
 The spirit of an iDE is: using [escape hatches](https://wiki.c2.com/?EscapeHatch) to weave together tools that do their thing well.
 That probably explains why you might not hear about iDEs... maybe they don't deserve a name but I needed to give this blog post a title.
 
+<img src="media/async-execution.gif" width="750px">
+
 It might just be that the people that select an IDE do so because it is already integrated (and they just want to work within it) while vim and emacs users are inclined to shave the yak a little.
 
 The first IDE I used was Eclipse.
@@ -88,7 +90,6 @@ I thought it would be easier show the workflow with a video and narration.
 
 [Here is the video]().
 
-<img src="media/async-execution.gif" width="750px">
 
 
 ## Areas of future improvement?
