@@ -370,7 +370,7 @@ In VisiData when your cursor is on a cell with a URI in it you can press `3` to 
 I hope you find this useful.
 Perhaps it can inspire you to build an iDE for yourself.
 
-Feel free to open a issue or start a discussion on this repository if you need help getting any of this to work or have any ideas on how to extend it.
+Feel free to open an issue or start a discussion on this repository if you need help getting any of this to work or if you have any ideas on how to extend it!
 
 ---
 
