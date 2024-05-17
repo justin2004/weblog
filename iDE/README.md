@@ -1,4 +1,4 @@
-# iDE - Integrat*ing* Development Enrivonment
+# iDE - Integrat*ing* Development Environment
 
 
 ## An iDE?
@@ -40,7 +40,7 @@ I want to show you my iDE for the semantic web stack (SPARQL/RDF).
 ## My RDF/SPARQL workflow
 
 Since my iDE is mostly a patchwork of tools that work easily and well together I've found that it is easier to get tools to work together if they can communicate using text.
-That can be in the form of files on the filesystem, command line options, or keyboard input.
+That can be in the form of files on the filesystem, command line options, keyboard input, or text-based network protocols (like REST).
 
 
 <!-- Also, the foundational tools ... -->
