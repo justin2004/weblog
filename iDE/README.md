@@ -216,7 +216,7 @@ au FileType sparql let @p = '?query=j0v/''/-1/!docker run --rm -i justin2004/s
 au FileType sparql let @q = 'mm1Gvap"cy''mvap"Cy:split +put\ c buf0:set buftype=nofile:file! `mktemp`:w! /tmp/lala1.sh:q''mzz:AsyncRun tmux split-window bash -l -c "source /tmp/lala1.sh > /tmp/lala1.csv ; vd /tmp/lala1.csv"'
 ```
 
-Now start vim and edit one of the .ttl files in `examples/`.
+Now start vim and edit one of the .ttl files in `example/`.
 Put your cursor on a URI and press `ctrl` `]` to jump to the definition.
 
 You can get more help on jumping to keywords in vim by running:
@@ -267,7 +267,7 @@ Maybe first [find a quick tutorial on tmux](https://letmegooglethat.com/?q=tmux+
 I started with GNU Screen long ago and then upgraded to tmux so I don't have one to recommend but there are several out there.
 
 Create a tmux session called "ontology".
-In that session, using vim, open one of the .ttl files in the `examples/` directory.
+In that session, using vim, open one of the .ttl files in the `example/` directory.
 
 Now create a tmux session called "query"
 
@@ -374,7 +374,7 @@ Feel free to open a issue or start a discussion on this repository if you need h
 
 ---
 
-### RDF file downloads used in `examples/`: 
+### RDF file downloads used in `example/`: 
 
 - https://www.bbc.co.uk/ontologies/documents/creativework.ttl
 - https://www.bbc.co.uk/ontologies/documents/bbc.ttl
