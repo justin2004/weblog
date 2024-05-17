@@ -1,4 +1,4 @@
-# iDE - Integrat**ing** Development Enrivonment
+# iDE - Integrat*ing* Development Enrivonment
 
 
 ## An iDE?
@@ -6,7 +6,7 @@
 If you are around software development you've heard of IDEs (integrated development environment).
 You probably use one or know someone who does.
 
-I'd like to contrast IDEs (integrat**ed**) with iDEs (integrat**ing**).
+I'd like to contrast IDEs (integrat*ed*) with iDEs (integrat*ing*).
 
 "Integrated" connotes finality.
 As in "it has already been integrated for you -- you just use it now."
