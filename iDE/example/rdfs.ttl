@@ -1,0 +1,142 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2000/01/rdf-schema#>
+	a owl:Ontology ;
+	dc:title "The RDF Schema vocabulary (RDFS)"^^xs:string ;
+	rdfs:seeAlso <http://www.w3.org/2000/01/rdf-schema-more> ;
+	.
+
+rdfs:Class
+	a rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource ;
+	rdfs:label "Class"^^xs:string ;
+	rdfs:comment "The class of classes."^^xs:string ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	.
+
+rdfs:Container
+	a rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource ;
+	rdfs:label "Container"^^xs:string ;
+	rdfs:comment "The class of RDF containers."^^xs:string ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	.
+
+rdfs:ContainerMembershipProperty
+	a rdfs:Class ;
+	rdfs:subClassOf rdf:Property ;
+	rdfs:label "ContainerMembershipProperty"^^xs:string ;
+	rdfs:comment """The class of container membership properties, rdf:_1, rdf:_2, ...,
+                    all of which are sub-properties of 'member'."""^^xs:string ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	.
+
+rdfs:Datatype
+	a rdfs:Class ;
+	rdfs:subClassOf rdfs:Class ;
+	rdfs:label "Datatype"^^xs:string ;
+	rdfs:comment "The class of RDF datatypes."^^xs:string ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	.
+
+rdfs:Literal
+	a rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource ;
+	rdfs:label "Literal"^^xs:string ;
+	rdfs:comment "The class of literal values, eg. textual strings and integers."^^xs:string ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	.
+
+rdfs:Resource
+	a rdfs:Class ;
+	rdfs:label "Resource"^^xs:string ;
+	rdfs:comment "The class resource, everything."^^xs:string ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	.
+
+rdfs:comment
+	a rdf:Property ;
+	rdfs:label "comment"^^xs:string ;
+	rdfs:comment "A description of the subject resource."^^xs:string ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdfs:Literal ;
+	.
+
+rdfs:domain
+	a rdf:Property ;
+	rdfs:label "domain"^^xs:string ;
+	rdfs:comment "A domain of the subject property."^^xs:string ;
+	rdfs:domain rdf:Property ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdfs:Class ;
+	.
+
+rdfs:isDefinedBy
+	a rdf:Property ;
+	rdfs:subPropertyOf rdfs:seeAlso ;
+	rdfs:label "isDefinedBy"^^xs:string ;
+	rdfs:comment "The defininition of the subject resource."^^xs:string ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdfs:Resource ;
+	.
+
+rdfs:label
+	a rdf:Property ;
+	rdfs:label "label"^^xs:string ;
+	rdfs:comment "A human-readable name for the subject."^^xs:string ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdfs:Literal ;
+	.
+
+rdfs:member
+	a rdf:Property ;
+	rdfs:label "member"^^xs:string ;
+	rdfs:comment "A member of the subject resource."^^xs:string ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdfs:Resource ;
+	.
+
+rdfs:range
+	a rdf:Property ;
+	rdfs:label "range"^^xs:string ;
+	rdfs:comment "A range of the subject property."^^xs:string ;
+	rdfs:domain rdf:Property ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdfs:Class ;
+	.
+
+rdfs:seeAlso
+	a rdf:Property ;
+	rdfs:label "seeAlso"^^xs:string ;
+	rdfs:comment "Further information about the subject resource."^^xs:string ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdfs:Resource ;
+	.
+
+rdfs:subClassOf
+	a rdf:Property ;
+	rdfs:label "subClassOf"^^xs:string ;
+	rdfs:comment "The subject is a subclass of a class."^^xs:string ;
+	rdfs:domain rdfs:Class ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdfs:Class ;
+	.
+
+rdfs:subPropertyOf
+	a rdf:Property ;
+	rdfs:label "subPropertyOf"^^xs:string ;
+	rdfs:comment "The subject is a subproperty of a property."^^xs:string ;
+	rdfs:domain rdf:Property ;
+	rdfs:isDefinedBy <http://www.w3.org/2000/01/rdf-schema#> ;
+	rdfs:range rdf:Property ;
+	.
+

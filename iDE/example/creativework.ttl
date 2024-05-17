@@ -1,0 +1,514 @@
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://purl.org/dc/terms/
+# imports: http://www.bbc.co.uk/ontologies/provenance
+
+@prefix bbc: <http://www.bbc.co.uk/ontologies/bbc/> .
+@prefix core: <http://www.bbc.co.uk/ontologies/coreconcepts/> .
+@prefix cwork: <http://www.bbc.co.uk/ontologies/creativework/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix provenance: <http://www.bbc.co.uk/ontologies/provenance/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tagging: <http://www.bbc.co.uk/ontologies/tagging/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.bbc.co.uk/ontologies/creativework>
+	a
+		provenance:Ontology ,
+		owl:Ontology
+		;
+	rdfs:label "Creative Work Ontology"@en-GB ;
+	rdfs:comment "This is the model we use to express the minimum metadata necessary to express a piece of creative content in the platform. The creative work ontology is continuously evolving based on our clients' requirements. There is a core class in this model, which is the CreativeWork class and properties that support information the LDP clients need to build their products such as title, thumbnail, URL e.t.c."@en-GB ;
+	dc:creator <mailto:LinkedData@bbc.co.uk> ;
+	dc:date "2012-12-01"^^xsd:date ;
+	dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+	dcterms:modified "2021-03-16"^^xsd:date ;
+	provenance:canonicalLocation "https://github.com/bbc/ontologies/blob/master/core/creativework.ttl"^^xsd:string ;
+	provenance:changeReason "Sub-classed cwork:Creator to tagging:Creator"@en-GB ;
+	provenance:public "true"^^xsd:boolean ;
+	provenance:slug "creativework"^^xsd:string ;
+	provenance:version "1.21"^^xsd:string ;
+	owl:imports
+		<http://purl.org/dc/elements/1.1/> ,
+		<http://purl.org/dc/terms/> ,
+		<http://www.bbc.co.uk/ontologies/provenance>
+		;
+	owl:priorVersion cwork:1.20 ;
+	owl:versionIRI cwork:1.21 ;
+	owl:versionInfo "1.21"^^xsd:string ;
+	.
+
+cwork:Article
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "Article"@en-GB ;
+	rdfs:comment "This is the class of creative works that are associated with the Optimo service. This is to distinguish content published from Optimo from that produced by CPS."@en-GB ;
+	rdfs:isDefinedBy cwork:1.12 ;
+	.
+
+cwork:Audience
+	a owl:Class ;
+	rdfs:label "Audience"@en-GB ;
+	rdfs:comment "Enumerated class of the audiences the BBC creates content for."@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:AudioFormat
+	a cwork:Format ;
+	rdfs:label "AudioFormat"@en-GB ;
+	rdfs:comment "Used to represent that the primary format of a CreativeWork is Audio."@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:BlogPost
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "BlogPost"@en-GB ;
+	rdfs:comment "This is the class of creative works that are associated with particular journalists or correspondents. The analysis, commentary and personal viewpoint of the creator is reflected on the blog post and the blog post is usually associated prominently with the name of the creator. BlogPost can have different types of formats."@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:Category
+	a owl:Class ;
+	rdfs:label "Category"@en-GB ;
+	rdfs:comment "A class to represent different categorisations of creative works from different clients. This class is instantiated in the clients' application logic models."@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:Clip
+	a owl:Class ;
+	rdfs:subClassOf cwork:Programme ;
+	rdfs:label "Clip"@en-GB ;
+	rdfs:comment "The Clips subclass of programmes produced by the BBC."@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:CloseUpThumbnail
+	a cwork:ThumbnailType ;
+	rdfs:label "CloseUpThumbnail"@en-GB ;
+	rdfs:comment "A 16x9 image, focused and zoomed in one part of the image, usually when the standard thumbnail is very small to be meaningful (e.g., in mobile)."@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:Commentary
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "Commentary"@en-GB ;
+	rdfs:comment "This class represents short form creative works in the shape of updates. These differ from the other types of creative works because they haven't got independent URLs  as (primaryContentOf) from which they can be retrieved."@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:CreativeWork
+	a owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "CreativeWork"@en-GB ;
+	rdfs:comment "The class of creative works produced by the BBC."@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:Creator
+	a owl:Class ;
+	rdfs:subClassOf
+		tagging:Agent ,
+		tagging:Creator
+		;
+	rdfs:label "Creator"@en-GB ;
+	rdfs:comment "An agent responsible for creating a BBC asset."@en-GB ;
+	rdfs:isDefinedBy cwork:1.20 ;
+	.
+
+cwork:ElectionAlert
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "ElectionAlert"@en-GB ;
+	rdfs:comment "This class is used to describe creative works which are Election Alerts."@en-GB ;
+	rdfs:isDefinedBy cwork:1.13 ;
+	.
+
+cwork:Episode
+	a owl:Class ;
+	rdfs:subClassOf cwork:Programme ;
+	rdfs:label "Episode"@en-GB ;
+	rdfs:comment "The Episodes subclass of programmes produced by the BBC."@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:FixedSize144Thumbnail
+	a cwork:ThumbnailType ;
+	rdfs:label "FixedSize144Thumbnail"@en-GB ;
+	rdfs:comment "Fixed size thumbnail"@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:FixedSize224Thumbnail
+	a cwork:ThumbnailType ;
+	rdfs:label "FixedSize224Thumbnail"@en-GB ;
+	rdfs:comment "Fixed size thumbnail"@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:FixedSize226Thumbnail
+	a cwork:ThumbnailType ;
+	rdfs:label "FixedSize226Thumbnail"@en-GB ;
+	rdfs:comment "Fixed size thumbnail"@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:FixedSize464Thumbnail
+	a cwork:ThumbnailType ;
+	rdfs:label "FixedSize464Thumbnail"@en-GB ;
+	rdfs:comment "Fixed size thumbnail"@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:FixedSize66Thumbnail
+	a cwork:ThumbnailType ;
+	rdfs:label "FixedSize66Thumbnail"@en-GB ;
+	rdfs:comment "Fixed size thumbnail"@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:Format
+	a owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "Format"@en-GB ;
+	rdfs:comment "The primary format of the CreativeWork and it can be one of the five instances. This is needed for selecting the appropriate icon with which to overlay the preview thumbnail of the creative work."@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:ImageFormat
+	a cwork:Format ;
+	rdfs:label "ImageFormat"@en-GB ;
+	rdfs:comment "Used to represent that the primary format of a CreativeWork is Image"@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:InteractiveFormat
+	a cwork:Format ;
+	rdfs:label "InteractiveFormat"@en-GB ;
+	rdfs:comment "Used to represent that the primary format of a CreativeWork is Interactive"@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:InternationalAudience
+	a cwork:Audience ;
+	rdfs:label "InternationalAudience"@en-GB ;
+	rdfs:comment "The international (non UK) audience. The creative works linked to this instance are *only available to the international audience*."@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:LiveCoverage
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "LiveCoverage"@en-GB ;
+	rdfs:comment "This class is used to describe that creative works which are coverage of a live event. (Note that this isn't meant to describe the fact that the event is live currently. An example of a Live Coverage creative work is the live event page covering live the England VS Australia cricket match, last saturday's football matches or last year's elections)"@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:LiveEventPage
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "LiveEventPage"@en-GB ;
+	rdfs:comment "This class is created to support the LiveEventPages from CPS. This will be soon deprecated for the sake of LiveCoverage"@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:MediaType
+	a owl:Class ;
+	rdfs:subClassOf tagging:MediaType ;
+	rdfs:label "Media type"@en-GB ;
+	rdfs:comment "A class to represent media types, e.g. audio, video, text etc"@en-GB ;
+	rdfs:isDefinedBy cwork:1.17 ;
+	.
+
+cwork:NationalAudience
+	a cwork:Audience ;
+	rdfs:label "NationalAudience"@en-GB ;
+	rdfs:comment "The national audience. The creative works linked to this instance are *only available to the national audience*."@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:NewsItem
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "NewsItem"@en-GB ;
+	rdfs:comment "The class of all news items that the BBC produces. They can be textual articles, or media asset pages (audio or video) or live coverage of events (use the liveCoverage property)."@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:PictureGalleryFormat
+	a cwork:Format ;
+	rdfs:label "PictureGalleryFormat"@en-GB ;
+	rdfs:comment "Used to represent that the primary format of a CreativeWork is of PictureGallery (this is a mid-term solution for the modelling of galleries)"@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:Programme
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "Programme"@en-GB ;
+	rdfs:comment "The class of programmes produced by the BBC"@en-GB ;
+	rdfs:isDefinedBy cwork:1.4 ;
+	owl:deprecated "true"^^xsd:boolean ;
+	.
+
+cwork:StandardThumbnail
+	a cwork:ThumbnailType ;
+	rdfs:label "StandardThumbnail"@en-GB ;
+	rdfs:comment "A 16x9 image used in most occasions"@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:TextualFormat
+	a cwork:Format ;
+	rdfs:label "TextualFormat"@en-GB ;
+	rdfs:comment "Used to represent that the primary format of a CreativeWork is Text"@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:Thumbnail
+	a owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "Thumbnail"@en-GB ;
+	rdfs:comment "Used to associate a Creative Work with the canonical location of the thumbnail. The URI of each of its instances is the full canonical location of the thumbnail"@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:ThumbnailType
+	a owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "ThumbnailType"@en-GB ;
+	rdfs:comment "Enumerated class of the allowed thumbnail types"@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:TravelIncident
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "TravelIncident"@en-GB ;
+	rdfs:comment "This class is used to describe creative works which are Travel Incidents."@en-GB ;
+	rdfs:isDefinedBy cwork:1.10 ;
+	.
+
+cwork:VideoFormat
+	a cwork:Format ;
+	rdfs:label "VideoFormat"@en-GB ;
+	rdfs:comment "Used to represent that the primary format of a CreativeWork is Video"@en-GB ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	.
+
+cwork:WeatherAlert
+	a owl:Class ;
+	rdfs:subClassOf cwork:CreativeWork ;
+	rdfs:label "WeatherAlert"@en-GB ;
+	rdfs:comment "This class is used to describe creative works which are Weather Alerts."@en-GB ;
+	rdfs:isDefinedBy cwork:1.10 ;
+	.
+
+cwork:about
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf cwork:tag ;
+	rdfs:label "about"@en-GB ;
+	rdfs:comment "Indicates that a BBC asset is about a tag concept"@en-GB ;
+	rdfs:domain owl:Thing ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range tagging:TagConcept ;
+	.
+
+cwork:altText
+	a owl:DatatypeProperty ;
+	rdfs:label "altText"@en-GB ;
+	rdfs:comment "The alternative text for a thumbnail in case the URL is not resolved"@en-GB ;
+	rdfs:domain cwork:Thumbnail ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range xsd:string ;
+	.
+
+cwork:audience
+	a owl:ObjectProperty ;
+	rdfs:label "audience"@en-GB ;
+	rdfs:comment "Associates the Creative Work with an audience instance"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range cwork:Audience ;
+	.
+
+cwork:category
+	a owl:ObjectProperty ;
+	rdfs:label "category"@en-GB ;
+	rdfs:comment "The category property is another mid term solution for maintaining the functionality supporting individual clients. For example, the type of gossip is something that the sports pal use for the moment. The values of the property are decided by the client teams in collaboration with LDP"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range cwork:Category ;
+	.
+
+cwork:createdBy
+	a owl:ObjectProperty ;
+	rdfs:label "createdBy"@en-GB ;
+	rdfs:comment "associate a creative work with its creator"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range tagging:TagConcept ;
+	.
+
+cwork:dateCreated
+	a owl:DatatypeProperty ;
+	rdfs:label "dateCreated"@en-GB ;
+	rdfs:comment "Date created of CreativeWork"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range xsd:date ;
+	.
+
+cwork:dateFirstReleased
+	a owl:DatatypeProperty ;
+	rdfs:label "dateFirstReleased"@en-GB ;
+	rdfs:comment "The date something was first broadcast or published by the BBC (or, for films, the date of UK cinematic release)"@en-GB ;
+	rdfs:domain owl:Thing ;
+	rdfs:isDefinedBy cwork:1.19 ;
+	rdfs:range xsd:datetime ;
+	.
+
+cwork:dateIssued
+	a owl:DatatypeProperty ;
+	rdfs:label "dateIssued"@en-GB ;
+	rdfs:comment "The formal date of an asset's publication from the point of view of the audience"@en-GB ;
+	rdfs:domain owl:Thing ;
+	rdfs:isDefinedBy cwork:1.17 ;
+	rdfs:range xsd:datetime ;
+	.
+
+cwork:dateLastReleased
+	a owl:DatatypeProperty ;
+	rdfs:label "dateLastReleased"@en-GB ;
+	rdfs:comment "The date something was most recently published (including minor updates) or most recently broadcast (including unadvertised repeats)"@en-GB ;
+	rdfs:domain owl:Thing ;
+	rdfs:isDefinedBy cwork:1.19 ;
+	rdfs:range xsd:datetime ;
+	.
+
+cwork:dateModified
+	a owl:DatatypeProperty ;
+	rdfs:label "dateModified"@en-GB ;
+	rdfs:comment "Date modified of CreativeWork"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range xsd:date ;
+	.
+
+cwork:description
+	a owl:DatatypeProperty ;
+	rdfs:label "description"@en-GB ;
+	rdfs:comment "The description of the Creative Work"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range xsd:string ;
+	.
+
+cwork:format
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf tagging:format ;
+	rdfs:label "format"@en-GB ;
+	rdfs:comment "Associates a BBC asset with a bbc:Format instance"^^xsd:string ;
+	rdfs:domain owl:Thing ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range bbc:Format ;
+	.
+
+cwork:genre
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf tagging:genre ;
+	rdfs:label "genre"@en-GB ;
+	rdfs:comment "Associates a BBC asset with a bbc:Genre instance"^^xsd:string ;
+	rdfs:domain owl:Thing ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range bbc:Genre ;
+	.
+
+cwork:language
+	a owl:DatatypeProperty ;
+	rdfs:label "language"@en-GB ;
+	rdfs:comment "The language of the creative work, please use BCP47 https://tools.ietf.org/html/bcp47"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range xsd:language ;
+	.
+
+cwork:mentions
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf cwork:tag ;
+	rdfs:label "mentions"@en-GB ;
+	rdfs:comment "Indicates that a BBC asset mentions a tag concept"@en-GB ;
+	rdfs:domain owl:Thing ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range tagging:TagConcept ;
+	.
+
+cwork:primaryFormat
+	a owl:ObjectProperty ;
+	rdfs:label "primaryFormat"@en-GB ;
+	rdfs:comment "Associates the Creative Work with the Primary Format instance"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range cwork:Format ;
+	.
+
+cwork:shortTitle
+	a owl:DatatypeProperty ;
+	rdfs:label "shortTitle"@en-GB ;
+	rdfs:comment "The sort title of the Creative Work"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range xsd:string ;
+	.
+
+cwork:tag
+	a owl:ObjectProperty ;
+	rdfs:label "tag"@en-GB ;
+	rdfs:comment "Indicates that the creative work is tagged with tag concept"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range tagging:TagConcept ;
+	.
+
+cwork:thumbnail
+	a owl:ObjectProperty ;
+	rdfs:label "thumbnail"@en-GB ;
+	rdfs:comment "Associates the Creative Work with the Thumbnail instance"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range cwork:Thumbnail ;
+	.
+
+cwork:thumbnailType
+	a owl:ObjectProperty ;
+	rdfs:label "thumbnailType"@en-GB ;
+	rdfs:comment "Associates the Thumbnail instance with a Thumbnail type"@en-GB ;
+	rdfs:domain cwork:Thumbnail ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range cwork:ThumbnailType ;
+	.
+
+cwork:title
+	a owl:DatatypeProperty ;
+	rdfs:label "title"@en-GB ;
+	rdfs:comment "The title of the Creative Work"@en-GB ;
+	rdfs:domain cwork:CreativeWork ;
+	rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/creativework> ;
+	rdfs:range xsd:string ;
+	.
+
