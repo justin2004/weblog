@@ -82,3 +82,8 @@ If you are a UI implementor perhaps you could implement my simple design and the
 Let me know if you want to work on this together!
 
 Perhaps these first few implementations wouldn't be useful for non-toy datasets but they might help us think better about how to proceed with graph viz.
+
+
+---
+
+Note: the graph data (RDF) I used in this example comes from [this post](https://github.com/justin2004/weblog/tree/master/semantic_messages).
