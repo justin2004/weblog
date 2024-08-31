@@ -1,6 +1,6 @@
 # Justin's Weblog
 
-## [Intuitive Graph visualization](intuitive_graph_viz)
+## [Intuitive Graph Visualization](intuitive_graph_viz)
 ### Aug 31 2024
 
 Knowledge Graph visualization can be so much more useful
