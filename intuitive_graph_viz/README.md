@@ -42,14 +42,14 @@ I would like to see an option to render graphs more like this:
 <!-- ![fused edges](media/mnemonic_graph.png) -->
 <img src="media/mnemonic_graph.png" width="800px">
 
-One this to note about this approach is that there are only a few dozen concepts in the `gist` ontology that need to have associated icons (or visual motifs).
+One thing to note about this approach is that there are only a few dozen concepts in the `gist` ontology that need to have associated icons (or visual motifs).
 Imagine if a good designer took a pass at this.
 
 
 This is just a first step.
 
 This approach only involves iconic symbols for types of things and relationships between those things.
-I showed this to my son and he talked through what he thought it was representing and he got many of the ideas right.
+I then again showed this to my seven year old son and he talked through what he thought it was representing and he got many of the ideas right.
 
 I think subsequent rendering steps would involve making using of arrangement, orientation, proximity, and size. 
 
