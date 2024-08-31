@@ -72,6 +72,8 @@ When you look out of the window from an airplane you don't see an incomprehensib
 Instead you see a downsampled scene of the world beneath you.
 If you have enough altitude you can't see individual cars or buildings anymore, but you can recognize aggregations of them.
 
+In the same manner, imagine if you zoomed out on a graph viz like that and lots of individual instances of `gist:Content` became rendereded in aggregate (perhaps like reams of paper).
+
 
 ## Let's Do This
 
