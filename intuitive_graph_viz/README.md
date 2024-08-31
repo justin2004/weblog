@@ -49,7 +49,7 @@ Imagine if a good designer took a pass at this.
 This is just a first step.
 
 This approach only involves iconic symbols for types of things and relationships between those things.
-I show this to my son and he talked through what he thought it was representing and he got many of the ideas right.
+I showed this to my son and he talked through what he thought it was representing and he got many of the ideas right.
 
 I think subsequent rendering steps would involve making using of arrangement, orientation, proximity, and size. 
 
@@ -64,7 +64,7 @@ For example, perhaps when the number of outgoing `gist:produces` edges gets larg
 
 ## Intuitive KG Viz Goals 
 
-The main goal of these subsequence steps would be to allow a large portion of the graph to be rendered and downsample the resolution of the meaning (while maintaining the spirit of the meaning) so as to not produce a pixel overload that is incompressible.
+The main goal of these subsequent steps would be to allow a large portion of the graph to be rendered and downsample the resolution of the meaning (while maintaining the spirit of the meaning) so as to not produce a pixel overload that is incomprehensible.
 
 An ideal KG viz should allow impressions (of the meaning of the graph) to be almost a reflex.
 
@@ -75,8 +75,10 @@ If you have enough altitude you can't see individual cars or buildings anymore, 
 
 ## Let's Do This
 
-If you are a designer you could pick on ontology (maybe start with [gist](https://github.com/semanticarts/gist) or [CCO](https://github.com/CommonCoreOntology/CommonCoreOntologies)) and decide how to render each of the primitives (classes and object properties).
+If you are a designer you could pick an ontology (maybe start with [gist](https://github.com/semanticarts/gist) or [CCO](https://github.com/CommonCoreOntology/CommonCoreOntologies)) and decide how to render each of the primitives (classes and object properties).
 
-If you are a UI implementor perhaps you could implement my my simple design and then we could see how it scales up to larger graphs.
+If you are a UI implementor perhaps you could implement my simple design and then we could see how it scales up to larger graphs.
 
 Let me know if you want to work on this together!
+
+Perhaps these first few implementations wouldn't be useful for non-toy datasets but they might help us think better about how to proceed with graph viz.
