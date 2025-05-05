@@ -7,7 +7,7 @@ I work in the software development space and I have been noticing patterns betwe
 The patterns are evident between (a) the personalities assigned to work on interfaces and (b) the maneuverability of the final product.
 
 Interfaces are, of course, points where two things meet and interact.
-And I see the personalities as: a tendency to focus on a particular interface.
+And I see the personalities as: tendencies to focus on a particular interface.
 
 In software development the things interacting are:
 
