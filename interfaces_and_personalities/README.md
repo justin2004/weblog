@@ -40,21 +40,21 @@ Let's look at each of them in turn.
 
 ## Between Application and Application
 
-The interface between applications is a focus of the personality "software engineer."
+The interface between applications is a focus of the personality "Software Engineer."
 
 Software engineers focus on more than just the interface between applications but their focus on this is what makes the resultant software seem more "developer friendly."
 This personality puts work into interfaces that other applications can use (APIs).
-Allowing this personality to have the majority vote in design often results in software that this personality likes to use.
+Allowing this personality to have the majority vote in design often results in software that this personality likes to develop against.
 
 -- some circularity here? --
 
-The software engineer personality invents APIs with a mind for only their applications needs (not the needs of the ecosystem around it).
+The software engineer personality designs APIs with a mind for only their applications needs (not the needs of the ecosystem around it).
 
 This personality almost always gets overrepresented.
-Because of that, software that is developed is lopsided (more application-centric than data-centric) which results in the [Software Wasteland](https://www.amazon.com/Software-Wasteland-Application-Centric-Hobbling-Enterprises/dp/1634623169).
+Because of that, software that is developed in this manner is lopsided (more application-centric than data-centric) which results in the [Software Wasteland](https://www.amazon.com/Software-Wasteland-Application-Centric-Hobbling-Enterprises/dp/1634623169).
 
 ## Between Application and Execution Environment
-The interface between applications and execution environments: "DevOps engineer"
+The interface between applications and execution environments: "DevOps Engineer"
 
 Without some attention to this interface you'll likely get an application that won't easily run in other execution environments.
 
@@ -87,7 +87,7 @@ I've also written (pre-ChatGPT) about such loosey-goosey input [here](https://gi
 
 Knowledge and Serialized Data: "Applied Ontologist"
 
-This personality is the most under represented in software development and it results in systems that work for narrow purposes and do not adapt well to variations on those purposes and new purposes.
+This personality is the most under represented in software development and that under representaion results in systems that work for narrow purposes *but* do not adapt well to variations on those purposes and new purposes.
 
 When this personality is under represented you get software that:
 - has data schemata for its narrow purposes
@@ -98,6 +98,7 @@ When this personality is under represented you get software that:
 
 The work of this personality is: expressing knowledge and situations using the terminology of a particular worldview.
 
+Some of the key principles of this personality are thoughtfully summarized [here](https://datacentricmanifesto.org/).
 
 ## Case Study
 
