@@ -1,10 +1,9 @@
 # Interfaces and Personalities
 
-I work in the software development space and I have been noticing some patterns between the personalities and the resultant product.
-In collaborative environments, such as software development, the resultant product is affected by the personality traits of the individual contributors.
+I work in the software development space and I have been noticing some patterns between the personalities involved in the development and the resultant product.
 
+Interfaces are, of course, points where two things meet and interact.
 I see the personalities as a tendency to focus on a particular type of interface.
-Interfaces, of course, are points where two things meet and interact.
 
 In software development the things interacting are:
 
@@ -21,7 +20,9 @@ In software development the things interacting are:
 We could slice up the space differently but I think this set of things aligns well with interfaces that matter.
 
 There are interfaces between each of those things to all the other things but I think only a handful of those interfaces account for the most amount of product quality variation between software implementations.
-I don't have a name for those interfaces but I have a personality that tends to focus on them:
+
+I mostly want to compare the interfaces between applications and on the interfaces between knowledge and serialized data but I am enumerating some of the nearby interfaces just to situate the comparison.
+I don't have a name for these interfaces but I have a personality that tends to focus on them:
 
 ; image
 
@@ -35,9 +36,9 @@ Let's look at each of them in turn.
 
 ## Between Application and Application
 
-The interface between applications is a focus of the personality "software developer."
+The interface between applications is a focus of the personality "software engineer."
 
-Software developers focus on more than just the interface between applications but their focus on this interface is what makes the resultant software more "developer friendly."
+Software engineers focus on more than just the interface between applications but their focus on this interface is what makes the resultant software more "developer friendly."
 This personality puts work into interfaces that other applications can use (APIs).
 Allowing this personality to have the majority vote often results in software that this personality likes to use.
 -- Circular --
@@ -69,19 +70,33 @@ e.g. From the input "Owen has 2 apples. He gives 1 to his dad." you can derive "
 To do useful derivations (that weren't easily obtained) you often need multiple different input data sources.
 You can use any mechanism to produce these derivations: algebra, regression analysis, deductive logic, artificial neural networks, and LLMs.
 
-This personalty is often told to "produce insights."
+This personalty has been historically told to "produce insights."
+And these days this personality is told to "take loosey-goosey input and do the right thing."
+I've also written (pre-ChatGPT) about such loosey-goosey input [here](https://github.com/justin2004/weblog/tree/master/semantic_messages). 
 
 
 ## Between Knowledge and Serialized Data
 
 Knowledge and Serialized Data: "Applied Ontologist"
 
-This personality is the most under represented in software development and it results in systems that work for a narrow purposes and does not adapt well to variations on those purposes and new purposes.
+This personality is the most under represented in software development and it results in systems that work for a narrow purposes and do not adapt well to variations on those purposes and new purposes.
 
 When this personality is under represented you get software that:
 - has data schemata for its narrow purposes
-- is stove piped ?
+- takes "stay in your lane" to an extreme
 - entangles serialized data and code
   - such that it is hard to migrate data out of one system and into another
 - entangles the meaning of serialized data with the code that handles it
-- assumes you'll be the one doing the ETL to get data in and out
+- assumes someone else will be the one doing the ETL to get data in and out
+
+The work of this personality is expressing knowledge and situations using the terminology of a particular worldview.
+
+
+Let's consider how a software engineer and an applied ontologist would approach the design of an inventory system.
+
+What would the software engineer personality prioritize while developing an inventory system?
+They'd prioritize the design of a back-end to do CRUD (create, read, update, delete) via an API.
+
+
+Contrast that to what an applied ontologist would prioritize:
+They'd prioritize building a representation of the knowledge about the relevant details (and adjacent details -- enough to contextualize the particulars of this application) of inventory within a particular worldview.
