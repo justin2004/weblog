@@ -87,9 +87,9 @@ I've also written (pre-ChatGPT) about such loosey-goosey input [here](https://gi
 
 Knowledge and Serialized Data: "Applied Ontologist"
 
-This personality is the most under represented in software development and that under representaion results in systems that work for narrow purposes *but* do not adapt well to variations on those purposes and new purposes.
+This personality is the most underrepresented in software development and that under representation results in systems that work for narrow purposes *but* do not adapt well to variations on those purposes and new purposes.
 
-When this personality is under represented you get software that:
+When this personality is underrepresented you get software that:
 - has data schemata for its narrow purposes
 - takes "stay in your lane" to an extreme
 - entangles the meaning of serialized data with the code that handles it
