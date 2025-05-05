@@ -73,7 +73,7 @@ This work is about taking some input (serialized data) and doing some computatio
 Most often the output data is implicit, in that it was derivable from the input but the input did not explicitly state it.
 
 e.g. 
-From the input "Owen has 2 apples. He gives 1 to his dad." you can derive "Owen now has 1 apple" as it is an implicit fact based on the input and the background worldview (including the axiom that apples are [rivalrous goods](https://en.wikipedia.org/wiki/Rivalry_(economics)).
+From the input "Owen has 2 apples. He gives 1 to his dad." you can derive "Owen now has 1 apple" as it is an implicit fact based on the input and the background worldview (including the axiom that apples are [rivalrous goods](https://en.wikipedia.org/wiki/Rivalry_(economics))).
 
 To do useful derivations (that aren't easily obtained) you often need multiple different input data sources.
 You can use any mechanism to produce these derivations: algebra, regression analysis, deductive logic, artificial neural networks, and LLMs.
@@ -98,6 +98,8 @@ When this personality is under represented you get software that:
 
 The work of this personality is: expressing knowledge and situations using the terminology of a particular worldview.
 
+
+## Case Study
 
 Let's consider how a software engineer and an applied ontologist would approach the design of an inventory system.
 
