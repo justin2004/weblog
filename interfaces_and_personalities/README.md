@@ -4,7 +4,7 @@
 
 I work in the software development space and I have been noticing patterns between the personalities involved in the development process and the resultant software product.
 
-The patterns are evident between (a) the personalities assigned to work on interfaces and (b) the maneuverability of the final product.
+The patterns are evident between (a) the personalities assigned to a development project and (b) the maneuverability of the final product.
 
 Interfaces are, of course, points where two things meet and interact.
 And I see the personalities as: tendencies to focus on a particular interface.
