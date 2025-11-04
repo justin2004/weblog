@@ -1,5 +1,10 @@
 # Justin's Weblog
 
+## [ABRACADABRA](abracadabra)
+### Nov 04 2025
+
+Incantations and charms?
+
 ## [Intuitive Graph Visualization](intuitive_graph_viz)
 ### Aug 31 2024
 

@@ -9,7 +9,7 @@ It was right after Halloween and Day of the Dead so I was primed for noticing th
 
 It is [tradition](https://www.youtube.com/watch?v=2Op3QLzMgSY) to think of source code writing as spell casting.
 
-<img src="media/sicp.png.jpg">
+<img src="media/sicp.png">
 
 This textual representation of this magic funnel is just the sort of thing that is easy to conjure using APL.
 
