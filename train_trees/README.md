@@ -8,7 +8,7 @@ Near the end of [ArrayCast episode 121](https://www.youtube.com/watch?v=lBrczam-
 It was noted that sometimes it is hard "to see how far things reach."
 Operators have long left scope and functions have long right scope and perhaps the long left scope is less intuitive.
 
-In Dyalog APL, I find that looking at train trees is more than sufficient for getting binding strength feedback.
+In Dyalog APL, I find that looking at train trees is more than sufficient for getting binding strength and train syntax feedback.
 
 They are enabled with:
 
@@ -16,7 +16,7 @@ They are enabled with:
 ]box on -trains=tree
 ```
 
-I don't see the need for any other binding strength visual feedback system as I hope to demonstate below.
+I don't see the need for any other binding strength visual feedback system as I hope to demonstrate below.
 
 ## Example
 
@@ -52,7 +52,7 @@ That tells us that our tacit function is equivalent to the explicit function:
 
 I mostly develop tacit functions by looking at the train tree as I go.
 Train trees are not just a "cute" representation of a tacit function.
-They are a depiction of the application of [binding strength](https://docs.dyalog.com/20.0/programming-reference-guide/introduction/binding-strength/) over the whole tacit function.
+They are a depiction of the application of [binding strength](https://docs.dyalog.com/20.0/programming-reference-guide/introduction/binding-strength/) and train syntax over the whole tacit function.
 
 
 Looking at the train tree, I noticed that the division function `÷` is "lower" in the tree than the sum reduction `+/`.
@@ -110,6 +110,7 @@ As I was developing the function `*∘0.5 (+/*∘2)÷≢` I initially used some 
 ```
 
 But I noticed removing those parens didn't change the train tree.
+I find that developing like this is helping with parsing the linear representation of tacit functions in my mind.
 
 Often I start a tacit function by using parens to make the components of the train clear to me (in the linear representation) but then I see which are unnecessary by looking at the train tree after I delete them. 
 
@@ -118,7 +119,7 @@ That makes it pretty easy to later type it out in the linear representation for 
 
 
 
-### Notes
+### Related Resources
 
 https://www.hillelwayne.com/handwriting-j/
 

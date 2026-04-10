@@ -1,5 +1,11 @@
 # Justin's Weblog
 
+
+## [Train Trees](train_trees)
+### Apr 10 2026
+
+Visual feedback on train syntax and binding strength in APL
+
 ## [ABRACADABRA](abracadabra)
 ### Nov 04 2025
 
