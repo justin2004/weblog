@@ -6,9 +6,9 @@
 Near the end of [ArrayCast episode 121](https://www.youtube.com/watch?v=lBrczam-Dvk) there was a desire for feedback about binding strength of tacit expressions in APL.
 
 It was noted that sometimes it is hard "to see how far things reach."
-Operators have long left scope and functions have long right scope and perhaps the long right scope is more intuitive.
+Operators have long left scope and functions have long right scope and perhaps the long left scope is less intuitive.
 
-In Dyalog APL, I find that using train trees is more than sufficient.
+In Dyalog APL, I find that looking at train trees is more than sufficient for getting binding strength feedback.
 
 They are enabled with:
 
@@ -52,7 +52,7 @@ That tells us that our tacit function is equivalent to the explicit function:
 
 I mostly develop tacit functions by looking at the train tree as I go.
 Train trees are not just a "cute" representation of a tacit function.
-They are a depiction of the application of [binding strength](https://docs.dyalog.com/20.0/programming-reference-guide/introduction/binding-strength/) over the whole function.
+They are a depiction of the application of [binding strength](https://docs.dyalog.com/20.0/programming-reference-guide/introduction/binding-strength/) over the whole tacit function.
 
 
 Looking at the train tree, I noticed that the division function `÷` is "lower" in the tree than the sum reduction `+/`.
@@ -112,6 +112,9 @@ As I was developing the function `*∘0.5 (+/*∘2)÷≢` I initially used some 
 But I noticed removing those parens didn't change the train tree.
 
 Often I start a tacit function by using parens to make the components of the train clear to me (in the linear representation) but then I see which are unnecessary by looking at the train tree after I delete them. 
+
+Also, I sometimes write APL on paper by using the train tree representation.
+That makes it pretty easy to later type it out in the linear representation for the interpreter.
 
 
 
