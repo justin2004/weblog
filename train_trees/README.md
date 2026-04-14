@@ -24,6 +24,8 @@ I don't see the need for any other binding strength visual feedback system as I 
 To read train trees you need to understand the building blocks: 2 trains and 3 trains.
 Let's only consider monadic trains (taking 1 argument) for now.
 
+### 2 Trains
+
 If you are new to APL when you are chaining together functions in APL you are mostly doing this atop that, atop this, etc.
 Like a unix shell pipeline.
 
@@ -42,7 +44,11 @@ In other words, first do the `∊` then atop that do the `⌽`.
 
 As a unix shell command that might look like: `∊ some_file | ⌽`.
 
+So while reading a 2 train sub-tree, you need to start at the right tine first as it logically happens first.
+
 Evalaute this `(⌽∊) (1 2) (3 4)` on [tryapl.org](https://tryapl.org/) to get a sense for 2 trains.
+
+### 3 Trains
 
 Next we have the 3 train (a fork) `┌─┼─┐`.
 
