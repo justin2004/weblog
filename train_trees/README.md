@@ -18,6 +18,83 @@ They are enabled with:
 
 I don't see the need for any other binding strength visual feedback system as I hope to demonstrate below.
 
+
+## Quick Lesson
+
+To read train trees you need to understand the building blocks: 2 trains and 3 trains.
+Let's only consider monadic trains (taking 1 argument) for now.
+
+If you are new to APL when you are chaining together functions in APL you are mostly doing this atop that, atop this, etc.
+Like a unix shell pipeline.
+
+As a train tree an "atop" is a 2 train  `┌┴┐`.
+
+e.g.
+
+```apl
+      ⌽∊
+┌┴┐
+⌽ ∊
+```
+
+That means, do the `⌽` atop `∊`.
+In other words, first do the `∊` then atop that do the `⌽`.
+
+As a unix shell command that might look like: `∊ some_file | ⌽`.
+
+Evalaute this `(⌽∊) (1 2) (3 4)` on [tryapl.org](https://tryapl.org/) to get a sense for 2 trains.
+
+Next we have the 3 train (a fork) `┌─┼─┐`.
+
+e.g.
+
+```apl
+      +/÷≢
+  ┌─┼─┐
+  / ÷ ≢
+┌─┘    
++ 
+```
+
+That means, start at the outer tines... 
+
+- take the `≢` of the argument
+- take the `+/` of the argument
+- then pass those results "up" to the `÷` (the middle tine function gets applied dyadically (2 arguments))
+
+Note that since `/` is an operator it alters the shape of the tree by grabbing `+` as its function operand.
+
+Evalaute this `(+/÷≢) 1 2 3` on [tryapl.org](https://tryapl.org/) to get a sense for 3 trains.
+
+
+Finally, sometimes you want to force an "atop" (2 train).
+You can do that with the atop operator `⍤`.
+
+e.g.
+
+```apl
+      +/÷⍤≢
+  ┌┴─┐ 
+  /  ⍤ 
+┌─┘ ┌┴┐
++   ÷ ≢
+```
+
+Notice I took the 3 train from above but since I added `⍤` it changed the outermost train from a 3 train into a 2 train.
+Also, like we asked, it made `÷≢` a 2 train (an atop) lower in the tree.
+
+That function says:
+
+- take the `≢` of the argument
+  - then atop that apply `÷` (to get the recriprocol)
+    - then atop that apply `+/` (which will sum a single scalar) 
+
+It's not an interesting function but we are just learning what the shapes of trees mean.
+
+
+So in general, start at the lowest parts of the tree and apply the rules for 2 and 3 trains as you approach the root of the tree.
+
+
 ## Example
 
 Recently I needed to write a Root Mean Square function.
