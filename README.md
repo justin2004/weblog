@@ -1,5 +1,9 @@
 # Justin's Weblog
 
+## [Pulling Off the Bandaid](pulling_off_the_bandaid)
+### Sep 14 2026
+
+Now is a good time to use Semantic Web technology with discipline
 
 ## [Train Trees](train_trees)
 ### Apr 10 2026
