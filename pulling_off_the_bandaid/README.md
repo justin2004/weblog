@@ -193,6 +193,7 @@ To product managers overseeing ontology-related work:
 Require ontology teams to demonstrate shared competency queries across independently produced datasets. 
 The more teams that participate, the better.
 
+If you see something I am missing, let's please [discuss here](https://github.com/justin2004/weblog/discussions).
 
 ---
 
