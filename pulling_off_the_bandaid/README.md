@@ -66,7 +66,7 @@ We don't use shortcuts but if we did they'd be connected shortcuts.
 
 Now, here is the move that prevents data interoperability.
 
-Say I invent an object property `myontology:hasAllly` because I want to directly relate `_:agent_N` to `:agent9` like this:
+Say I invent an object property `myontology:hasAlly` because I want to directly relate `_:agent_N` to `:agent9` like this:
 
 ```turtle
 _:agent_N myontology:hasAlly :agent9 .
